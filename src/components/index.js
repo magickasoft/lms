@@ -1,0 +1,11 @@
+export {Intro} from './intro';
+export {Worth} from './worth';
+export {ContactForm} from './contactForm';
+export {ListOfBuildings} from './listOfBuildings';
+export {Contact} from './contact';
+export {Label, Text, Section} from './common';
+export {Header} from './header';
+export {InputPhone} from './inputPhone';
+export {Page} from './page';
+export {Select} from './select';
+export {Button} from './button';
