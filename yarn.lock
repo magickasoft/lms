@@ -2466,10 +2466,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-mailtrap@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mailtrap/-/mailtrap-3.0.0.tgz#20f7aa7fcf9b79b4f086bd4740f4d9f9bc36779c"
-  integrity sha512-HugUJx4JlpoacZYvrVsB326qy4tEHT6sTcTF6OoZLnJeOnEnjJA3NCqZJdAry6ThkhCJx3BLILFvgpPV/er63g==
+mailtrap@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mailtrap/-/mailtrap-3.0.1.tgz#b405f938fa0442e331d524229a487b038945425b"
+  integrity sha512-hAiiMzUQ5orh1JaprPzeVC8/ILeJ9V2qXmCgt6i/5LBPSJZAdStJDgzlWfu0Vf7Qht2RVu4NYLSvwcwBVt1RsQ==
   dependencies:
     axios ">=0.27"
 
