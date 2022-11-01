@@ -11,18 +11,18 @@
     "prettier": "./node_modules/.bin/prettier --write \"{src,__{tests,mocks}__}/**/*.js\""
   },
   "dependencies": {
-    "@emotion/cache": "^11.10.3",
-    "@emotion/react": "^11.10.4",
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.9",
-    "@mui/material": "^5.10.11",
+    "@mui/material": "^5.10.12",
     "axios": "^1.1.3",
     "color": "^4.2.3",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
     "mailtrap": "^3.0.0",
-    "next": "13.0.0",
+    "next": "13.0.1",
     "next-ym": "^2.3.5",
     "nookies": "^2.5.2",
     "react": "18.2.0",
@@ -33,11 +33,11 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "@commitlint/prompt-cli": "^17.1.2",
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@commitlint/prompt-cli": "^17.2.0",
     "eslint": "^8.26.0",
-    "eslint-config-next": "13.0.0",
+    "eslint-config-next": "13.0.1",
     "husky": "^8.0.1",
     "prettier": "^2.7.1"
   }
