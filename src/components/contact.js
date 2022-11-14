@@ -1,9 +1,10 @@
-import React from 'react';
 import SC from '@emotion/styled';
+import React from 'react';
 import {Element} from 'react-scroll';
-import {ContactForm} from './contactForm';
-import {Label, Text} from './common';
+
 import {maxDevice, theme} from '../styles';
+import {Label, Text} from './common';
+import {ContactForm} from './contactForm';
 
 const Container = SC.div`
   // background: linear-gradient(90.07deg, #0F1D31 0.05%, #12161D 99.93%);

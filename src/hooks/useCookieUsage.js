@@ -1,5 +1,5 @@
+import {parseCookies, setCookie} from 'nookies';
 import React from 'react';
-import {setCookie, parseCookies} from 'nookies';
 
 export default function (ctx = null, name = 'cookies', maxAge = 30 * 24 * 60 * 60) {
   const cookies = parseCookies(ctx);

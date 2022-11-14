@@ -1,11 +1,9 @@
-import {get} from 'lodash';
-import * as React from 'react';
+import React from 'react';
 
+import {get} from '../../utils/get';
 import lib from './lib';
 
-export const Icon = properties => {
-  const {name, size, width = 22, height = 22, color, ...rest} = properties;
-
+export const Icon = ({name, size, width = 22, height = 22, color, ...rest}) => {
   if (!name) {
     return null;
   }
@@ -13,12 +11,12 @@ export const Icon = properties => {
   const svg = get(lib, name);
 
   if (!svg) {
+    console.error(`Requested unknown icon '${name}'`);
     return null;
   }
 
   const svgWidth = size || width;
   const svgHeight = size || height;
-
   return React.createElement(svg, {
     ...rest,
     color,

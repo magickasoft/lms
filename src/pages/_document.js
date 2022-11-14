@@ -1,8 +1,9 @@
-import React from 'react';
-import Document, {Head, Html, Main, NextScript} from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import theme from '../styles/theme';
+import Document, {Head, Html, Main, NextScript} from 'next/document';
+import React from 'react';
+
 import {createEmotionCache} from '../helpers/createEmotionCache';
+import theme from '../styles/theme';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -44,8 +45,8 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
         </body>
       </Html>
     );

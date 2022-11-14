@@ -1,47 +1,51 @@
-import React from 'react';
 import SC from '@emotion/styled';
-import {Icon} from './icon';
+import React from 'react';
+
+import {ibmplexsans400, maxDevice} from '../styles';
 import {Text} from './common';
-import {maxDevice, theme} from '../styles';
+import {Icon} from './icon';
+import {ScrollIndicator} from './scrollIndicator';
 
 const Container = SC.header`
-  z-index: 9999;
+  font-family: ${ibmplexsans400.style.fontFamily};
+  background: ${({active}) => (active ? '#ffffff05' : '#ffffff05')};
+  z-index: 9998;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: ${({active}) => (active ? '#000000' : '#00000038')};
-`;
-
-const Line1 = SC.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
-  margin: 0 140px 0 140px;
+  height: 4.75rem;
+  margin: 0 auto;
+  padding: 0 140px;
   @media ${maxDevice.tablet} {
-    margin: 0 30px 0 30px;
-  }
-  @media ${maxDevice.mobileL} {
-    margin: 0 30px 0 30px;
+    padding: 0 30px;
+    height: 3.5rem;
   }
 `;
 
 const SCIcon = SC(Icon)`
-  margin-right: 7px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-left: 15px;
 `;
 
 const Label = SC.div`
   display: flex;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 18px;
-  color: #FFFFFF;
-  align-items: center;
+  flex-direction: column;
   @media ${maxDevice.tablet} {
     display: none
   }
+`;
+
+const Link = SC.a`
+  font-size: 0.9rem;
+  line-height: 1.125rem;
+  background: linear-gradient(90deg,#fe00dd -56.25%,#fd0009 135.94%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const Row = SC.div`
@@ -49,34 +53,38 @@ const Row = SC.div`
   flex-direction: row;
 `;
 
-export const Header = props => {
+const useScroll = () => {
   const [active, setActive] = React.useState(false);
 
-  React.useEffect(() => {
-    window?.addEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleScroll = () => {
-    if (window?.scrollY >= 400) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
+  const onScroll = () => {
+    setActive(window?.scrollY >= 400);
   };
 
+  React.useEffect(() => {
+    window?.addEventListener('scroll', onScroll);
+
+    return () => window?.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return [active];
+};
+
+export const Header = props => {
+  const [active] = useScroll();
+
   return (
-    <Container active={active}>
-      <Line1>
-        <Text color={theme.colors.White}>
-          <strong>landing</strong> page
+    <>
+      <ScrollIndicator />
+      <Container active={active}>
+        <Text>
+          <strong>sacrill</strong>
         </Text>
         <Row>
           <Label>
-            <SCIcon name="call" size={20} />
-            <a href="tel://+79537647035">Admin</a>
+            <Link href="mailto:hello@sacrill.com">hello@sacrill.com</Link>
           </Label>
         </Row>
-      </Line1>
-    </Container>
+      </Container>
+    </>
   );
 };

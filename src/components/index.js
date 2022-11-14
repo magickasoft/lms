@@ -1,11 +1,10 @@
-export {Intro} from './intro';
-export {Worth} from './worth';
-export {ContactForm} from './contactForm';
-export {ListOfBuildings} from './listOfBuildings';
+export {Button} from './button';
+export {Label, Section,Text} from './common';
 export {Contact} from './contact';
-export {Label, Text, Section} from './common';
+export {ContactForm} from './contactForm';
+export {Footer} from './footer';
 export {Header} from './header';
 export {InputPhone} from './inputPhone';
+export {Intro} from './intro';
 export {Page} from './page';
 export {Select} from './select';
-export {Button} from './button';

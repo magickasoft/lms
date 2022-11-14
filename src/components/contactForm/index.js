@@ -1,12 +1,13 @@
-import React from 'react';
 import Box from '@mui/material/Box';
 import {Formik} from 'formik';
-import {InputPhone} from '../inputPhone';
+import React from 'react';
+
 import {contact} from '../../api';
-import {Button} from '../button';
-import {phoneSchema} from './phone.schema';
 import {event} from '../../helpers/gtag';
 import {reachGoal} from '../../helpers/ym';
+import {Button} from '../button';
+import {InputPhone} from '../inputPhone';
+import {phoneSchema} from './phone.schema';
 
 export const ContactForm = props => {
   const [loading, setLoading] = React.useState(false);

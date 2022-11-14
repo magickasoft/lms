@@ -1,16 +1,17 @@
 import SC from '@emotion/styled';
 import Link from 'next/link';
-import {Icon} from '../components/icon';
+
 import {Page} from '../components';
+import {Icon} from '../components/icon';
 import {maxDevice} from '../styles';
 
-const Header = SC.div`
+const Title = SC.div`
   white-space: pre-line;
   font-style: normal;
   font-weight: normal;
   font-size: 64px;
   line-height: 72px;
-  color: #000000;
+  color: #1f2326;
   @media ${maxDevice.tablet} {
     font-size: 40px;
     line-height: 48px;
@@ -27,7 +28,7 @@ const Text = SC.div`
   font-weight: normal;
   font-size: 20px;
   line-height: 28px;
-  color: #777777;
+  color: #22262A;
   @media ${maxDevice.tablet} {
     width: 370px;
     margin-top: 30px;
@@ -52,21 +53,16 @@ const Img = SC.div`
   justify-content: flex-end;
 `;
 
-const ULink = SC.a`
-  color: #38B662;
-`;
-
 function NotFoundPage() {
   return (
     <Page>
       <div>
-        <Header>{`Этой страницы \nне существует`}</Header>
+        <Title>{`Этой страницы \nне существует`}</Title>
         <Text>
           Вы перешли по неверной ссылке, либо эта страница была удалена.&nbsp;
           <Link rel="canonical" href="/" passHref>
-            <ULink>Начните с главной страницы</ULink>
+            Начните с главной страницы
           </Link>
-          .
         </Text>
       </div>
       <Img>

@@ -1,10 +1,10 @@
-import React from 'react';
-import MSelect from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
+import SC from '@emotion/styled';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-import SC from '@emotion/styled';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import MSelect from '@mui/material/Select';
+import React from 'react';
 
 const HelperText = SC(FormHelperText)``;
 
@@ -15,16 +15,16 @@ const Container = SC(FormControl)`
 `;
 
 export const Select = ({
-  label,
-  helperText,
-  focused,
-  disabled,
-  error,
-  required,
-  variant = 'standard',
-  items = [],
-  ...other
-}) => {
+                         label,
+                         helperText,
+                         focused,
+                         disabled,
+                         error,
+                         required,
+                         variant = 'standard',
+                         items = [],
+                         ...other
+                       }) => {
   const formProps = {
     disabled,
     error,
