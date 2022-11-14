@@ -32,14 +32,14 @@ const Container = SC.button`
   vertical-align: middle;
   text-decoration: none;
   ${({disabled}) =>
-  disabled &&
-  css`
-    color: #525b67;
-    box-shadow: none;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-    cursor: default;
-  `}
+    disabled &&
+    css`
+      color: #525b67;
+      box-shadow: none;
+      background: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+      cursor: default;
+    `}
 `;
 
 export const Button = ({children, ...props}) => <Container {...props}>{children}</Container>;

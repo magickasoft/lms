@@ -1,5 +1,5 @@
 export {Button} from './button';
-export {Label, Section,Text} from './common';
+export {Label, Section, Text} from './common';
 export {Contact} from './contact';
 export {ContactForm} from './contactForm';
 export {Footer} from './footer';

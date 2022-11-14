@@ -1,10 +1,10 @@
-import {css,Global} from '@emotion/react';
+import {css, Global} from '@emotion/react';
 import {IBM_Plex_Sans} from '@next/font/google';
 import React from 'react';
 
 import {colors, formatterColor} from './colors';
 
-export {maxDevice, minDevice,size} from './device';
+export {maxDevice, minDevice, size} from './device';
 
 export const theme = {
   colors,
@@ -67,7 +67,6 @@ export const GlobalStyle = props => (
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-
 
       a:active,
       a:hover {

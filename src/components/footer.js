@@ -175,9 +175,7 @@ const socialLinkItems = [
   {label: 'test5', target: '_blank', href: 'https://test5.ru'},
 ];
 
-const linkItems = [
-  {label: 'Главная', href: '/#intro', to: 'intro', id: 'intro'},
-];
+const linkItems = [{label: 'Главная', href: '/#intro', to: 'intro', id: 'intro'}];
 
 export const Footer = () => (
   <Container>

@@ -15,16 +15,16 @@ const Container = SC(FormControl)`
 `;
 
 export const Select = ({
-                         label,
-                         helperText,
-                         focused,
-                         disabled,
-                         error,
-                         required,
-                         variant = 'standard',
-                         items = [],
-                         ...other
-                       }) => {
+  label,
+  helperText,
+  focused,
+  disabled,
+  error,
+  required,
+  variant = 'standard',
+  items = [],
+  ...other
+}) => {
   const formProps = {
     disabled,
     error,
