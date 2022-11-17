@@ -5,6 +5,7 @@ const {
 } = require('next/constants');
 
 const defaultConfig = {
+  output: 'standalone',
   compiler: {
     styledComponents: true,
     removeConsole: {
