@@ -8,7 +8,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "./node_modules/.bin/prettier --write \"{src,__{tests,mocks}__}/**/*.js\""
+    "prettier": "./node_modules/.bin/prettier --write \"{src,__{tests,mocks}__}/**/*.js\"",
+    "docker-build": "docker build -t sacrill-nextjs .",
+    "docker-run": "docker run -p 3000:3000 sacrill-nextjs",
+    "docker-images": "docker images",
+    "analyze": "cross-env ANALYZE=true yarn build && serve .next/analyze"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -17,9 +21,11 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
+    "@next/bundle-analyzer": "^13.0.3",
     "@next/font": "^13.0.3",
     "axios": "^1.1.3",
     "color": "^4.2.3",
+    "cross-env": "^7.0.3",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
     "mailtrap": "^3.0.0",
@@ -44,6 +50,7 @@
     "eslint-config-next": "13.0.3",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "husky": "^8.0.2",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "serve": "^14.1.1"
   }
 }

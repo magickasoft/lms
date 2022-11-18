@@ -1,10 +1,16 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false,
+});
+
 /** @type {import('next').NextConfig} */
 const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants');
 
-const defaultConfig = {
+const localConfig = {
+  output: 'standalone',
   compiler: {
     styledComponents: true,
     removeConsole: {
@@ -23,7 +29,7 @@ const defaultConfig = {
   },
 };
 
-module.exports = (phase) => {
+module.exports = (phase, defaultConfig) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
   const isProd = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING !== '1';
   const isStaging =
@@ -31,11 +37,12 @@ module.exports = (phase) => {
 
   console.log(`isDev:${isDev}  isProd:${isProd}   isStaging:${isStaging}`)
 
-  return {
+  return withBundleAnalyzer({
     ...defaultConfig,
+    ...localConfig,
     env: {
       gaMeasurementId: 'G-CZ2JMN4FYD',
       yaMetrikaId: '88802971',
     },
-  }
+  });
 };
