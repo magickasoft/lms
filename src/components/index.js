@@ -8,3 +8,5 @@ export {InputPhone} from './inputPhone';
 export {Intro} from './intro';
 export {Page} from './page';
 export {Select} from './select';
+export {Course} from './course';
+export {Price} from './price';
