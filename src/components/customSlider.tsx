@@ -23,10 +23,12 @@ const Btn = SC.div`
 `;
 
 type CustomSliderProps = {
-  title: any;
-  initialSlide: number;
+  title?: any;
+  initialSlide?: number;
   children?: any;
   withControls?: boolean;
+  centerMode?: boolean;
+  responsive?: any;
 };
 
 export const CustomSlider = ({withControls = true, initialSlide = 0, children, ...props}: CustomSliderProps) => {
