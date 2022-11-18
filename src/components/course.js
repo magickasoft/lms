@@ -98,7 +98,7 @@ export const Course = props => (
     <section>
       <CourseItem>
         <ImageBlock>
-          <Image src={props.image} layout="fill" alt="Course thumbnail" />
+          <Image src={props.image} height={115} width={220} alt="Course thumbnail" />
         </ImageBlock>
 
         <Details>
