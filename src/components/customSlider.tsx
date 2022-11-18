@@ -20,11 +20,17 @@ const Controls = SC.div`
 const Btn = SC.div`
   height: 2.5rem;
   width: 2.5rem;
-  opacity: ${({disabled}) => (disabled ? 0.25 : 1)};
 `;
 
-export const CustomSlider = ({withControls = true, initialSlide = 0, children, ...props}) => {
-  const slider = React.useRef();
+type CustomSliderProps = {
+  title: any;
+  initialSlide: number;
+  children?: any;
+  withControls?: boolean;
+};
+
+export const CustomSlider = ({withControls = true, initialSlide = 0, children, ...props}: CustomSliderProps) => {
+  const slider: any = React.useRef();
   const [hasSetPosition, setHasSetPosition] = React.useState(false);
 
   const settings = {

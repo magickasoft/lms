@@ -16,7 +16,8 @@ export const ContactForm = props => {
     setLoading(true);
     try {
       await contact({phone});
-      event({action: 'submit_form', category: 'contact_phone', label: phone});
+      const data: any = {action: 'submit_form', category: 'contact_phone', label: phone};
+      event(data);
       reachGoal('contact_phone');
       setLoading(false);
     } catch (error) {
@@ -45,6 +46,7 @@ export const ContactForm = props => {
           <form onSubmit={handleSubmit}>
             <Box mb={3} mt={3}>
               <Box>
+                {/*// @ts-ignore*/}
                 <InputPhone
                   label="Телефон"
                   name="phone"

@@ -9,7 +9,7 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants');
 
-const localConfig = {
+const defaultConfig = {
   output: 'standalone',
   compiler: {
     styledComponents: true,
@@ -29,7 +29,7 @@ const localConfig = {
   },
 };
 
-module.exports = (phase, defaultConfig) => {
+module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
   const isProd = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING !== '1';
   const isStaging =
@@ -39,7 +39,6 @@ module.exports = (phase, defaultConfig) => {
 
   return withBundleAnalyzer({
     ...defaultConfig,
-    ...localConfig,
     env: {
       gaMeasurementId: 'G-CZ2JMN4FYD',
       yaMetrikaId: '88802971',

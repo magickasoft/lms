@@ -46,7 +46,13 @@ const Content = SC.div`
   width: 100%;
 `;
 
-export const Page = ({label, text, children}) => (
+type PageProps = {
+  label?: any;
+  text?: any;
+  children?: any;
+};
+
+export const Page = ({label, text, children}: PageProps) => (
   <Container>
     <Content>
       {label && <Label>{label}</Label>}

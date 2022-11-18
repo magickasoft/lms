@@ -32,20 +32,23 @@ export const Select = ({
     variant,
   };
   return (
-    <Container focused={focused} {...formProps}>
-      {label && <Label shrink>{label}</Label>}
-      <MSelect {...other}>
-        {items.map((o, i) => (
-          <MenuItem key={i} value={o.value}>
-            {o.label || o.value}
-          </MenuItem>
-        ))}
-      </MSelect>
-      {helperText && (
-        <HelperText id="helper-text" focused={focused}>
-          {helperText}
-        </HelperText>
-      )}
-    </Container>
+    <>
+      {/*// @ts-ignore*/}
+      <Container focused={focused} {...formProps}>
+        {label && <Label shrink>{label}</Label>}
+        <MSelect {...other}>
+          {items.map((o, i) => (
+            <MenuItem key={i} value={o.value}>
+              {o.label || o.value}
+            </MenuItem>
+          ))}
+        </MSelect>
+        {helperText && (
+          <HelperText id="helper-text" focused={focused}>
+            {helperText}
+          </HelperText>
+        )}
+      </Container>
+    </>
   );
 };

@@ -6,7 +6,12 @@ import InputLabel from '@mui/material/InputLabel';
 import React from 'react';
 import {IMaskInput} from 'react-imask';
 
-const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
+type TextMaskCustomProps = {
+  name: any;
+  onChange: any;
+};
+
+const TextMaskCustom = React.forwardRef(function TextMaskCustom(props: TextMaskCustomProps, ref) {
   const {onChange, ...other} = props;
   const handleAccept = v => {
     const value = (v || '').replace(/ /g, '').replace(/-/g, '');
@@ -32,7 +37,11 @@ const HelperText = SC(FormHelperText)``;
 
 const Label = SC(InputLabel)``;
 
-const Container = SC(FormControl)``;
+type ContainerProps = {
+  focused?: boolean;
+};
+
+const Container = SC(FormControl)<ContainerProps>``;
 
 export const InputPhone = ({label, helperText, focused, disabled, error, required, variant = 'standard', ...other}) => {
   const formProps = {
@@ -42,15 +51,18 @@ export const InputPhone = ({label, helperText, focused, disabled, error, require
     variant,
   };
   return (
-    <Container focused={focused} {...formProps}>
-      {label && <Label shrink>{label}</Label>}
-      {/*<Input type="tel" placeholder="+7 ___ ___-__-__" inputComponent={TextMaskCustom} {...other} />*/}
-      <Input type="tel" inputComponent={TextMaskCustom} {...other} />
-      {helperText && (
-        <HelperText id="helper-text" focused={focused}>
-          {helperText}
-        </HelperText>
-      )}
-    </Container>
+    <>
+      {/*// @ts-ignore*/}
+      <Container focused={focused} {...formProps}>
+        {label && <Label shrink>{label}</Label>}
+        {/*<Input type="tel" placeholder="+7 ___ ___-__-__" inputComponent={TextMaskCustom} {...other} />*/}
+        <Input type="tel" inputComponent={TextMaskCustom} {...other} />
+        {helperText && (
+          <HelperText id="helper-text" focused={focused}>
+            {helperText}
+          </HelperText>
+        )}
+      </Container>
+    </>
   );
 };

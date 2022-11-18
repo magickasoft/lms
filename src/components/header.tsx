@@ -6,7 +6,10 @@ import {Text} from './common';
 import {Icon} from './icon';
 import {ScrollIndicator} from './scrollIndicator';
 
-const Container = SC.header`
+type ContainerProps = {
+  active: boolean;
+};
+const Container = SC.header<ContainerProps>`
   font-family: ${ibmplexsans400.style.fontFamily};
   background: ${({active}) => (active ? '#ffffff05' : '#ffffff05')};
   z-index: 9998;

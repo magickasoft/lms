@@ -4,7 +4,7 @@ import {Events, scrollSpy} from 'react-scroll';
 
 import {Intro} from '../components';
 
-function Home(props) {
+const Home = props => {
   React.useEffect(() => {
     Events.scrollEvent.register('begin', function (to, element) {
       console.log('begin', to);
@@ -49,6 +49,6 @@ function Home(props) {
       <Intro />
     </>
   );
-}
+};
 
 export default Home;

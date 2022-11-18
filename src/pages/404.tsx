@@ -53,23 +53,21 @@ const Img = SC.div`
   justify-content: flex-end;
 `;
 
-function NotFoundPage() {
-  return (
-    <Page>
-      <div>
-        <Title>{`Этой страницы \nне существует`}</Title>
-        <Text>
-          Вы перешли по неверной ссылке, либо эта страница была удалена.&nbsp;
-          <Link rel="canonical" href="/" passHref>
-            Начните с главной страницы
-          </Link>
-        </Text>
-      </div>
-      <Img>
-        <NotFound name="notFound" size="260" />
-      </Img>
-    </Page>
-  );
-}
+const NotFoundPage = () => (
+  <Page>
+    <div>
+      <Title>{`Этой страницы \nне существует`}</Title>
+      <Text>
+        Вы перешли по неверной ссылке, либо эта страница была удалена.&nbsp;
+        <Link rel="canonical" href="/" passHref>
+          Начните с главной страницы
+        </Link>
+      </Text>
+    </div>
+    <Img>
+      <NotFound name="notFound" size="260" />
+    </Img>
+  </Page>
+);
 
 export default NotFoundPage;

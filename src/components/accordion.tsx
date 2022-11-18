@@ -77,9 +77,16 @@ const arrowAnimation = {
   },
 };
 
-export const Accordion = ({title, children}) => {
+type AccordionProps = {
+  title: any;
+  children?: any;
+};
+
+export const Accordion = ({title, children}: AccordionProps) => {
   const [open, setOpen] = React.useState(false);
+  // @ts-ignore
   const content = useSpring(contentAnimation[open]);
+  // @ts-ignore
   const arrow = useSpring(arrowAnimation[open]);
   return (
     <Container>

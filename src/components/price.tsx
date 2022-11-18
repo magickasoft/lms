@@ -33,21 +33,24 @@ const PriceBlock = SC.div`
   line-height: 1.5;
 `;
 
-export const Price = props => (
-  <React.Fragment>
-    <PriceBlock>
-      {props.price_without_discount && (
-        <OriginalPrice>
-          {props.price_without_discount}
+type PriceProps = {
+  price_without_discount?: any;
+  price?: any;
+};
 
-          <Currency>₽</Currency>
-        </OriginalPrice>
-      )}
-      <CurrentPrice>
-        {props.price}
+export const Price = ({price_without_discount, price, ...props}: PriceProps) => (
+  <PriceBlock>
+    {price_without_discount && (
+      <OriginalPrice>
+        {price_without_discount}
 
         <Currency>₽</Currency>
-      </CurrentPrice>
-    </PriceBlock>
-  </React.Fragment>
+      </OriginalPrice>
+    )}
+    <CurrentPrice>
+      {price}
+
+      <Currency>₽</Currency>
+    </CurrentPrice>
+  </PriceBlock>
 );

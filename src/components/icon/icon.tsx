@@ -3,7 +3,15 @@ import React from 'react';
 import {get} from '../../utils/get';
 import lib from './lib';
 
-export const Icon = ({name, size, width = 22, height = 22, color, ...rest}) => {
+type IconProps = {
+  name: any;
+  size?: any;
+  color?: any;
+  width?: any;
+  height?: any;
+};
+
+export const Icon = ({name, size, width = 22, height = 22, color, ...rest}: IconProps) => {
   if (!name) {
     return null;
   }

@@ -1,7 +1,11 @@
 import SC from '@emotion/styled';
 import React from 'react';
 
-const Container = SC.div`
+type ContainerProps = {
+  width: number;
+};
+
+const Container = SC.div<ContainerProps>`
   z-index: 9999;
   position: fixed;
   top: 0;

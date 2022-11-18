@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "./node_modules/.bin/prettier --write \"{src,__{tests,mocks}__}/**/*.js\"",
+    "prettier": "./node_modules/.bin/prettier --write \"{src,__{tests,mocks}__}/**/*{.js,.ts,.tsx}\"",
     "docker-build": "docker build -t sacrill-nextjs .",
     "docker-run": "docker run -p 3000:3000 sacrill-nextjs",
     "docker-images": "docker images",
@@ -51,6 +51,7 @@
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "husky": "^8.0.2",
     "prettier": "^2.7.1",
-    "serve": "^14.1.1"
+    "serve": "^14.1.1",
+    "typescript": "^4.9.3"
   }
 }
