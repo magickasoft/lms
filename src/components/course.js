@@ -1,10 +1,10 @@
 import SC from '@emotion/styled';
+import Image from 'next/image';
 import React from 'react';
 import {Element} from 'react-scroll';
 
-import {Price} from './price';
-
 import {ibmplexsans400, maxDevice} from '../styles';
+import {Price} from './price';
 
 const Container = SC.div`
   font-family: ${ibmplexsans400.style.fontFamily};
@@ -87,29 +87,30 @@ const Hr = SC.hr`
   margin: 1rem 0;
 `;
 
-export const Course = props => (
+const ImageBlock = SC.div`
+  position: relative;
+  max-height: 115px;
+  height: 100%;
+`;
 
+export const Course = props => (
   <Element name="course-item">
     <section>
       <CourseItem>
-        <img src={props.image} />
+        <ImageBlock>
+          <Image src={props.image} layout="fill" alt="Course thumbnail" />
+        </ImageBlock>
 
         <Details>
           <div>
-            <Title>
-              {props.title}
-            </Title>
-            <Author>
-              {props.author.join(' • ')}
-            </Author>
+            <Title>{props.title}</Title>
+            <Author>{props.author.join(' • ')}</Author>
           </div>
           <div>
             <Hr />
             <BottomBlock>
               <Price price={props.price} price_without_discount={props.price_without_discount} />
-              <Arrow>
-                &gt;
-              </Arrow>
+              <Arrow>&gt;</Arrow>
             </BottomBlock>
           </div>
         </Details>

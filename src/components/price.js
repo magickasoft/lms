@@ -40,17 +40,13 @@ export const Price = props => (
         <OriginalPrice>
           {props.price_without_discount}
 
-          <Currency>
-            ₽
-          </Currency>
+          <Currency>₽</Currency>
         </OriginalPrice>
       )}
       <CurrentPrice>
         {props.price}
 
-        <Currency>
-          ₽
-        </Currency>
+        <Currency>₽</Currency>
       </CurrentPrice>
     </PriceBlock>
   </React.Fragment>
