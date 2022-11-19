@@ -5,8 +5,7 @@
   "scripts": {
     "postinstall": "./node_modules/.bin/husky install",
     "dev": "next dev",
-    "postbuild": "cross-env SITE_URL=https://sacrill.com next-sitemap",
-    "build": "next build",
+    "build": "cross-env SITE_URL=https://sacrill.com next-sitemap && next build",
     "start": "next start",
     "lint": "next lint",
     "prettier": "./node_modules/.bin/prettier --write \"{src,__{tests,mocks}__}/**/*{.js,.ts,.tsx}\"",
