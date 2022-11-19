@@ -11,7 +11,7 @@ type TextMaskCustomProps = {
   onChange: any;
 };
 
-const TextMaskCustom = React.forwardRef(function TextMaskCustom(props: TextMaskCustomProps, ref) {
+const TextMaskCustom = React.forwardRef(function TextMaskCustom(props: TextMaskCustomProps, ref: any) {
   const {onChange, ...other} = props;
   const handleAccept = v => {
     const value = (v || '').replace(/ /g, '').replace(/-/g, '');

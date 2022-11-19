@@ -7,7 +7,7 @@ export default function (ctx = null, name = 'cookies', maxAge = 30 * 24 * 60 * 6
   const onChange = bool => {
     const value = bool ? 1 : 0;
     setUseCookies(value);
-    setCookie(ctx, name, value, {
+    setCookie(ctx, name, String(value), {
       path: '/',
       maxAge,
     });

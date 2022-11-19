@@ -3,11 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://novostroiki-54.ru/
+Host: https://sacrill.com
 
 # Sitemaps
-Sitemap: https://novostroiki-54.ru/sitemap.xml
-Sitemap: http://novostroiki-54.ru/sitemap.xml
-
-Sitemap: https://www.novostroiki-54.ru/sitemap.xml
-Sitemap: http://www.novostroiki-54.ru/sitemap.xml
+Sitemap: https://sacrill.com/sitemap.xml
