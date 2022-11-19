@@ -1,4 +1,4 @@
-import { ApolloProvider } from "@apollo/client";
+import {ApolloProvider} from '@apollo/client';
 import {CacheProvider} from '@emotion/react';
 import {CssBaseline} from '@mui/material';
 import {ThemeProvider} from '@mui/material/styles';
@@ -11,7 +11,7 @@ import {Footer, Header} from '../components';
 import {createEmotionCache} from '../helpers/createEmotionCache';
 import {GA_MEASUREMENT_ID, pageview} from '../helpers/gtag';
 import {withYM, YA_METRIKA_ID} from '../helpers/ym';
-import { useApollo } from "../lib/apolloClient";
+import {useApollo} from '../lib/apolloClient';
 import {GlobalStyle} from '../styles';
 import theme from '../styles/theme';
 

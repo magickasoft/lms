@@ -1,31 +1,28 @@
-import { PrismaClient } from "@prisma/client";
-import { compare } from "bcrypt";
-import { FieldResolver } from "nexus";
-import nookies from "nookies";
+import {PrismaClient} from '@prisma/client';
+import {compare} from 'bcrypt';
+import {FieldResolver} from 'nexus';
+import nookies from 'nookies';
 
-import { createToken } from "../../utils/jwt";
-import { registrationValidation } from "../../utils/registrationValidation";
+import {createToken} from '../../utils/jwt';
+import {registrationValidation} from '../../utils/registrationValidation';
 
-export const loginAttempt: FieldResolver<
-  "Mutation",
-  "login"
-  > = async (_, { credentials }, { prisma, res }) => {
+export const loginAttempt: FieldResolver<'Mutation', 'login'> = async (_, {credentials}, {prisma, res}) => {
   await registrationValidation.validate(credentials);
   const existingUser = await getExistingUser(credentials, prisma);
 
   const encodedToken = await createToken(
-    { username: existingUser.username },
+    {username: existingUser.username},
     {
-      expiresIn: "7d",
-    }
+      expiresIn: '7d',
+    },
   );
 
-  nookies.set({ res }, "sid", encodedToken, {
+  nookies.set({res}, 'sid', encodedToken, {
     httpOnly: true,
     domain: process.env.SERVER_DOMAIN || undefined,
     maxAge: 60 * 60 * 24 * 7, // 7d
     sameSite: true,
-    path: "/",
+    path: '/',
   } as any);
 
   return {
@@ -39,7 +36,7 @@ const getExistingUser = async (
     email: string;
     password: string;
   },
-  prisma: PrismaClient
+  prisma: PrismaClient,
 ) => {
   const existingUser = await prisma.user.findFirst({
     where: {
@@ -52,13 +49,10 @@ const getExistingUser = async (
     },
   });
 
-  const passwordsMatch = await compare(
-    credentials.password,
-    (existingUser?.passhash as string) || ""
-  );
+  const passwordsMatch = await compare(credentials.password, (existingUser?.passhash as string) || '');
 
   if (!existingUser || !passwordsMatch) {
-    throw new Error("Incorrect username or password!");
+    throw new Error('Incorrect username or password!');
   }
 
   return existingUser;

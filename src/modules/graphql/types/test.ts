@@ -1,11 +1,11 @@
-import { booleanArg, extendType, nonNull } from "nexus";
+import {booleanArg, extendType, nonNull} from 'nexus';
 
 export const testQuery = extendType({
-  type: "Query",
+  type: 'Query',
   definition: t => {
-    t.boolean("test", {
-      args: { bool: nonNull(booleanArg()) },
-      resolve: async (_, { bool }) => {
+    t.boolean('test', {
+      args: {bool: nonNull(booleanArg())},
+      resolve: async (_, {bool}) => {
         return bool;
       },
     });

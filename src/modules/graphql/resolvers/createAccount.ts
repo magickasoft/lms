@@ -1,16 +1,13 @@
-import { hash } from "bcrypt";
-import { FieldResolver } from "nexus";
-import nodemailer from "nodemailer";
+import {hash} from 'bcrypt';
+import {FieldResolver} from 'nexus';
+import nodemailer from 'nodemailer';
 
-import { getTransport } from "../../mail/transport";
-import { generateVerificationEmail } from "../../mail/verifyAccount";
-import { registrationValidation } from "../../utils/registrationValidation";
-const { v4: uuidv4 } = require("uuid");
+import {getTransport} from '../../mail/transport';
+import {generateVerificationEmail} from '../../mail/verifyAccount';
+import {registrationValidation} from '../../utils/registrationValidation';
+const {v4: uuidv4} = require('uuid');
 
-export const createAccount: FieldResolver<
-  "Mutation",
-  "createAccount"
-  > = async (_, { credentials }, { prisma }) => {
+export const createAccount: FieldResolver<'Mutation', 'createAccount'> = async (_, {credentials}, {prisma}) => {
   await registrationValidation.validate(credentials);
 
   const existingUser = await prisma.user.findFirst({
@@ -22,7 +19,7 @@ export const createAccount: FieldResolver<
     },
   });
   if (existingUser !== null) {
-    throw new Error("Email or username already taken!");
+    throw new Error('Email or username already taken!');
   }
 
   const hashedPass = await hash(credentials.password, 7);
@@ -40,7 +37,6 @@ export const createAccount: FieldResolver<
   });
 
   return {
-    message:
-      "Thanks for registering! Check your email for instructions on how to verify your account.",
+    message: 'Thanks for registering! Check your email for instructions on how to verify your account.',
   };
 };

@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import {NextApiRequest, NextApiResponse} from 'next';
 
-import { server } from "../../lib/apolloServer";
-import { cors } from "../../modules/middleware/cors";
+import {server} from '../../lib/apolloServer';
+import {cors} from '../../modules/middleware/cors';
 
 export const config = {
   api: {
@@ -11,14 +11,11 @@ export const config = {
 
 const serverStart = server.start();
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
   // schema-wide middleware
 
   await serverStart;
-  await server.createHandler({ path: "/api/graphql" })(req, res);
+  await server.createHandler({path: '/api/graphql'})(req, res);
   return;
 }

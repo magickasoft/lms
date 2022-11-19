@@ -1,64 +1,59 @@
-import {
-  extendType,
-    inputObjectType,
-    nonNull,
-    objectType,
-} from "nexus";
+import {extendType, inputObjectType, nonNull, objectType} from 'nexus';
 
-import { createAccount } from "../resolvers/createAccount";
-import { implicitLogin } from "../resolvers/implicitLogin";
-import { loginAttempt } from "../resolvers/loginAttempt";
+import {createAccount} from '../resolvers/createAccount';
+import {implicitLogin} from '../resolvers/implicitLogin';
+import {loginAttempt} from '../resolvers/loginAttempt';
 
 export const CreateAccount = extendType({
-  type: "Mutation",
+  type: 'Mutation',
   definition: t => {
-    t.field("createAccount", {
+    t.field('createAccount', {
       type: RegisterResponse,
-      args: { credentials: nonNull(Credentials) },
+      args: {credentials: nonNull(Credentials)},
       resolve: createAccount,
     });
   },
 });
 
 export const Login = extendType({
-  type: "Mutation",
+  type: 'Mutation',
   definition: t => {
-    t.field("login", {
+    t.field('login', {
       type: LoginResponse,
-      args: { credentials: nonNull(Credentials) },
+      args: {credentials: nonNull(Credentials)},
       resolve: loginAttempt,
     });
   },
 });
 
 const LoginResponse = objectType({
-  name: "loginResponse",
+  name: 'loginResponse',
   definition: t => {
-    t.string("message");
-    t.string("username");
+    t.string('message');
+    t.string('username');
   },
 });
 
 const Credentials = inputObjectType({
-  name: "loginCredentials",
+  name: 'loginCredentials',
   definition: t => {
-    t.nonNull.string("email");
-    t.nonNull.string("username");
-    t.nonNull.string("password");
+    t.nonNull.string('email');
+    t.nonNull.string('username');
+    t.nonNull.string('password');
   },
 });
 
 const RegisterResponse = objectType({
-  name: "registerResponse",
+  name: 'registerResponse',
   definition: t => {
-    t.nonNull.string("message");
+    t.nonNull.string('message');
   },
 });
 
 export const ImplicitLogin = extendType({
-  type: "Query",
+  type: 'Query',
   definition: t => {
-    t.field("implicitLogin", {
+    t.field('implicitLogin', {
       type: ImplicitLoginResponse,
       resolve: implicitLogin,
     });
@@ -66,9 +61,9 @@ export const ImplicitLogin = extendType({
 });
 
 const ImplicitLoginResponse = objectType({
-  name: "implicitLoginResponse",
+  name: 'implicitLoginResponse',
   definition: t => {
-    t.nonNull.boolean("loggedIn");
-    t.string("username");
+    t.nonNull.boolean('loggedIn');
+    t.string('username');
   },
 });

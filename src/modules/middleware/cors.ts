@@ -1,12 +1,12 @@
-import Cors from "cors";
+import Cors from 'cors';
 
-import initMiddleware from "./initMiddleware";
+import initMiddleware from './initMiddleware';
 
 const cors = initMiddleware(
   Cors({
     credentials: true,
-    origin: ["https://studio.apollographql.com"],
-  })
+    origin: ['https://studio.apollographql.com'],
+  }),
 );
 
-export { cors };
+export {cors};

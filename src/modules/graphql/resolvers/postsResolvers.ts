@@ -1,11 +1,8 @@
-import { FieldResolver } from "nexus";
+import {FieldResolver} from 'nexus';
 
-import { isAuth } from "../../utils/auth";
+import {isAuth} from '../../utils/auth';
 
-export const createPostResolver: FieldResolver<
-  "Mutation",
-  "createPost"
-  > = async (_, { content }, { req, prisma }) => {
+export const createPostResolver: FieldResolver<'Mutation', 'createPost'> = async (_, {content}, {req, prisma}) => {
   const decodedJWT = await isAuth(req);
   const newPost = await prisma.post.create({
     data: {
@@ -29,10 +26,7 @@ export const createPostResolver: FieldResolver<
   };
 };
 
-export const getPostsResolver: FieldResolver<
-  "Query",
-  "getPosts"
-  > = async (_, __, { prisma, req }) => {
+export const getPostsResolver: FieldResolver<'Query', 'getPosts'> = async (_, __, {prisma, req}) => {
   await isAuth(req);
   const posts = await prisma.post.findMany({
     select: {
@@ -45,7 +39,7 @@ export const getPostsResolver: FieldResolver<
       content: true,
     },
     orderBy: {
-      id: "desc",
+      id: 'desc',
     },
   });
   return [...posts].map(post => ({
