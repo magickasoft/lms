@@ -42,7 +42,6 @@ module.exports = (phase) => {
     env: {
       gaMeasurementId: 'G-CZ2JMN4FYD',
       yaMetrikaId: '88802971',
-      databaseUrl: 'postgresql://postgres:postgres@localhost:5001/prisma',
       jwtSecret: 'test'
     },
   });
