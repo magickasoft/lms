@@ -1,13 +1,11 @@
-import {connectionPlugin,makeSchema} from 'nexus';
+import {connectionPlugin, makeSchema} from 'nexus';
 import {join} from 'path';
 
 import * as types from './types';
 
 const schema = makeSchema({
   types,
-  plugins: [
-    connectionPlugin(),
-  ],
+  plugins: [connectionPlugin()],
   contextType: {
     module: join(process.cwd(), './src/types/Context.ts'),
     export: 'Context',

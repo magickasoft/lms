@@ -2,6 +2,7 @@ import SC from '@emotion/styled';
 import React from 'react';
 import {Element} from 'react-scroll';
 
+import {useGetCoursesQuery} from "../../generated/graphql";
 import {ibmplexsans400, maxDevice} from '../styles';
 import {Course} from './course';
 
@@ -95,17 +96,21 @@ const COURSES = [
   },
 ];
 
-export const Intro = props => (
-  <Element name="intro">
-    <section>
-      <Container>
-        <Brand>Skills that are not taught in school</Brand>
-        <CoursesList>
-          {COURSES.map(course => (
-            <Course key={course.id} {...course} />
-          ))}
-        </CoursesList>
-      </Container>
-    </section>
-  </Element>
-);
+export const Intro = props => {
+  const courses = useGetCoursesQuery({variables: {}});
+  return (
+    <Element name="intro">
+      <section>
+        <Container>
+          <Brand>Skills that are not taught in school</Brand>
+          {courses?.data?.getCourses?.map(v => (<p key={String(v.id)}>{v.title}</p>))}
+          <CoursesList>
+            {COURSES.map(course => (
+              <Course key={course.id} {...course} />
+            ))}
+          </CoursesList>
+        </Container>
+      </section>
+    </Element>
+  );
+}
