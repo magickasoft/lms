@@ -15,7 +15,7 @@ export const getCourses = extendType({
 const course = objectType({
   name: 'course',
   definition: t => {
-    t.id('id')
+    t.id('id');
     t.string('title');
     t.string('slug');
   },

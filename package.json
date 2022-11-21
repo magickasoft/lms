@@ -18,7 +18,9 @@
     "analyze": "./node_modules/.bin/cross-env ANALYZE=true yarn build && serve .next/analyze",
     "sitemap": "./node_modules/.bin/cross-env SITE_URL=https://sacrill.com ./node_modules/.bin/next-sitemap",
     "generate": "graphql-codegen --config codegen.yml",
-    "prisma-studio": "npx prisma studio"
+    "prisma-studio": "npx prisma studio",
+    "db-pull": "npx prisma db pull",
+    "prisma-generate": "npx prisma generate"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
