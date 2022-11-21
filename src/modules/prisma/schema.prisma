@@ -7,114 +7,6 @@ datasource db {
   url      = "mysql://edston_remote:Lf%2A%24f10%24d2@45.80.70.235:3306/production"
 }
 
-model User {
-  id                                                       BigInt                 @id @default(autoincrement()) @db.UnsignedBigInt
-  name                                                     String?                @db.VarChar(255)
-  email                                                    String                 @unique(map: "users_email_unique") @db.VarChar(255)
-  content_language                                         String?                @db.VarChar(5)
-  country_code                                             Decimal?               @db.Decimal(5, 0)
-  phone                                                    Decimal?               @db.Decimal(15, 0)
-  verification_code                                        String?                @db.VarChar(8)
-  last_name                                                String?                @db.VarChar(35)
-  first_name                                               String?                @db.VarChar(35)
-  balance                                                  Float                  @default(0.00)
-  balance_usd                                              Float                  @default(0.00)
-  bonus_balance                                            Float                  @default(0.00)
-  info                                                     String?                @db.LongText
-  email_verified_at                                        DateTime?              @db.Timestamp(0)
-  password                                                 String                 @db.VarChar(255)
-  remember_token                                           String?                @db.VarChar(100)
-  created_at                                               DateTime?              @db.Timestamp(0)
-  updated_at                                               DateTime?              @db.Timestamp(0)
-  provider                                                 String?                @db.VarChar(255)
-  provider_id                                              String?                @db.VarChar(255)
-  avatar                                                   String?                @db.VarChar(255)
-  google_id                                                String?                @db.VarChar(255)
-  apple_id                                                 String?                @db.VarChar(255)
-  reasons                                                  String?                @db.LongText
-  interests                                                String?                @db.LongText
-  notification_time                                        DateTime?              @db.Time(0)
-  disabled_notifications                                   String?                @db.VarChar(255)
-  utm_source                                               String?                @db.VarChar(255)
-  year_of_birth                                            Int?                   @db.UnsignedInt
-  gender                                                   Int?                   @db.UnsignedTinyInt
-  personal_data_hidden                                     Int                    @default(0) @db.UnsignedTinyInt
-  stripe_id                                                String?                @db.VarChar(255)
-  pm_type                                                  String?                @db.VarChar(255)
-  pm_last_four                                             String?                @db.VarChar(4)
-  trial_ends_at                                            DateTime?              @db.Timestamp(0)
-  authors                                                  authors?               @relation("authorsTousers")
-  cancelation_reasons                                      cancelation_reasons[]  @relation("cancelation_reasonsTousers")
-  card_user                                                card_user[]            @relation("card_userTousers")
-  cards                                                    cards[]                @relation("cardsTousers")
-  course_user                                              course_user[]          @relation("course_userTousers")
-  Course                                                   Course[]               @relation("coursesTousers")
-  device_user                                              device_user[]          @relation("device_userTousers")
-  emails                                                   emails[]               @relation("emailsTousers")
-  leads                                                    leads[]                @relation("leadsTousers")
-  lesson_rating                                            lesson_rating[]        @relation("lesson_ratingTousers")
-  notifications                                            notifications[]        @relation("notificationsTousers")
-  notifications_v2_notifications_v2_interlocutor_idTousers notifications_v2[]     @relation("notifications_v2_interlocutor_idTousers")
-  notifications_v2_notifications_v2_user_idTousers         notifications_v2[]     @relation("notifications_v2_user_idTousers")
-  partners                                                 partners?              @relation("partnersTousers")
-  payment_methods                                          payment_methods[]      @relation("payment_methodsTousers")
-  reflinks                                                 reflinks[]             @relation("reflinksTousers")
-  subscriptions                                            subscriptions[]        @relation("subscriptionsTousers")
-  testimonials                                             testimonials[]         @relation("testimonialsTousers")
-  transactions                                             transactions[]         @relation("transactionsTousers")
-  user_requisites_data                                     user_requisites_data[] @relation("user_requisites_dataTousers")
-  user_transactions_user_transactions_performed_byTousers  user_transactions[]    @relation("user_transactions_performed_byTousers")
-  user_transactions_user_transactions_user_idTousers       user_transactions[]    @relation("user_transactions_user_idTousers")
-
-  @@index([stripe_id], map: "users_stripe_id_index")
-  @@map("users")
-}
-
-model Course {
-  id                                                BigInt                 @id @default(autoincrement()) @db.UnsignedBigInt
-  status                                            Int                    @default(0) @db.TinyInt
-  uploading                                         Int                    @default(0) @db.TinyInt
-  title                                             String?                @default("undefined") @db.VarChar(255)
-  slug                                              String                 @unique(map: "courses_slug_unique") @db.VarChar(255)
-  author_id                                         BigInt                 @default(0) @db.UnsignedBigInt
-  author_info                                       String                 @db.LongText
-  price                                             Int?
-  duration                                          String?                @db.VarChar(255)
-  excerpt                                           String?                @db.Text
-  description                                       String?                @db.LongText
-  admin_description                                 String?                @db.LongText
-  lang                                              String                 @db.VarChar(2)
-  rating                                            Decimal?               @default(0.0) @db.Decimal(2, 1)
-  payout_percent                                    Float?
-  vimeo_folder                                      String?                @db.VarChar(55)
-  cdn_source                                        Int                    @default(0) @db.TinyInt
-  created_at                                        DateTime?              @db.Timestamp(0)
-  updated_at                                        DateTime?              @db.Timestamp(0)
-  User                                              User                   @relation("coursesTousers", fields: [author_id], references: [id], onUpdate: Restrict, map: "courses_author_id_foreign")
-  category_course                                   category_course[]      @relation("category_courseTocourses")
-  collection_course                                 collection_course[]    @relation("collection_courseTocourses")
-  course_currency                                   course_currency[]      @relation("course_currencyTocourses")
-  course_discount                                   course_discount[]      @relation("course_discountTocourses")
-  course_document                                   course_document[]      @relation("course_documentTocourses")
-  course_domain                                     course_domain[]        @relation("course_domainTocourses")
-  course_partner                                    course_partner[]       @relation("course_partnerTocourses")
-  course_related_course_related_course_idTocourses  course_related[]       @relation("course_related_course_idTocourses")
-  course_related_course_related_related_idTocourses course_related[]       @relation("course_related_related_idTocourses")
-  course_user                                       course_user[]          @relation("course_userTocourses")
-  drafts                                            drafts[]               @relation("coursesTodrafts")
-  lessons                                           lessons[]              @relation("coursesTolessons")
-  payout_settings_meta                              payout_settings_meta[] @relation("coursesTopayout_settings_meta")
-  reflinks                                          reflinks[]             @relation("coursesToreflinks")
-  sections                                          sections[]             @relation("coursesTosections")
-  statistics                                        statistics[]           @relation("coursesTostatistics")
-  testimonials                                      testimonials[]         @relation("coursesTotestimonials")
-
-  @@index([author_id], map: "courses_author_id_foreign")
-  @@index([status], map: "courses_status_index")
-  @@index([title], map: "search")
-  @@map("courses")
-}
-
 model app_temp_tokens {
   id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
   user_id    Int       @db.UnsignedInt
@@ -129,8 +21,8 @@ model author_partner {
   author_id  BigInt    @db.UnsignedBigInt
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  authors    authors   @relation(fields: [author_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "author_partner_author_id_foreign")
-  partners   partners  @relation(fields: [partner_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "author_partner_partner_id_foreign")
+  authors    authors   @relation(fields: [author_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "author_partner_author_id_foreign")
+  partners   partners  @relation(fields: [partner_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "author_partner_partner_id_foreign")
 
   @@index([author_id], map: "author_partner_author_id_foreign")
   @@index([partner_id], map: "author_partner_partner_id_foreign")
@@ -143,11 +35,11 @@ model authors {
   first_theme    String?          @db.Text
   phone          String?          @db.VarChar(255)
   email          String?          @db.VarChar(255)
-  requisites     String?          @db.LongText
+  requisites     Json?
   social         String?          @db.VarChar(255)
   created_at     DateTime?        @db.Timestamp(0)
   updated_at     DateTime?        @db.Timestamp(0)
-  User           User             @relation("authorsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "authors_user_id_foreign")
+  users          users            @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "authors_user_id_foreign")
   author_partner author_partner[]
   documents      documents[]
 }
@@ -187,7 +79,7 @@ model bins {
   id      BigInt @id @default(autoincrement()) @db.UnsignedBigInt
   bin     String @unique(map: "bins_bin_unique") @db.VarChar(255)
   bank_id BigInt @db.UnsignedBigInt
-  banks   banks  @relation(fields: [bank_id], references: [id], onUpdate: Restrict, map: "bins_bank_id_foreign")
+  banks   banks  @relation(fields: [bank_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "bins_bank_id_foreign")
 
   @@index([bank_id], map: "bins_bank_id_foreign")
 }
@@ -199,8 +91,8 @@ model cancelation_reasons {
   reason          String?        @db.Text
   created_at      DateTime?      @db.Timestamp(0)
   updated_at      DateTime?      @db.Timestamp(0)
-  subscriptions   subscriptions? @relation(fields: [subscription_id], references: [id], onUpdate: Restrict, map: "cancelation_reasons_subscription_id_foreign")
-  User            User?          @relation("cancelation_reasonsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "cancelation_reasons_user_id_foreign")
+  subscriptions   subscriptions? @relation(fields: [subscription_id], references: [id], onUpdate: NoAction, map: "cancelation_reasons_subscription_id_foreign")
+  users           users?         @relation(fields: [user_id], references: [id], onUpdate: NoAction, map: "cancelation_reasons_user_id_foreign")
 
   @@index([subscription_id], map: "cancelation_reasons_subscription_id_foreign")
   @@index([user_id], map: "cancelation_reasons_user_id_foreign")
@@ -212,8 +104,8 @@ model card_user {
   user_id    BigInt    @db.UnsignedBigInt
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  cards      cards     @relation(fields: [card_id], references: [id], onUpdate: Restrict, map: "card_user_card_id_foreign")
-  User       User      @relation("card_userTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "card_user_user_id_foreign")
+  cards      cards     @relation(fields: [card_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "card_user_card_id_foreign")
+  users      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "card_user_user_id_foreign")
 
   @@index([card_id], map: "card_user_card_id_foreign")
   @@index([user_id], map: "card_user_user_id_foreign")
@@ -228,7 +120,7 @@ model cards {
   token         String          @db.Text
   created_at    DateTime?       @db.Timestamp(0)
   updated_at    DateTime?       @db.Timestamp(0)
-  User          User            @relation("cardsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "cards_user_id_foreign")
+  users         users           @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cards_user_id_foreign")
   card_user     card_user[]
   subscriptions subscriptions[]
 
@@ -256,8 +148,8 @@ model category_children {
   id                                                 BigInt     @id @default(autoincrement()) @db.UnsignedBigInt
   parent_id                                          BigInt     @db.UnsignedBigInt
   child_id                                           BigInt     @db.UnsignedBigInt
-  categories_categoriesTocategory_children_child_id  categories @relation("categoriesTocategory_children_child_id", fields: [child_id], references: [id], onUpdate: Restrict, map: "category_children_child_id_foreign")
-  categories_categoriesTocategory_children_parent_id categories @relation("categoriesTocategory_children_parent_id", fields: [parent_id], references: [id], onUpdate: Restrict, map: "category_children_parent_id_foreign")
+  categories_categoriesTocategory_children_child_id  categories @relation("categoriesTocategory_children_child_id", fields: [child_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "category_children_child_id_foreign")
+  categories_categoriesTocategory_children_parent_id categories @relation("categoriesTocategory_children_parent_id", fields: [parent_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "category_children_parent_id_foreign")
 
   @@index([child_id], map: "category_children_child_id_foreign")
   @@index([parent_id], map: "category_children_parent_id_foreign")
@@ -267,8 +159,8 @@ model category_course {
   id          BigInt     @id @default(autoincrement()) @db.UnsignedBigInt
   category_id BigInt     @db.UnsignedBigInt
   course_id   BigInt     @db.UnsignedBigInt
-  categories  categories @relation(fields: [category_id], references: [id], onUpdate: Restrict, map: "category_course_category_id_foreign")
-  Course      Course     @relation("category_courseTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "category_course_course_id_foreign")
+  categories  categories @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "category_course_category_id_foreign")
+  courses     courses    @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "category_course_course_id_foreign")
 
   @@index([category_id], map: "category_course_category_id_foreign")
   @@index([course_id], map: "category_course_course_id_foreign")
@@ -278,8 +170,8 @@ model collection_course {
   id            BigInt      @id @default(autoincrement()) @db.UnsignedBigInt
   collection_id BigInt      @db.UnsignedBigInt
   course_id     BigInt      @db.UnsignedBigInt
-  collections   collections @relation(fields: [collection_id], references: [id], onUpdate: Restrict, map: "collection_course_collection_id_foreign")
-  Course        Course      @relation("collection_courseTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "collection_course_course_id_foreign")
+  collections   collections @relation(fields: [collection_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "collection_course_collection_id_foreign")
+  courses       courses     @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "collection_course_course_id_foreign")
 
   @@index([collection_id], map: "collection_course_collection_id_foreign")
   @@index([course_id], map: "collection_course_course_id_foreign")
@@ -290,7 +182,7 @@ model collections {
   title             String              @db.VarChar(255)
   title_2           String              @db.VarChar(255)
   title_3           String?             @db.VarChar(255)
-  hide_from         String?             @db.LongText
+  hide_from         Json?
   created_at        DateTime?           @db.Timestamp(0)
   updated_at        DateTime?           @db.Timestamp(0)
   collection_course collection_course[]
@@ -310,7 +202,7 @@ model comments {
   deleted_at       DateTime?  @db.Timestamp(0)
   created_at       DateTime?  @db.Timestamp(0)
   updated_at       DateTime?  @db.Timestamp(0)
-  comments         comments?  @relation("commentsTocomments", fields: [child_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "comments_child_id_foreign")
+  comments         comments?  @relation("commentsTocomments", fields: [child_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "comments_child_id_foreign")
   other_comments   comments[] @relation("commentsTocomments")
 
   @@index([child_id], map: "comments_child_id_foreign")
@@ -325,8 +217,8 @@ model course_currency {
   price       Decimal    @db.Decimal(15, 2)
   created_at  DateTime?  @db.Timestamp(0)
   updated_at  DateTime?  @db.Timestamp(0)
-  Course      Course     @relation("course_currencyTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_currency_course_id_foreign")
-  currencies  currencies @relation(fields: [currency_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_currency_currency_id_foreign")
+  courses     courses    @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_currency_course_id_foreign")
+  currencies  currencies @relation(fields: [currency_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_currency_currency_id_foreign")
 
   @@index([course_id], map: "course_currency_course_id_foreign")
   @@index([currency_id], map: "course_currency_currency_id_foreign")
@@ -336,8 +228,8 @@ model course_discount {
   id          BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
   course_id   BigInt    @db.UnsignedBigInt
   discount_id BigInt    @db.UnsignedBigInt
-  Course      Course    @relation("course_discountTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_discount_course_id_foreign")
-  discounts   discounts @relation(fields: [discount_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_discount_discount_id_foreign")
+  courses     courses   @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_discount_course_id_foreign")
+  discounts   discounts @relation(fields: [discount_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_discount_discount_id_foreign")
 
   @@index([course_id], map: "course_discount_course_id_foreign")
   @@index([discount_id], map: "course_discount_discount_id_foreign")
@@ -347,8 +239,8 @@ model course_document {
   id          BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
   document_id BigInt    @db.UnsignedBigInt
   course_id   BigInt    @db.UnsignedBigInt
-  Course      Course    @relation("course_documentTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_document_course_id_foreign")
-  documents   documents @relation(fields: [document_id], references: [id], onUpdate: Restrict, map: "course_document_document_id_foreign")
+  courses     courses   @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_document_course_id_foreign")
+  documents   documents @relation(fields: [document_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "course_document_document_id_foreign")
 
   @@index([course_id], map: "course_document_course_id_foreign")
   @@index([document_id], map: "course_document_document_id_foreign")
@@ -358,8 +250,8 @@ model course_domain {
   id        BigInt  @id @default(autoincrement()) @db.UnsignedBigInt
   domain_id BigInt  @db.UnsignedBigInt
   course_id BigInt  @db.UnsignedBigInt
-  Course    Course  @relation("course_domainTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_domain_course_id_foreign")
-  domains   domains @relation(fields: [domain_id], references: [id], onUpdate: Restrict, map: "course_domain_domain_id_foreign")
+  courses   courses @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_domain_course_id_foreign")
+  domains   domains @relation(fields: [domain_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "course_domain_domain_id_foreign")
 
   @@index([course_id], map: "course_domain_course_id_foreign")
   @@index([domain_id], map: "course_domain_domain_id_foreign")
@@ -369,19 +261,19 @@ model course_partner {
   id         BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
   partner_id BigInt   @db.UnsignedBigInt
   course_id  BigInt   @db.UnsignedBigInt
-  Course     Course   @relation("course_partnerTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_partner_course_id_foreign")
-  partners   partners @relation(fields: [partner_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_partner_partner_id_foreign")
+  courses    courses  @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_partner_course_id_foreign")
+  partners   partners @relation(fields: [partner_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_partner_partner_id_foreign")
 
   @@index([course_id], map: "course_partner_course_id_foreign")
   @@index([partner_id], map: "course_partner_partner_id_foreign")
 }
 
 model course_related {
-  id                                        BigInt @id @default(autoincrement()) @db.UnsignedBigInt
-  course_id                                 BigInt @db.UnsignedBigInt
-  related_id                                BigInt @db.UnsignedBigInt
-  Course_course_related_course_idTocourses  Course @relation("course_related_course_idTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_related_course_id_foreign")
-  Course_course_related_related_idTocourses Course @relation("course_related_related_idTocourses", fields: [related_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "course_related_related_id_foreign")
+  id                                         BigInt  @id @default(autoincrement()) @db.UnsignedBigInt
+  course_id                                  BigInt  @db.UnsignedBigInt
+  related_id                                 BigInt  @db.UnsignedBigInt
+  courses_course_related_course_idTocourses  courses @relation("course_related_course_idTocourses", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_related_course_id_foreign")
+  courses_course_related_related_idTocourses courses @relation("course_related_related_idTocourses", fields: [related_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "course_related_related_id_foreign")
 
   @@index([course_id], map: "course_related_course_id_foreign")
   @@index([related_id], map: "course_related_related_id_foreign")
@@ -391,18 +283,62 @@ model course_user {
   id              BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
   course_id       BigInt   @db.UnsignedBigInt
   user_id         BigInt   @db.UnsignedBigInt
-  position        String?  @db.LongText
-  info            String?  @db.LongText
+  position        Json?
+  info            Json?
   free            Boolean  @default(false)
   single_purchase Boolean
   subscription_id BigInt?  @db.UnsignedBigInt
   created_at      DateTime @db.DateTime(0)
-  updated_at      DateTime @default(now()) @db.Timestamp(0)
-  Course          Course   @relation("course_userTocourses", fields: [course_id], references: [id], onUpdate: Restrict, map: "course_user_course_id_foreign")
-  User            User     @relation("course_userTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "course_user_user_id_foreign")
+  updated_at      DateTime @db.Timestamp(0)
+  courses         courses  @relation(fields: [course_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "course_user_course_id_foreign")
+  users           users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "course_user_user_id_foreign")
 
   @@unique([course_id, user_id], map: "course_user_course_id_user_id_unique")
   @@index([user_id], map: "course_user_user_id_foreign")
+}
+
+model courses {
+  id                                                BigInt                 @id @default(autoincrement()) @db.UnsignedBigInt
+  status                                            Int                    @default(0) @db.TinyInt
+  uploading                                         Int                    @default(0) @db.TinyInt
+  title                                             String?                @default("undefined") @db.VarChar(255)
+  slug                                              String                 @unique(map: "courses_slug_unique") @db.VarChar(255)
+  author_id                                         BigInt                 @default(0) @db.UnsignedBigInt
+  author_info                                       Json
+  price                                             Int?
+  duration                                          String?                @db.VarChar(255)
+  excerpt                                           String?                @db.Text
+  description                                       Json?
+  admin_description                                 Json?
+  lang                                              String                 @db.VarChar(2)
+  rating                                            Decimal?               @default(0.0) @db.Decimal(2, 1)
+  payout_percent                                    Float?
+  vimeo_folder                                      String?                @db.VarChar(55)
+  cdn_source                                        Int                    @default(0) @db.TinyInt
+  created_at                                        DateTime?              @db.Timestamp(0)
+  updated_at                                        DateTime?              @db.Timestamp(0)
+  users                                             users                  @relation(fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "courses_author_id_foreign")
+  category_course                                   category_course[]
+  collection_course                                 collection_course[]
+  course_currency                                   course_currency[]
+  course_discount                                   course_discount[]
+  course_document                                   course_document[]
+  course_domain                                     course_domain[]
+  course_partner                                    course_partner[]
+  course_related_course_related_course_idTocourses  course_related[]       @relation("course_related_course_idTocourses")
+  course_related_course_related_related_idTocourses course_related[]       @relation("course_related_related_idTocourses")
+  course_user                                       course_user[]
+  drafts                                            drafts[]
+  lessons                                           lessons[]
+  payout_settings_meta                              payout_settings_meta[]
+  reflinks                                          reflinks[]
+  sections                                          sections[]
+  statistics                                        statistics[]
+  testimonials                                      testimonials[]
+
+  @@index([author_id], map: "courses_author_id_foreign")
+  @@index([status], map: "courses_status_index")
+  @@index([title], map: "search")
 }
 
 model currencies {
@@ -427,7 +363,7 @@ model device_orders {
   receipt    String    @db.LongText
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  devices    devices   @relation(fields: [device_id], references: [id], onUpdate: Restrict, map: "device_orders_device_id_foreign")
+  devices    devices   @relation(fields: [device_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "device_orders_device_id_foreign")
 
   @@index([device_id], map: "device_orders_device_id_foreign")
 }
@@ -438,8 +374,8 @@ model device_user {
   user_id    BigInt    @db.UnsignedBigInt
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  devices    devices   @relation(fields: [device_id], references: [id], onUpdate: Restrict, map: "device_user_device_id_foreign")
-  User       User      @relation("device_userTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "device_user_user_id_foreign")
+  devices    devices   @relation(fields: [device_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "device_user_device_id_foreign")
+  users      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "device_user_user_id_foreign")
 
   @@index([device_id], map: "device_user_device_id_foreign")
   @@index([user_id], map: "device_user_user_id_foreign")
@@ -483,7 +419,7 @@ model documents {
   uuid            String            @unique(map: "documents_uuid_unique") @db.VarChar(255)
   created_at      DateTime?         @db.Timestamp(0)
   updated_at      DateTime?         @db.Timestamp(0)
-  authors         authors           @relation(fields: [author_id], references: [id], onUpdate: Restrict, map: "documents_author_id_foreign")
+  authors         authors           @relation(fields: [author_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "documents_author_id_foreign")
   course_document course_document[]
 
   @@index([author_id], map: "documents_author_id_foreign")
@@ -506,12 +442,12 @@ model domains {
 model drafts {
   id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
   course_id  BigInt    @db.UnsignedBigInt
-  data       String    @db.LongText
+  data       Json
   status     Int       @default(0) @db.TinyInt
   comment    String?   @db.MediumText
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  Course     Course    @relation("coursesTodrafts", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "drafts_course_id_foreign")
+  courses    courses   @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "drafts_course_id_foreign")
 
   @@index([course_id], map: "drafts_course_id_foreign")
 }
@@ -530,7 +466,7 @@ model emails {
   result     Int       @default(0) @db.TinyInt
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  User       User      @relation("emailsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "emails_user_id_foreign")
+  users      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "emails_user_id_foreign")
 
   @@index([user_id], map: "emails_user_id_foreign")
 }
@@ -557,7 +493,7 @@ model files {
   task_status     Boolean   @default(false)
   created_at      DateTime? @db.Timestamp(0)
   updated_at      DateTime? @db.Timestamp(0)
-  videos          videos    @relation(fields: [video_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "files_video_id_foreign")
+  videos          videos    @relation(fields: [video_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "files_video_id_foreign")
 
   @@index([video_id], map: "files_video_id_foreign")
 }
@@ -574,7 +510,7 @@ model gifts {
   delivery_date DateTime  @db.DateTime(0)
   created_at    DateTime? @db.Timestamp(0)
   updated_at    DateTime? @db.Timestamp(0)
-  orders        orders?   @relation(fields: [order_id], references: [id], onUpdate: Restrict, map: "gifts_order_id_foreign")
+  orders        orders?   @relation(fields: [order_id], references: [id], onUpdate: NoAction, map: "gifts_order_id_foreign")
 
   @@index([order_id], map: "gifts_order_id_foreign")
 }
@@ -694,10 +630,10 @@ model leads {
   created_at         DateTime?           @db.Timestamp(0)
   updated_at         DateTime?           @db.Timestamp(0)
   deleted_at         DateTime?           @db.Timestamp(0)
-  orders             orders?             @relation(fields: [order_id], references: [id], onUpdate: Restrict, map: "leads_order_id_foreign")
-  payout_settings    payout_settings?    @relation(fields: [payout_settings_id], references: [id], onUpdate: Restrict, map: "leads_payout_settings_id_foreign")
-  reflinks           reflinks?           @relation(fields: [reflink_id], references: [id], onUpdate: Restrict, map: "leads_reflink_id_foreign")
-  User               User                @relation("leadsTousers", fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "leads_user_id_foreign")
+  orders             orders?             @relation(fields: [order_id], references: [id], onUpdate: NoAction, map: "leads_order_id_foreign")
+  payout_settings    payout_settings?    @relation(fields: [payout_settings_id], references: [id], onUpdate: NoAction, map: "leads_payout_settings_id_foreign")
+  reflinks           reflinks?           @relation(fields: [reflink_id], references: [id], onUpdate: NoAction, map: "leads_reflink_id_foreign")
+  users              users               @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "leads_user_id_foreign")
   user_transactions  user_transactions[]
 
   @@index([currency], map: "leads_currency_foreign")
@@ -714,8 +650,8 @@ model lesson_rating {
   rating     Int       @db.TinyInt
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  lessons    lessons   @relation(fields: [lesson_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "lesson_rating_lesson_id_foreign")
-  User       User      @relation("lesson_ratingTousers", fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "lesson_rating_user_id_foreign")
+  lessons    lessons   @relation(fields: [lesson_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "lesson_rating_lesson_id_foreign")
+  users      users     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "lesson_rating_user_id_foreign")
 
   @@index([lesson_id], map: "lesson_rating_lesson_id_foreign")
   @@index([user_id], map: "lesson_rating_user_id_foreign")
@@ -734,11 +670,11 @@ model lessons {
   description       String?         @db.LongText
   admin_description String?         @db.Text
   text              String?         @db.Text
-  links             String?         @db.LongText
+  links             Json?
   created_at        DateTime?       @db.Timestamp(0)
   updated_at        DateTime?       @db.Timestamp(0)
-  Course            Course          @relation("coursesTolessons", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "lessons_course_id_foreign")
-  sections          sections        @relation(fields: [section_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "lessons_section_id_foreign")
+  courses           courses         @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "lessons_course_id_foreign")
+  sections          sections        @relation(fields: [section_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "lessons_section_id_foreign")
   lesson_rating     lesson_rating[]
 
   @@index([course_id], map: "lessons_course_id_foreign")
@@ -778,10 +714,10 @@ model media {
   disk                  String    @db.VarChar(255)
   conversions_disk      String?   @db.VarChar(255)
   size                  BigInt    @db.UnsignedBigInt
-  manipulations         String    @db.LongText
-  custom_properties     String    @db.LongText
-  generated_conversions String    @db.LongText
-  responsive_images     String    @db.LongText
+  manipulations         Json
+  custom_properties     Json
+  generated_conversions Json
+  responsive_images     Json
   order_column          Int?      @db.UnsignedInt
   created_at            DateTime? @db.Timestamp(0)
   updated_at            DateTime? @db.Timestamp(0)
@@ -799,7 +735,7 @@ model model_has_permissions {
   permission_id BigInt      @db.UnsignedBigInt
   model_type    String      @db.VarChar(255)
   model_id      BigInt      @db.UnsignedBigInt
-  permissions   permissions @relation(fields: [permission_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "model_has_permissions_permission_id_foreign")
+  permissions   permissions @relation(fields: [permission_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "model_has_permissions_permission_id_foreign")
 
   @@id([permission_id, model_id, model_type])
   @@index([model_id, model_type], map: "model_has_permissions_model_id_model_type_index")
@@ -809,7 +745,7 @@ model model_has_roles {
   role_id    BigInt @db.UnsignedBigInt
   model_type String @db.VarChar(255)
   model_id   BigInt @db.UnsignedBigInt
-  roles      roles  @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "model_has_roles_role_id_foreign")
+  roles      roles  @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "model_has_roles_role_id_foreign")
 
   @@id([role_id, model_id, model_type])
   @@index([model_id, model_type], map: "model_has_roles_model_id_model_type_index")
@@ -822,7 +758,7 @@ model notification_items {
   model_id         BigInt           @db.UnsignedBigInt
   created_at       DateTime?        @db.Timestamp(0)
   updated_at       DateTime?        @db.Timestamp(0)
-  notifications_v2 notifications_v2 @relation(fields: [notification_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "notification_items_notification_id_foreign")
+  notifications_v2 notifications_v2 @relation(fields: [notification_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "notification_items_notification_id_foreign")
 
   @@index([model_type, model_id], map: "notification_items_model_type_model_id_index")
   @@index([notification_id], map: "notification_items_notification_id_foreign")
@@ -839,24 +775,24 @@ model notifications {
   status          Int       @default(0) @db.TinyInt
   created_at      DateTime? @db.Timestamp(0)
   updated_at      DateTime? @db.Timestamp(0)
-  User            User      @relation("notificationsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "notifications_user_id_foreign")
+  users           users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "notifications_user_id_foreign")
 
   @@index([user_id], map: "notifications_user_id_foreign")
 }
 
 model notifications_v2 {
-  id                                           BigInt               @id @default(autoincrement()) @db.UnsignedBigInt
-  type                                         String               @db.VarChar(255)
-  user_id                                      BigInt               @db.UnsignedBigInt
-  interlocutor_id                              BigInt               @db.UnsignedBigInt
-  notifiable_type                              String               @db.VarChar(255)
-  notifiable_id                                BigInt               @db.UnsignedBigInt
-  status                                       Int                  @default(0) @db.TinyInt
-  created_at                                   DateTime?            @db.Timestamp(0)
-  updated_at                                   DateTime?            @db.Timestamp(0)
-  User_notifications_v2_interlocutor_idTousers User                 @relation("notifications_v2_interlocutor_idTousers", fields: [interlocutor_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "notifications_v2_interlocutor_id_foreign")
-  User_notifications_v2_user_idTousers         User                 @relation("notifications_v2_user_idTousers", fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "notifications_v2_user_id_foreign")
-  notification_items                           notification_items[]
+  id                                            BigInt               @id @default(autoincrement()) @db.UnsignedBigInt
+  type                                          String               @db.VarChar(255)
+  user_id                                       BigInt               @db.UnsignedBigInt
+  interlocutor_id                               BigInt               @db.UnsignedBigInt
+  notifiable_type                               String               @db.VarChar(255)
+  notifiable_id                                 BigInt               @db.UnsignedBigInt
+  status                                        Int                  @default(0) @db.TinyInt
+  created_at                                    DateTime?            @db.Timestamp(0)
+  updated_at                                    DateTime?            @db.Timestamp(0)
+  users_notifications_v2_interlocutor_idTousers users                @relation("notifications_v2_interlocutor_idTousers", fields: [interlocutor_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "notifications_v2_interlocutor_id_foreign")
+  users_notifications_v2_user_idTousers         users                @relation("notifications_v2_user_idTousers", fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "notifications_v2_user_id_foreign")
+  notification_items                            notification_items[]
 
   @@index([interlocutor_id], map: "notifications_v2_interlocutor_id_foreign")
   @@index([notifiable_type, notifiable_id], map: "notifications_v2_notifiable_type_notifiable_id_index")
@@ -926,7 +862,7 @@ model order_course {
   course_id  BigInt    @db.UnsignedBigInt
   price      Float?
   created_at DateTime? @db.DateTime(0)
-  orders     orders    @relation(fields: [order_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "order_course_order_id_foreign")
+  orders     orders    @relation(fields: [order_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "order_course_order_id_foreign")
 
   @@index([order_id], map: "order_course_order_id_foreign")
 }
@@ -975,8 +911,8 @@ model orders {
   split_client_id      BigInt?        @db.UnsignedBigInt
   tp                   String?        @db.VarChar(255)
   gclid                String?        @db.VarChar(255)
-  discounts            discounts?     @relation(fields: [discount_id], references: [id], onUpdate: Restrict, map: "orders_discount_id_foreign")
-  split_client         split_client?  @relation(fields: [split_client_id], references: [id], onUpdate: Restrict, map: "orders_split_client_id_foreign")
+  discounts            discounts?     @relation(fields: [discount_id], references: [id], onUpdate: NoAction, map: "orders_discount_id_foreign")
+  split_client         split_client?  @relation(fields: [split_client_id], references: [id], onUpdate: NoAction, map: "orders_split_client_id_foreign")
   gifts                gifts[]
   leads                leads[]
   order_course         order_course[]
@@ -994,7 +930,7 @@ model partners {
   updated_at     DateTime?        @db.Timestamp(0)
   agree          Boolean          @default(false)
   hide           Int              @default(0) @db.TinyInt
-  User           User             @relation("partnersTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "partners_user_id_foreign")
+  users          users            @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "partners_user_id_foreign")
   author_partner author_partner[]
   course_partner course_partner[]
 }
@@ -1017,7 +953,7 @@ model payment_methods {
   token      String    @db.VarChar(255)
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  User       User      @relation("payment_methodsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "payment_methods_user_id_foreign")
+  users      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "payment_methods_user_id_foreign")
 
   @@index([user_id], map: "payment_methods_user_id_foreign")
 }
@@ -1043,8 +979,8 @@ model payout_settings_meta {
   range              Int?            @db.UnsignedInt
   created_at         DateTime?       @db.Timestamp(0)
   updated_at         DateTime?       @db.Timestamp(0)
-  Course             Course?         @relation("coursesTopayout_settings_meta", fields: [depend_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "payout_settings_meta_depend_id_foreign")
-  payout_settings    payout_settings @relation(fields: [payout_settings_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "payout_settings_meta_payout_settings_id_foreign")
+  courses            courses?        @relation(fields: [depend_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "payout_settings_meta_depend_id_foreign")
+  payout_settings    payout_settings @relation(fields: [payout_settings_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "payout_settings_meta_payout_settings_id_foreign")
 
   @@index([depend_id], map: "payout_settings_meta_depend_id_foreign")
   @@index([payout_settings_id], map: "payout_settings_meta_payout_settings_id_foreign")
@@ -1098,7 +1034,7 @@ model receipts {
   currency               String    @db.VarChar(3)
   quantity               Int
   receipt_url            String    @unique(map: "receipts_receipt_url_unique") @db.VarChar(255)
-  paid_at                DateTime  @default(now()) @db.Timestamp(0)
+  paid_at                DateTime  @db.Timestamp(0)
   created_at             DateTime? @db.Timestamp(0)
   updated_at             DateTime? @db.Timestamp(0)
 
@@ -1119,8 +1055,8 @@ model reflinks {
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
   deleted_at DateTime? @db.Timestamp(0)
-  Course     Course    @relation("coursesToreflinks", fields: [course_id], references: [id], onUpdate: Restrict, map: "reflinks_course_id_foreign")
-  User       User      @relation("reflinksTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "reflinks_user_id_foreign")
+  courses    courses   @relation(fields: [course_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "reflinks_course_id_foreign")
+  users      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "reflinks_user_id_foreign")
   leads      leads[]
 
   @@index([course_id], map: "reflinks_course_id_foreign")
@@ -1132,7 +1068,7 @@ model reminders {
   order_id   BigInt    @db.UnsignedBigInt
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  orders     orders    @relation(fields: [order_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "reminders_order_id_foreign")
+  orders     orders    @relation(fields: [order_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "reminders_order_id_foreign")
 
   @@index([order_id], map: "reminders_order_id_foreign")
 }
@@ -1140,8 +1076,8 @@ model reminders {
 model role_has_permissions {
   permission_id BigInt      @db.UnsignedBigInt
   role_id       BigInt      @db.UnsignedBigInt
-  permissions   permissions @relation(fields: [permission_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "role_has_permissions_permission_id_foreign")
-  roles         roles       @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "role_has_permissions_role_id_foreign")
+  permissions   permissions @relation(fields: [permission_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_has_permissions_permission_id_foreign")
+  roles         roles       @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "role_has_permissions_role_id_foreign")
 
   @@id([permission_id, role_id])
   @@index([role_id], map: "role_has_permissions_role_id_foreign")
@@ -1163,7 +1099,7 @@ model sections {
   title      String    @db.VarChar(255)
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  Course     Course    @relation("coursesTosections", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "sections_course_id_foreign")
+  courses    courses   @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "sections_course_id_foreign")
   lessons    lessons[]
 
   @@index([course_id], map: "sections_course_id_foreign")
@@ -1190,7 +1126,7 @@ model split_client {
   client_code String   @db.VarChar(255)
   split_id    BigInt   @db.UnsignedBigInt
   created_at  DateTime @db.DateTime(0)
-  split       split    @relation(fields: [split_id], references: [id], onUpdate: Restrict, map: "split_client_split_id_foreign")
+  split       split    @relation(fields: [split_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "split_client_split_id_foreign")
   orders      orders[]
 
   @@index([split_id], map: "split_client_split_id_foreign")
@@ -1207,10 +1143,10 @@ model statistics {
   id        BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
   course_id BigInt   @db.UnsignedBigInt
   date      DateTime @db.Date
-  data      String   @db.LongText
+  data      Json
   type      String   @db.VarChar(20)
   time      Int      @default(0)
-  Course    Course   @relation("coursesTostatistics", fields: [course_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "statistics_course_id_foreign")
+  courses   courses  @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "statistics_course_id_foreign")
 
   @@unique([course_id, date, type], map: "statistics_course_id_date_unique")
 }
@@ -1241,7 +1177,7 @@ model subscription_plans {
   status          Int             @default(0) @db.TinyInt
   created_at      DateTime?       @db.Timestamp(0)
   updated_at      DateTime?       @db.Timestamp(0)
-  currencies      currencies?     @relation(fields: [currency_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "subscription_plans_currency_id_foreign")
+  currencies      currencies?     @relation(fields: [currency_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscription_plans_currency_id_foreign")
   subscriptions   subscriptions[]
 
   @@index([currency_id], map: "subscription_plans_currency_id_foreign")
@@ -1268,9 +1204,9 @@ model subscriptions {
   ends_at                   DateTime?             @db.DateTime(0)
   created_at                DateTime?             @db.DateTime(0)
   updated_at                DateTime?             @db.DateTime(0)
-  cards                     cards?                @relation(fields: [card_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "subscriptions_card_id_foreign")
-  subscription_plans        subscription_plans?   @relation(fields: [subscription_plan_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "subscriptions_subscription_plan_id_foreign")
-  User                      User                  @relation("subscriptionsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "subscriptions_user_id_foreign")
+  cards                     cards?                @relation(fields: [card_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscriptions_card_id_foreign")
+  subscription_plans        subscription_plans?   @relation(fields: [subscription_plan_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscriptions_subscription_plan_id_foreign")
+  users                     users                 @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "subscriptions_user_id_foreign")
   cancelation_reasons       cancelation_reasons[]
 
   @@index([card_id], map: "subscriptions_card_id_foreign")
@@ -1297,8 +1233,8 @@ model testimonials {
   video      String?   @db.VarChar(255)
   created_at DateTime? @db.Timestamp(0)
   updated_at DateTime? @db.Timestamp(0)
-  Course     Course    @relation("coursesTotestimonials", fields: [course_id], references: [id], onUpdate: Restrict, map: "testimonials_course_id_foreign")
-  User       User      @relation("testimonialsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "testimonials_user_id_foreign")
+  courses    courses   @relation(fields: [course_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "testimonials_course_id_foreign")
+  users      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "testimonials_user_id_foreign")
 
   @@index([course_id], map: "testimonials_course_id_foreign")
   @@index([user_id], map: "testimonials_user_id_foreign")
@@ -1316,7 +1252,7 @@ model transactions {
   purchase_date     DateTime  @db.DateTime(0)
   created_at        DateTime? @db.Timestamp(0)
   updated_at        DateTime? @db.Timestamp(0)
-  User              User      @relation("transactionsTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "transactions_user_id_foreign")
+  users             users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "transactions_user_id_foreign")
 
   @@index([user_id], map: "transactions_user_id_foreign")
 }
@@ -1338,8 +1274,8 @@ model user_requisites_data {
   field_value            String                 @db.Text
   created_at             DateTime?              @db.Timestamp(0)
   updated_at             DateTime?              @db.Timestamp(0)
-  user_requisites_fields user_requisites_fields @relation(fields: [field_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "user_requisites_data_field_id_foreign")
-  User                   User                   @relation("user_requisites_dataTousers", fields: [user_id], references: [id], onUpdate: Restrict, map: "user_requisites_data_user_id_foreign")
+  user_requisites_fields user_requisites_fields @relation(fields: [field_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_requisites_data_field_id_foreign")
+  users                  users                  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_requisites_data_user_id_foreign")
 
   @@index([field_id], map: "user_requisites_data_field_id_foreign")
   @@index([user_id], map: "user_requisites_data_user_id_foreign")
@@ -1353,8 +1289,8 @@ model user_requisites_fields {
   label                  String                  @db.VarChar(255)
   created_at             DateTime?               @db.Timestamp(0)
   updated_at             DateTime?               @db.Timestamp(0)
-  payout_variants        payout_variants?        @relation(fields: [payout_variant_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "user_requisites_fields_payout_variant_id_foreign")
-  user_requisites_legals user_requisites_legals? @relation(fields: [requisites_legal_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "user_requisites_fields_requisites_legal_id_foreign")
+  payout_variants        payout_variants?        @relation(fields: [payout_variant_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_requisites_fields_payout_variant_id_foreign")
+  user_requisites_legals user_requisites_legals? @relation(fields: [requisites_legal_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_requisites_fields_requisites_legal_id_foreign")
   user_requisites_data   user_requisites_data[]
 
   @@index([payout_variant_id], map: "user_requisites_fields_payout_variant_id_foreign")
@@ -1373,24 +1309,86 @@ model user_requisites_legals {
 }
 
 model user_transactions {
-  id                                         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
-  type                                       Int       @default(1) @db.UnsignedTinyInt
-  user_id                                    BigInt?   @db.UnsignedBigInt
-  lead_id                                    BigInt?   @db.UnsignedBigInt
-  value                                      Float
-  currency                                   String?   @db.VarChar(5)
-  performed_by                               BigInt?   @db.UnsignedBigInt
-  comment                                    String?   @db.VarChar(500)
-  lead_created_at                            DateTime? @db.DateTime(0)
-  created_at                                 DateTime? @db.Timestamp(0)
-  updated_at                                 DateTime? @db.Timestamp(0)
-  leads                                      leads?    @relation(fields: [lead_id], references: [id], onUpdate: Restrict, map: "user_transactions_lead_id_foreign")
-  User_user_transactions_performed_byTousers User?     @relation("user_transactions_performed_byTousers", fields: [performed_by], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "user_transactions_performed_by_foreign")
-  User_user_transactions_user_idTousers      User?     @relation("user_transactions_user_idTousers", fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "user_transactions_user_id_foreign")
+  id                                          BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  type                                        Int       @default(1) @db.UnsignedTinyInt
+  user_id                                     BigInt?   @db.UnsignedBigInt
+  lead_id                                     BigInt?   @db.UnsignedBigInt
+  value                                       Float
+  currency                                    String?   @db.VarChar(5)
+  performed_by                                BigInt?   @db.UnsignedBigInt
+  comment                                     String?   @db.VarChar(500)
+  lead_created_at                             DateTime? @db.DateTime(0)
+  created_at                                  DateTime? @db.Timestamp(0)
+  updated_at                                  DateTime? @db.Timestamp(0)
+  leads                                       leads?    @relation(fields: [lead_id], references: [id], onUpdate: NoAction, map: "user_transactions_lead_id_foreign")
+  users_user_transactions_performed_byTousers users?    @relation("user_transactions_performed_byTousers", fields: [performed_by], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_transactions_performed_by_foreign")
+  users_user_transactions_user_idTousers      users?    @relation("user_transactions_user_idTousers", fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_transactions_user_id_foreign")
 
   @@index([lead_id], map: "user_transactions_lead_id_foreign")
   @@index([performed_by], map: "user_transactions_performed_by_foreign")
   @@index([user_id], map: "user_transactions_user_id_foreign")
+}
+
+model users {
+  id                                                       BigInt                 @id @default(autoincrement()) @db.UnsignedBigInt
+  name                                                     String?                @db.VarChar(255)
+  email                                                    String                 @unique(map: "users_email_unique") @db.VarChar(255)
+  content_language                                         String?                @db.VarChar(5)
+  country_code                                             Decimal?               @db.Decimal(5, 0)
+  phone                                                    Decimal?               @db.Decimal(15, 0)
+  verification_code                                        String?                @db.VarChar(8)
+  last_name                                                String?                @db.VarChar(35)
+  first_name                                               String?                @db.VarChar(35)
+  balance                                                  Float                  @default(0.00)
+  balance_usd                                              Float                  @default(0.00)
+  bonus_balance                                            Float                  @default(0.00)
+  info                                                     Json?
+  email_verified_at                                        DateTime?              @db.Timestamp(0)
+  password                                                 String                 @db.VarChar(255)
+  remember_token                                           String?                @db.VarChar(100)
+  created_at                                               DateTime?              @db.Timestamp(0)
+  updated_at                                               DateTime?              @db.Timestamp(0)
+  provider                                                 String?                @db.VarChar(255)
+  provider_id                                              String?                @db.VarChar(255)
+  avatar                                                   String?                @db.VarChar(255)
+  google_id                                                String?                @db.VarChar(255)
+  apple_id                                                 String?                @db.VarChar(255)
+  reasons                                                  Json?
+  interests                                                Json?
+  notification_time                                        DateTime?              @db.Time(0)
+  disabled_notifications                                   String?                @db.VarChar(255)
+  utm_source                                               String?                @db.VarChar(255)
+  year_of_birth                                            Int?                   @db.UnsignedInt
+  gender                                                   Int?                   @db.UnsignedTinyInt
+  personal_data_hidden                                     Int                    @default(0) @db.UnsignedTinyInt
+  stripe_id                                                String?                @db.VarChar(255)
+  pm_type                                                  String?                @db.VarChar(255)
+  pm_last_four                                             String?                @db.VarChar(4)
+  trial_ends_at                                            DateTime?              @db.Timestamp(0)
+  authors                                                  authors?
+  cancelation_reasons                                      cancelation_reasons[]
+  card_user                                                card_user[]
+  cards                                                    cards[]
+  course_user                                              course_user[]
+  courses                                                  courses[]
+  device_user                                              device_user[]
+  emails                                                   emails[]
+  leads                                                    leads[]
+  lesson_rating                                            lesson_rating[]
+  notifications                                            notifications[]
+  notifications_v2_notifications_v2_interlocutor_idTousers notifications_v2[]     @relation("notifications_v2_interlocutor_idTousers")
+  notifications_v2_notifications_v2_user_idTousers         notifications_v2[]     @relation("notifications_v2_user_idTousers")
+  partners                                                 partners?
+  payment_methods                                          payment_methods[]
+  reflinks                                                 reflinks[]
+  subscriptions                                            subscriptions[]
+  testimonials                                             testimonials[]
+  transactions                                             transactions[]
+  user_requisites_data                                     user_requisites_data[]
+  user_transactions_user_transactions_performed_byTousers  user_transactions[]    @relation("user_transactions_performed_byTousers")
+  user_transactions_user_transactions_user_idTousers       user_transactions[]    @relation("user_transactions_user_idTousers")
+
+  @@index([stripe_id], map: "users_stripe_id_index")
 }
 
 model videos {
