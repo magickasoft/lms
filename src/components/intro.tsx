@@ -2,7 +2,7 @@ import SC from '@emotion/styled';
 import React from 'react';
 import {Element} from 'react-scroll';
 
-import {useGetCoursesQuery} from "../../generated/graphql";
+import {useGetCoursesQuery} from '../../generated/graphql';
 import {ibmplexsans400, maxDevice} from '../styles';
 import {Course} from './course';
 
@@ -103,7 +103,9 @@ export const Intro = props => {
       <section>
         <Container>
           <Brand>Skills that are not taught in school</Brand>
-          {courses?.data?.getCourses?.map(v => (<p key={String(v.id)}>{v.title}</p>))}
+          {courses?.data?.getCourses?.map(v => (
+            <p key={String(v.id)}>{v.title}</p>
+          ))}
           <CoursesList>
             {COURSES.map(course => (
               <Course key={course.id} {...course} />
@@ -113,4 +115,4 @@ export const Intro = props => {
       </section>
     </Element>
   );
-}
+};
