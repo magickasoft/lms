@@ -39,6 +39,7 @@ export type MutationLoginArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  getCourses?: Maybe<Array<Maybe<Course>>>;
   getPosts?: Maybe<Array<Maybe<Post>>>;
   implicitLogin?: Maybe<ImplicitLoginResponse>;
   test?: Maybe<Scalars['Boolean']>;
@@ -53,6 +54,13 @@ export type Author = {
   __typename?: 'author';
   memberSince?: Maybe<Scalars['String']>;
   username?: Maybe<Scalars['String']>;
+};
+
+export type Course = {
+  __typename?: 'course';
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type ImplicitLoginResponse = {
@@ -83,6 +91,11 @@ export type RegisterResponse = {
   __typename?: 'registerResponse';
   message: Scalars['String'];
 };
+
+export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCoursesQuery = { __typename?: 'Query', getCourses?: Array<{ __typename?: 'course', id?: string | null, title?: string | null, slug?: string | null } | null> | null };
 
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -121,6 +134,42 @@ export type CreatePostMutationVariables = Exact<{
 export type CreatePostMutation = { __typename?: 'Mutation', createPost?: { __typename?: 'post', content?: string | null, author?: { __typename?: 'author', username?: string | null, memberSince?: string | null } | null } | null };
 
 
+export const GetCoursesDocument = gql`
+    query GetCourses {
+  getCourses {
+    id
+    title
+    slug
+  }
+}
+    `;
+
+/**
+ * __useGetCoursesQuery__
+ *
+ * To run a query within a React component, call `useGetCoursesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCoursesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCoursesQuery(baseOptions?: Apollo.QueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options);
+      }
+export function useGetCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCoursesQuery, GetCoursesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCoursesQuery, GetCoursesQueryVariables>(GetCoursesDocument, options);
+        }
+export type GetCoursesQueryHookResult = ReturnType<typeof useGetCoursesQuery>;
+export type GetCoursesLazyQueryHookResult = ReturnType<typeof useGetCoursesLazyQuery>;
+export type GetCoursesQueryResult = Apollo.QueryResult<GetCoursesQuery, GetCoursesQueryVariables>;
 export const TestDocument = gql`
     query Test {
   test(bool: false)

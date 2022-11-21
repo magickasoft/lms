@@ -39,6 +39,11 @@ export interface NexusGenObjects {
     memberSince?: string | null; // String
     username?: string | null; // String
   }
+  course: { // root type
+    id?: string | null; // ID
+    slug?: string | null; // String
+    title?: string | null; // String
+  }
   implicitLoginResponse: { // root type
     loggedIn: boolean; // Boolean!
     username?: string | null; // String
@@ -73,6 +78,7 @@ export interface NexusGenFieldTypes {
     login: NexusGenRootTypes['loginResponse'] | null; // loginResponse
   }
   Query: { // field return type
+    getCourses: Array<NexusGenRootTypes['course'] | null> | null; // [course]
     getPosts: Array<NexusGenRootTypes['post'] | null> | null; // [post]
     implicitLogin: NexusGenRootTypes['implicitLoginResponse'] | null; // implicitLoginResponse
     test: boolean | null; // Boolean
@@ -80,6 +86,11 @@ export interface NexusGenFieldTypes {
   author: { // field return type
     memberSince: string | null; // String
     username: string | null; // String
+  }
+  course: { // field return type
+    id: string | null; // ID
+    slug: string | null; // String
+    title: string | null; // String
   }
   implicitLoginResponse: { // field return type
     loggedIn: boolean; // Boolean!
@@ -105,6 +116,7 @@ export interface NexusGenFieldTypeNames {
     login: 'loginResponse'
   }
   Query: { // field return type name
+    getCourses: 'course'
     getPosts: 'post'
     implicitLogin: 'implicitLoginResponse'
     test: 'Boolean'
@@ -112,6 +124,11 @@ export interface NexusGenFieldTypeNames {
   author: { // field return type name
     memberSince: 'String'
     username: 'String'
+  }
+  course: { // field return type name
+    id: 'ID'
+    slug: 'String'
+    title: 'String'
   }
   implicitLoginResponse: { // field return type name
     loggedIn: 'Boolean'

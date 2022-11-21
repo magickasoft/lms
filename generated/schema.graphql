@@ -9,6 +9,7 @@ type Mutation {
 }
 
 type Query {
+  getCourses: [course]
   getPosts: [post]
   implicitLogin: implicitLoginResponse
   test(bool: Boolean!): Boolean
@@ -17,6 +18,12 @@ type Query {
 type author {
   memberSince: String
   username: String
+}
+
+type course {
+  id: ID
+  slug: String
+  title: String
 }
 
 type implicitLoginResponse {
