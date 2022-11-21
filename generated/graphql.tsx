@@ -13,6 +13,8 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  BigInt: bigint;
+  DateTime: Date | string;
 };
 
 export type Mutation = {
@@ -58,7 +60,7 @@ export type Author = {
 
 export type Course = {
   __typename?: 'course';
-  id?: Maybe<Scalars['ID']>;
+  id?: Maybe<Scalars['BigInt']>;
   slug?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
@@ -95,7 +97,7 @@ export type RegisterResponse = {
 export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCoursesQuery = { __typename?: 'Query', getCourses?: Array<{ __typename?: 'course', id?: string | null, title?: string | null, slug?: string | null } | null> | null };
+export type GetCoursesQuery = { __typename?: 'Query', getCourses?: Array<{ __typename?: 'course', id?: bigint | null, title?: string | null, slug?: string | null } | null> | null };
 
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
