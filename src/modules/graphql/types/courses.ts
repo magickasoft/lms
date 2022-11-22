@@ -18,5 +18,6 @@ const course = objectType({
     t.bigint('id');
     t.string('title');
     t.string('slug');
+    t.bigint('author_id');
   },
 });

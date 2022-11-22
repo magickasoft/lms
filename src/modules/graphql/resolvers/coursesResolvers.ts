@@ -9,6 +9,7 @@ export const getCoursesResolver: FieldResolver<'Query', 'courses'> = async (_, _
       id: true,
       title: true,
       slug: true,
+      author_id: true,
     },
     orderBy: {
       id: 'desc',

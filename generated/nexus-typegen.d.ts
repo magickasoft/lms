@@ -74,6 +74,7 @@ export interface NexusGenObjects {
     username?: string | null; // String
   }
   course: { // root type
+    author_id?: NexusGenScalars['BigInt'] | null; // BigInt
     id?: NexusGenScalars['BigInt'] | null; // BigInt
     slug?: string | null; // String
     title?: string | null; // String
@@ -122,6 +123,7 @@ export interface NexusGenFieldTypes {
     username: string | null; // String
   }
   course: { // field return type
+    author_id: NexusGenScalars['BigInt'] | null; // BigInt
     id: NexusGenScalars['BigInt'] | null; // BigInt
     slug: string | null; // String
     title: string | null; // String
@@ -160,6 +162,7 @@ export interface NexusGenFieldTypeNames {
     username: 'String'
   }
   course: { // field return type name
+    author_id: 'BigInt'
     id: 'BigInt'
     slug: 'String'
     title: 'String'

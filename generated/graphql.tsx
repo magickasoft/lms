@@ -60,6 +60,7 @@ export type Author = {
 
 export type Course = {
   __typename?: 'course';
+  author_id?: Maybe<Scalars['BigInt']>;
   id?: Maybe<Scalars['BigInt']>;
   slug?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
@@ -97,7 +98,7 @@ export type RegisterResponse = {
 export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCoursesQuery = { __typename?: 'Query', getCourses?: Array<{ __typename?: 'course', id?: bigint | null, title?: string | null, slug?: string | null } | null> | null };
+export type GetCoursesQuery = { __typename?: 'Query', getCourses?: Array<{ __typename?: 'course', id?: bigint | null, title?: string | null, slug?: string | null, author_id?: bigint | null } | null> | null };
 
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -142,6 +143,7 @@ export const GetCoursesDocument = gql`
     id
     title
     slug
+    author_id
   }
 }
     `;

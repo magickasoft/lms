@@ -31,6 +31,7 @@ type author {
 }
 
 type course {
+  author_id: BigInt
   id: BigInt
   slug: String
   title: String

@@ -2,6 +2,7 @@ query GetCourses {
   getCourses {
     id,
     title,
-    slug
+    slug,
+    author_id
   }
 }
