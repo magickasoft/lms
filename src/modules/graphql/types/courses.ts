@@ -1,5 +1,5 @@
 import {extendType, list, objectType} from 'nexus';
-import { Course } from 'nexus-prisma';
+import {Course} from 'nexus-prisma';
 
 import {getCoursesResolver, getPopularCoursesResolver} from '../resolvers/coursesResolvers';
 
@@ -38,7 +38,7 @@ const course = objectType({
         return parent.media;
         // return ctx.getCourses(root.id).media()
       },
-    })
+    });
     t.string('image');
   },
 });

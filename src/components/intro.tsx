@@ -5,9 +5,9 @@ import {Element} from 'react-scroll';
 
 import {useGetCoursesQuery, useGetPopularCoursesQuery} from '../../generated/graphql';
 import {ibmplexsans400, maxDevice} from '../styles';
-import { Button } from './Button/button';
-import { GreenButton } from './Button/greenButton';
-import { WhiteButton } from './Button/whiteButton';
+import {Button} from './Button/button';
+import {GreenButton} from './Button/greenButton';
+import {WhiteButton} from './Button/whiteButton';
 import {Course} from './course';
 
 const Container = SC.div`
@@ -121,11 +121,11 @@ const SmallText = SC.span`
 `;
 
 const courseTypes = [
-  {type:'new', title:'New classes'},
-  {type:'top', title:'Top classes'},
-  {type:'sale', title:'Courses on sale'},
-  {type:'popular', title:'Popular courses'},
-]
+  {type: 'new', title: 'New classes'},
+  {type: 'top', title: 'Top classes'},
+  {type: 'sale', title: 'Courses on sale'},
+  {type: 'popular', title: 'Popular courses'},
+];
 
 export const Intro = props => {
   const courses = useGetCoursesQuery({variables: {}});
@@ -135,21 +135,23 @@ export const Intro = props => {
       <section>
         <Container>
           <CoursesTab>
-            {courseTypes.map(courseType => courseType.type == 'new' ? <BlackButton>{courseType.title}</BlackButton> : <WhiteButton>{courseType.title}</WhiteButton>)}
+            {courseTypes.map(courseType =>
+              courseType.type == 'new' ? (
+                <BlackButton>{courseType.title}</BlackButton>
+              ) : (
+                <WhiteButton>{courseType.title}</WhiteButton>
+              ),
+            )}
           </CoursesTab>
           <CoursesList>
             {courses?.data?.getCourses?.map(course => (
-                // {console.log(course.id.toString())}
-                <Course key={course.id.toString()} {...course} />
+              // {console.log(course.id.toString())}
+              <Course key={course.id.toString()} {...course} />
             ))}
           </CoursesList>
           <JoinSacrillBlock>
-            <Title>
-              Join Sacrill Club And Get Access
-            </Title>
-            <SubTitle>
-              To All Courses In One Subscription
-            </SubTitle>
+            <Title>Join Sacrill Club And Get Access</Title>
+            <SubTitle>To All Courses In One Subscription</SubTitle>
 
             <Row>
               <Column>
@@ -159,8 +161,9 @@ export const Intro = props => {
               </Column>
               <Column>
                 <Text>
-                  Saсrill  is an educational platform with video courses on relevant topics. We help clients find and purchase online courses 
-                  from experts in their fields, and we help authors share their knowledge and expertise with a wider audience and get paid for their sales.
+                  Saсrill is an educational platform with video courses on relevant topics. We help clients find and
+                  purchase online courses from experts in their fields, and we help authors share their knowledge and
+                  expertise with a wider audience and get paid for their sales.
                 </Text>
               </Column>
             </Row>
@@ -169,9 +172,7 @@ export const Intro = props => {
               <Pluses>
                 <PlusItem>
                   <IconImage src="/images/icons/typing.svg" height={46} width={46} alt="Typing image" />
-                  <SmallText>
-                    Chat with authors and other students
-                  </SmallText>
+                  <SmallText>Chat with authors and other students</SmallText>
                 </PlusItem>
                 <PlusItem>
                   <IconImage src="/images/icons/brain.svg" height={46} width={46} alt="Brain image" />
@@ -181,15 +182,11 @@ export const Intro = props => {
                 </PlusItem>
                 <PlusItem>
                   <IconImage src="/images/icons/thumbup.svg" height={46} width={46} alt="Thumb up image" />
-                  <SmallText>
-                    10+ new courses  published each month
-                  </SmallText>
+                  <SmallText>10+ new courses published each month</SmallText>
                 </PlusItem>
                 <PlusItem>
                   <IconImage src="/images/icons/girl_notebook.svg" height={46} width={46} alt="Typing image" />
-                  <SmallText>
-                    Audio and video tutorials
-                  </SmallText>
+                  <SmallText>Audio and video tutorials</SmallText>
                 </PlusItem>
               </Pluses>
             </Row>

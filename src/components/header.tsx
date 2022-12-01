@@ -3,13 +3,13 @@ import Image from 'next/image';
 import React from 'react';
 
 import {ibmplexsans400, maxDevice} from '../styles';
-import { Button } from './Button/button';
-import { WhiteButton } from './Button/whiteButton';
+import {Button} from './Button/button';
+import {WhiteButton} from './Button/whiteButton';
 import {Text} from './common';
 import {Icon} from './icon';
-import { InputSearch } from './inputSearch';
+import {InputSearch} from './inputSearch';
 import {ScrollIndicator} from './scrollIndicator';
-import { SearchForm } from './searchForm';
+import {SearchForm} from './searchForm';
 
 type ContainerProps = {
   active: boolean;
@@ -102,8 +102,6 @@ const useScroll = () => {
   const onScroll = () => {
     setActive(window?.scrollY >= 400);
   };
-
-  
 
   React.useEffect(() => {
     window?.addEventListener('scroll', onScroll);

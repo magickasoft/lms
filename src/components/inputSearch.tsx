@@ -36,7 +36,16 @@ const Container = SC(FormControl)<ContainerProps>`
   width: 100%;
 `;
 
-export const InputSearch = ({placeholder, helperText, focused, disabled, error, required, variant = 'standard', ...other}) => {
+export const InputSearch = ({
+  placeholder,
+  helperText,
+  focused,
+  disabled,
+  error,
+  required,
+  variant = 'standard',
+  ...other
+}) => {
   const formProps = {
     disabled,
     error,

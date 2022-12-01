@@ -21,49 +21,44 @@ export const GlobalStyle = props => (
         font-family: 'SF Pro Display';
         font-style: normal;
         font-weight: 400;
-        src: local(''), 
-            // url('/fonts/Faustina/Faustina.woff') format('woff'),
-            url('/fonts/SFProDisplayRegular.ttf') format('truetype');
+        src: local(''),
+          // url('/fonts/Faustina/Faustina.woff') format('woff'),
+          url('/fonts/SFProDisplayRegular.ttf') format('truetype');
       }
 
       @font-face {
         font-family: 'SF Pro Display Bold';
         font-style: normal;
         font-weight: 700;
-        src: local(''), 
-            url('/fonts/SFProDisplayBold.ttf') format('truetype');
+        src: local(''), url('/fonts/SFProDisplayBold.ttf') format('truetype');
       }
 
       @font-face {
         font-family: 'Bebas Neue';
         font-style: normal;
         font-weight: 400;
-        src: local(''), 
-            url('/fonts/BebasNeueRegular.ttf') format('truetype');
+        src: local(''), url('/fonts/BebasNeueRegular.ttf') format('truetype');
       }
 
       @font-face {
         font-family: 'Bebas Neue Bold';
         font-style: normal;
         font-weight: 700;
-        src: local(''), 
-            url('/fonts/BebasNeueBold.ttf') format('truetype');
+        src: local(''), url('/fonts/BebasNeueBold.ttf') format('truetype');
       }
 
       @font-face {
         font-family: 'Bebas Neue Light';
         font-style: normal;
         font-weight: 300;
-        src: local(''), 
-            url('/fonts/BebasNeueLight.ttf') format('truetype');
+        src: local(''), url('/fonts/BebasNeueLight.ttf') format('truetype');
       }
 
       @font-face {
         font-family: 'Bebas Neue Thin';
         font-style: normal;
         font-weight: 100;
-        src: local(''), 
-            url('/fonts/BebasNeueThin.ttf') format('truetype');
+        src: local(''), url('/fonts/BebasNeueThin.ttf') format('truetype');
       }
 
       html,

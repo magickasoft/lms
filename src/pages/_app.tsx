@@ -15,7 +15,6 @@ import {useApollo} from '../lib/apolloClient';
 import {GlobalStyle} from '../styles';
 import theme from '../styles/theme';
 
-
 const clientSideEmotionCache = createEmotionCache();
 
 const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
