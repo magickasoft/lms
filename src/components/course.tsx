@@ -115,5 +115,5 @@ export const Course = ({id, media, title, author_info, price, ...props}: CourseP
         </Details>
       </CourseItem>
     </section>
-  )
+  );
 };

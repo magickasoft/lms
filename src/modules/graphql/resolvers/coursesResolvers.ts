@@ -1,5 +1,5 @@
 import {FieldResolver} from 'nexus';
-import { Collection } from 'nexus-prisma';
+import {Collection} from 'nexus-prisma';
 
 export const getCoursesResolver: FieldResolver<'Query', 'courses'> = async (_, __, {prisma, req}) => {
   const courses = await prisma.course.findMany({
@@ -16,16 +16,16 @@ export const getCoursesResolver: FieldResolver<'Query', 'courses'> = async (_, _
           uuid: true,
           collection_name: true,
           file_name: true,
-          generated_conversions: true
+          generated_conversions: true,
         },
         where: {
-          model_type: "App\\Models\\Course",
-          collection_name: "file__course_thumb"
-        }
-      }
+          model_type: 'App\\Models\\Course',
+          collection_name: 'file__course_thumb',
+        },
+      },
     },
     where: {
-      status: 1
+      status: 1,
     },
     take: 15,
     orderBy: {
@@ -37,7 +37,7 @@ export const getCoursesResolver: FieldResolver<'Query', 'courses'> = async (_, _
 
   return [...courses].map(course => ({
     ...course,
-    image: course.media[0].file_name
+    image: course.media[0].file_name,
   }));
 };
 
@@ -56,17 +56,17 @@ export const getPopularCoursesResolver: FieldResolver<'Query', 'courses'> = asyn
           uuid: true,
           collection_name: true,
           file_name: true,
-          generated_conversions: true
+          generated_conversions: true,
         },
         where: {
-          model_type: "App\\Models\\Course",
-          collection_name: "file__course_thumb"
-        }
-      }
+          model_type: 'App\\Models\\Course',
+          collection_name: 'file__course_thumb',
+        },
+      },
     },
     where: {
       id: {
-        in: [69, 228, 133, 91, 405, 357, 440, 429, 167, 516, 515, 569, 193, 490, 555, 620, 147, 89, 314, 531, 199]
+        in: [69, 228, 133, 91, 405, 357, 440, 429, 167, 516, 515, 569, 193, 490, 555, 620, 147, 89, 314, 531, 199],
       },
       status: 1,
       // collection: {
@@ -76,7 +76,7 @@ export const getPopularCoursesResolver: FieldResolver<'Query', 'courses'> = asyn
       // }
       // CollectionCourse: {
       //   where: {
-          
+
       //   },
       //   some: {
       //     collection_id: 2
@@ -98,6 +98,6 @@ export const getPopularCoursesResolver: FieldResolver<'Query', 'courses'> = asyn
 
   return [...courses].map(course => ({
     ...course,
-    image: course.media[0].file_name
+    image: course.media[0].file_name,
   }));
 };
