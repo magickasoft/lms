@@ -2,8 +2,8 @@ import SC from '@emotion/styled';
 import Image from 'next/image';
 import React from 'react';
 
-import { getCourseThumbnail } from '../helpers/media';
-import { getPrices } from '../helpers/price';
+import {getCourseThumbnail} from '../helpers/media';
+import {getPrices} from '../helpers/price';
 import {Price} from './price';
 
 const CourseItem = SC.div`
@@ -91,7 +91,7 @@ type CourseProps = {
 const SMALL_SIZE = '440';
 
 export const Course = ({id, media, title, author_info, price, ...props}: CourseProps) => {
-  const coursePrice = getPrices(price)
+  const coursePrice = getPrices(price);
 
   return (
     <section>
@@ -103,7 +103,7 @@ export const Course = ({id, media, title, author_info, price, ...props}: CourseP
         <Details>
           <div>
             <Title>{title}</Title>
-            <Author>{author_info.map((author: { name: any; }) => author.name).join(' • ')}</Author>
+            <Author>{author_info.map((author: {name: any}) => author.name).join(' • ')}</Author>
           </div>
           {/* <div>
             <Hr />
