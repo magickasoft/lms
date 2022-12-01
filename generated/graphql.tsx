@@ -118,7 +118,7 @@ export type GetCoursesQuery = { __typename?: 'Query', getCourses?: Array<{ __typ
 export type GetPopularCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPopularCoursesQuery = { __typename?: 'Query', getPopularCourses?: Array<{ __typename?: 'course', id?: bigint | null, title?: string | null, slug?: string | null, author_info?: any | null, price?: string | null, media?: Array<{ __typename?: 'media', id?: bigint | null, uuid?: string | null, collection_name?: string | null, file_name?: string | null, generated_conversions?: any | null } | null> | null } | null> | null };
+export type GetPopularCoursesQuery = { __typename?: 'Query', getPopularCourses?: Array<{ __typename?: 'course', id?: bigint | null, title?: string | null, slug?: string | null, author_info?: any | null, price?: string | null, media?: Array<{ __typename?: 'media', id?: bigint | null, uuid?: string | null, collection_name?: string | null, file_name?: string | null, generated_conversions?: any | null } | null> | null, author_id?: bigint | null } | null> | null };
 
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
