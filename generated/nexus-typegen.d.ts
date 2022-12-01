@@ -16,6 +16,10 @@ declare global {
      * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
      */
     date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
+    /**
+     * The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+     */
+    json<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "JSON";
   }
 }
 declare global {
@@ -28,6 +32,10 @@ declare global {
      * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
      */
     date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
+    /**
+     * The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+     */
+    json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "JSON";
     /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
@@ -64,6 +72,7 @@ export interface NexusGenScalars {
   ID: string
   BigInt: any
   DateTime: any
+  JSON: any
 }
 
 export interface NexusGenObjects {
@@ -74,7 +83,11 @@ export interface NexusGenObjects {
     username?: string | null; // String
   }
   course: { // root type
+    author_info?: NexusGenScalars['JSON'] | null; // JSON
     id?: NexusGenScalars['BigInt'] | null; // BigInt
+    image?: string | null; // String
+    lang?: string | null; // String
+    price?: string | null; // String
     slug?: string | null; // String
     title?: string | null; // String
   }
@@ -85,6 +98,13 @@ export interface NexusGenObjects {
   loginResponse: { // root type
     message?: string | null; // String
     username?: string | null; // String
+  }
+  media: { // root type
+    collection_name?: string | null; // String
+    file_name?: string | null; // String
+    generated_conversions?: NexusGenScalars['JSON'] | null; // JSON
+    id?: NexusGenScalars['BigInt'] | null; // BigInt
+    uuid?: string | null; // String
   }
   post: { // root type
     author?: NexusGenRootTypes['author'] | null; // author
@@ -113,6 +133,7 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     getCourses: Array<NexusGenRootTypes['course'] | null> | null; // [course]
+    getPopularCourses: Array<NexusGenRootTypes['course'] | null> | null; // [course]
     getPosts: Array<NexusGenRootTypes['post'] | null> | null; // [post]
     implicitLogin: NexusGenRootTypes['implicitLoginResponse'] | null; // implicitLoginResponse
     test: boolean | null; // Boolean
@@ -122,7 +143,12 @@ export interface NexusGenFieldTypes {
     username: string | null; // String
   }
   course: { // field return type
+    author_info: NexusGenScalars['JSON'] | null; // JSON
     id: NexusGenScalars['BigInt'] | null; // BigInt
+    image: string | null; // String
+    lang: string | null; // String
+    media: Array<NexusGenRootTypes['media'] | null> | null; // [media]
+    price: string | null; // String
     slug: string | null; // String
     title: string | null; // String
   }
@@ -133,6 +159,13 @@ export interface NexusGenFieldTypes {
   loginResponse: { // field return type
     message: string | null; // String
     username: string | null; // String
+  }
+  media: { // field return type
+    collection_name: string | null; // String
+    file_name: string | null; // String
+    generated_conversions: NexusGenScalars['JSON'] | null; // JSON
+    id: NexusGenScalars['BigInt'] | null; // BigInt
+    uuid: string | null; // String
   }
   post: { // field return type
     author: NexusGenRootTypes['author'] | null; // author
@@ -151,6 +184,7 @@ export interface NexusGenFieldTypeNames {
   }
   Query: { // field return type name
     getCourses: 'course'
+    getPopularCourses: 'course'
     getPosts: 'post'
     implicitLogin: 'implicitLoginResponse'
     test: 'Boolean'
@@ -160,7 +194,12 @@ export interface NexusGenFieldTypeNames {
     username: 'String'
   }
   course: { // field return type name
+    author_info: 'JSON'
     id: 'BigInt'
+    image: 'String'
+    lang: 'String'
+    media: 'media'
+    price: 'String'
     slug: 'String'
     title: 'String'
   }
@@ -171,6 +210,13 @@ export interface NexusGenFieldTypeNames {
   loginResponse: { // field return type name
     message: 'String'
     username: 'String'
+  }
+  media: { // field return type name
+    collection_name: 'String'
+    file_name: 'String'
+    generated_conversions: 'JSON'
+    id: 'BigInt'
+    uuid: 'String'
   }
   post: { // field return type name
     author: 'author'

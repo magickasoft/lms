@@ -15,6 +15,7 @@ import {useApollo} from '../lib/apolloClient';
 import {GlobalStyle} from '../styles';
 import theme from '../styles/theme';
 
+
 const clientSideEmotionCache = createEmotionCache();
 
 const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
@@ -56,6 +57,7 @@ const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
           <meta name="yandex-verification" content="bed3ff7aa8f6b9a4" />
         </Head>
         <ThemeProvider theme={theme}>
+          {/* <div className="halo"></div> */}
           <CssBaseline />
           <Header />
           <Component {...pageProps} />

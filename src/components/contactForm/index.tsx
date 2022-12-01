@@ -5,7 +5,7 @@ import React from 'react';
 import {contact} from '../../api';
 import {event} from '../../helpers/gtag';
 import {reachGoal} from '../../helpers/ym';
-import {Button} from '../button';
+import {Button} from '../Button/button';
 import {InputPhone} from '../inputPhone';
 import {phoneSchema} from './phone.schema';
 

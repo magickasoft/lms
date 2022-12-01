@@ -38,7 +38,7 @@ type PriceProps = {
   price?: any;
 };
 
-export const Price = ({price_without_discount, price, ...props}: PriceProps) => (
+export const Price = ({price = 0, price_without_discount, ...props}: PriceProps) => (
   <PriceBlock>
     {price_without_discount && (
       <OriginalPrice>

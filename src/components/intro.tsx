@@ -1,9 +1,13 @@
 import SC from '@emotion/styled';
+import Image from 'next/image';
 import React from 'react';
 import {Element} from 'react-scroll';
 
-import {useGetCoursesQuery} from '../../generated/graphql';
+import {useGetCoursesQuery, useGetPopularCoursesQuery} from '../../generated/graphql';
 import {ibmplexsans400, maxDevice} from '../styles';
+import { Button } from './Button/button';
+import { GreenButton } from './Button/greenButton';
+import { WhiteButton } from './Button/whiteButton';
 import {Course} from './course';
 
 const Container = SC.div`
@@ -32,85 +36,164 @@ const Brand = SC.h3`
 
 const CoursesList = SC.div`
   display: flex;
+  margin-bottom: 120px;
 `;
 
-const COURSES = [
-  {
-    id: 1,
-    slug: 'https://edston.com/silovoi-streicing-4',
-    title: 'Power Стрейчинг',
-    author: ['Екатерина'],
-    image:
-      'https://author.edston.com/storage/media/33984/conversions/4ac914d15850a9c23b1b2f94449f2584d9eff171-thumb_440.jpg',
-    price: 1490,
-    price_without_discount: 14900,
-  },
-  {
-    id: 2,
-    slug: 'https://edston.com/prakticeskii-kurs-molodaya-ya-na-raz-dva-tri-2',
-    title: 'Практический курс "Молодая Я на раз-два-три"',
-    author: ['Ирина Март'],
-    image:
-      'https://author.edston.com/storage/media/33717/conversions/8cc8d1a6a780a77ebc2c77203d349d91b8110ce6-thumb_440.jpg',
-    price: 1490,
-    price_without_discount: 14900,
-  },
-  {
-    id: 3,
-    slug: 'https://edston.com/krasivaya-koza-za-14-dnei',
-    title: 'Красивая кожа за 14 дней',
-    author: ['Александр Канайкин', 'Терентьева Ирина'],
-    image:
-      'https://author.edston.com/storage/media/32867/conversions/febc8c5bad300677cbfafeb577962ba9a035cf37-thumb_440.jpg',
-    price: 1490,
-    price_without_discount: 14900,
-  },
-  {
-    id: 4,
-    slug: 'https://edston.com/tancevalnaya-terapiya',
-    title: 'Танцевальная терапия',
-    author: ['Юлия Демина'],
-    image:
-      'https://author.edston.com/storage/media/5685/conversions/%D0%A2%D0%B0%D0%BD%D1%86%D0%B5%D0%B2%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D1%82%D0%B5%D1%80%D0%B0%D0%BF%D0%B8%D1%8F-thumb_440.jpg',
-    price: 1490,
-    price_without_discount: 14900,
-  },
-  {
-    id: 5,
-    slug: 'https://edston.com/prakticeskii-onlain-kurs-zenskaya-ioga',
-    title: 'Йога для укрепления женского здоровья',
-    author: ['Анастасия Миронова'],
-    image:
-      'https://author.edston.com/storage/media/12984/conversions/c654230b8af2c0c97fa52a871a4a3dd334a97fd1-thumb_440.jpg',
-    price: 1490,
-    price_without_discount: 14900,
-  },
-  {
-    id: 6,
-    slug: 'https://edston.com/dinamicheskaya-joga-dlya-strojnogo-tela',
-    title: 'Динамическая йога для стройного тела',
-    author: ['Алексей Кушнаренко'],
-    image: 'https://author.edston.com/storage/media/310/conversions/2.2-thumb_440.jpg',
-    price: 499,
-    price_without_discount: 4990,
-  },
-];
+const JoinSacrillBlock = SC.div`
+`;
+
+const Title = SC.div`
+  font-family: 'Bebas Neue Bold';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 92px;
+  line-height: 100%;
+`;
+
+const SubTitle = SC.div`
+  font-family: 'Bebas Neue Light';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 92px;
+  line-height: 100%;
+  text-align: right;
+  margin-bottom: 40px;
+`;
+
+const BlackButton = SC(Button)`
+  margin-right: 10px;
+`;
+
+const CoursesTab = SC.div`
+  margin-bottom: 60px;
+`;
+
+const Row = SC.div`
+  display: flex;
+  margin-bottom: 60px;
+`;
+
+const Column = SC.div`
+  width: 50%;
+  display: flex;
+`;
+
+const ButtonBlock = SC.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Text = SC.div`
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  max-width: 75%;
+`;
+
+const Pluses = SC.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const PlusItem = SC.div`
+  width: 275px;
+  height: 276px;
+  padding: 30px;
+  border: 1px solid gray;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const IconImage = SC(Image)`
+  margin-bottom: 40px;
+`;
+
+const SmallText = SC.span`
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+`;
+
+const courseTypes = [
+  {type:'new', title:'New classes'},
+  {type:'top', title:'Top classes'},
+  {type:'sale', title:'Courses on sale'},
+  {type:'popular', title:'Popular courses'},
+]
 
 export const Intro = props => {
   const courses = useGetCoursesQuery({variables: {}});
+
   return (
     <Element name="intro">
       <section>
         <Container>
-          <Brand>Skills that are not taught in school</Brand>
-          {courses?.data?.getCourses?.map(v => (
-            <p key={String(v.id)}>{v.title}</p>
-          ))}
+          <CoursesTab>
+            {courseTypes.map(courseType => courseType.type == 'new' ? <BlackButton>{courseType.title}</BlackButton> : <WhiteButton>{courseType.title}</WhiteButton>)}
+          </CoursesTab>
           <CoursesList>
-            {COURSES.map(course => (
-              <Course key={course.id} {...course} />
+            {courses?.data?.getCourses?.map(course => (
+                // {console.log(course.id.toString())}
+                <Course key={course.id.toString()} {...course} />
             ))}
           </CoursesList>
+          <JoinSacrillBlock>
+            <Title>
+              Join Sacrill Club And Get Access
+            </Title>
+            <SubTitle>
+              To All Courses In One Subscription
+            </SubTitle>
+
+            <Row>
+              <Column>
+                <ButtonBlock>
+                  <GreenButton>Join Sacrill Club</GreenButton>
+                </ButtonBlock>
+              </Column>
+              <Column>
+                <Text>
+                  Saсrill  is an educational platform with video courses on relevant topics. We help clients find and purchase online courses 
+                  from experts in their fields, and we help authors share their knowledge and expertise with a wider audience and get paid for their sales.
+                </Text>
+              </Column>
+            </Row>
+
+            <Row>
+              <Pluses>
+                <PlusItem>
+                  <IconImage src="/images/icons/typing.svg" height={46} width={46} alt="Typing image" />
+                  <SmallText>
+                    Chat with authors and other students
+                  </SmallText>
+                </PlusItem>
+                <PlusItem>
+                  <IconImage src="/images/icons/brain.svg" height={46} width={46} alt="Brain image" />
+                  <SmallText>
+                    Self-development courses, health, sports, relationships, dance and other categories
+                  </SmallText>
+                </PlusItem>
+                <PlusItem>
+                  <IconImage src="/images/icons/thumbup.svg" height={46} width={46} alt="Thumb up image" />
+                  <SmallText>
+                    10+ new courses  published each month
+                  </SmallText>
+                </PlusItem>
+                <PlusItem>
+                  <IconImage src="/images/icons/girl_notebook.svg" height={46} width={46} alt="Typing image" />
+                  <SmallText>
+                    Audio and video tutorials
+                  </SmallText>
+                </PlusItem>
+              </Pluses>
+            </Row>
+          </JoinSacrillBlock>
         </Container>
       </section>
     </Element>

@@ -1,4 +1,4 @@
-export {Button} from './button';
+export {Button} from './Button/button';
 export {Label, Section, Text} from './common';
 export {Contact} from './contact';
 export {ContactForm} from './contactForm';
@@ -6,7 +6,9 @@ export {Course} from './course';
 export {Footer} from './footer';
 export {Header} from './header';
 export {InputPhone} from './inputPhone';
+export {InputSearch} from './inputSearch';
 export {Intro} from './intro';
 export {Page} from './page';
 export {Price} from './price';
+export {SearchForm} from './searchForm';
 export {Select} from './select';

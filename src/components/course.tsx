@@ -2,21 +2,23 @@ import SC from '@emotion/styled';
 import Image from 'next/image';
 import React from 'react';
 
+import { getCourseThumbnail } from '../helpers/media';
+import { getPrices } from '../helpers/price';
 import {Price} from './price';
 
 const CourseItem = SC.div`
   position: relative;
   background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgb(128 128 128 / 15%);
+  // box-shadow: 0px 4px 20px rgb(128 128 128 / 15%);
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex-basis: 220px;
+  flex-basis: 240px;
   flex-shrink: 0;
-  width: 220px;
+  width: 240px;
   height: 290px;
-  margin-right: 15px;
+  margin-right: 20px;
   
   font-size: 1rem;
   font-weight: 400;
@@ -27,13 +29,19 @@ const CourseItem = SC.div`
 
 const Details = SC.div`
   flex-grow: 1;
-  padding: 20px;
+  padding-top: 30px;
+  padding-right: 10px;
+  // padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
 const Title = SC.div`
+  font-family: 'SF Pro Display Bold';
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
   font-size: 15px;
   max-height: 44px;
   overflow: hidden;
@@ -41,6 +49,10 @@ const Title = SC.div`
 `;
 
 const Author = SC.div`
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
   font-size: 13px;
   overflow: hidden;
   color: #808080;
@@ -68,34 +80,40 @@ const ImageBlock = SC.div`
 `;
 
 type CourseProps = {
-  image: any;
+  media?: any | null;
+  id: any;
   title: any;
-  author: any;
+  author_info: any;
   price: any;
-  price_without_discount: any;
   children?: any;
 };
 
-export const Course = ({image, title, author, price, price_without_discount, ...props}: CourseProps) => (
-  <section>
-    <CourseItem>
-      <ImageBlock>
-        <Image src={image} height={115} width={220} alt="Course thumbnail" />
-      </ImageBlock>
+const SMALL_SIZE = '440';
 
-      <Details>
-        <div>
-          <Title>{title}</Title>
-          <Author>{author.join(' • ')}</Author>
-        </div>
-        <div>
-          <Hr />
-          <BottomBlock>
-            <Price price={price} price_without_discount={price_without_discount} />
-            <Arrow>&gt;</Arrow>
-          </BottomBlock>
-        </div>
-      </Details>
-    </CourseItem>
-  </section>
-);
+export const Course = ({id, media, title, author_info, price, ...props}: CourseProps) => {
+  const coursePrice = getPrices(price)
+
+  return (
+    <section>
+      <CourseItem>
+        <ImageBlock>
+          <Image src={getCourseThumbnail(media, SMALL_SIZE)} height={130} width={240} alt="Course image" />
+        </ImageBlock>
+
+        <Details>
+          <div>
+            <Title>{title}</Title>
+            <Author>{author_info.map((author: { name: any; }) => author.name).join(' • ')}</Author>
+          </div>
+          {/* <div>
+            <Hr />
+            <BottomBlock>
+              <Price price={coursePrice?.rub} price_without_discount={coursePrice?.rub * 10} />
+              <Arrow>&gt;</Arrow>
+            </BottomBlock>
+          </div> */}
+        </Details>
+      </CourseItem>
+    </section>
+  )
+};

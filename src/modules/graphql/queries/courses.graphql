@@ -2,6 +2,32 @@ query GetCourses {
   getCourses {
     id,
     title,
-    slug
+    slug,
+    author_info,
+    price,
+    media {
+      id,
+      uuid,
+      collection_name,
+      file_name,
+      generated_conversions
+    }
+  }
+}
+
+query GetPopularCourses {
+  getPopularCourses {
+    id,
+    title,
+    slug,
+    author_info,
+    price,
+    media {
+      id,
+      uuid,
+      collection_name,
+      file_name,
+      generated_conversions
+    }
   }
 }

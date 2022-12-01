@@ -17,6 +17,55 @@ export const GlobalStyle = props => (
   <Global
     {...props}
     styles={css`
+      @font-face {
+        font-family: 'SF Pro Display';
+        font-style: normal;
+        font-weight: 400;
+        src: local(''), 
+            // url('/fonts/Faustina/Faustina.woff') format('woff'),
+            url('/fonts/SFProDisplayRegular.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'SF Pro Display Bold';
+        font-style: normal;
+        font-weight: 700;
+        src: local(''), 
+            url('/fonts/SFProDisplayBold.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Bebas Neue';
+        font-style: normal;
+        font-weight: 400;
+        src: local(''), 
+            url('/fonts/BebasNeueRegular.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Bebas Neue Bold';
+        font-style: normal;
+        font-weight: 700;
+        src: local(''), 
+            url('/fonts/BebasNeueBold.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Bebas Neue Light';
+        font-style: normal;
+        font-weight: 300;
+        src: local(''), 
+            url('/fonts/BebasNeueLight.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Bebas Neue Thin';
+        font-style: normal;
+        font-weight: 100;
+        src: local(''), 
+            url('/fonts/BebasNeueThin.ttf') format('truetype');
+      }
+
       html,
       body {
         //background: linear-gradient(-45deg, #7dc6e3, #f3d7df, #ffffff, #73ccb6);
@@ -63,9 +112,9 @@ export const GlobalStyle = props => (
       }
 
       a:hover {
-        background: linear-gradient(90deg, #fe00dd -56.25%, #fd0009 135.94%);
+        background: #000;
+        text-decoration: underline;
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
       }
 
       a:active,
