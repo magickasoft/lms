@@ -81,10 +81,10 @@ const ImageBlock = SC.div`
 
 type CourseProps = {
   media?: any | null;
-  id: any;
-  title: any;
-  author_info: any;
-  price: any;
+  id?: any;
+  title?: any;
+  author_info?: any;
+  price?: any;
   children?: any;
 };
 

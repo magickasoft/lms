@@ -135,11 +135,11 @@ export const Intro = props => {
       <section>
         <Container>
           <CoursesTab>
-            {courseTypes.map(courseType =>
+            {courseTypes.map((courseType, index) =>
               courseType.type == 'new' ? (
-                <BlackButton>{courseType.title}</BlackButton>
+                <BlackButton key={index}>{courseType.title}</BlackButton>
               ) : (
-                <WhiteButton>{courseType.title}</WhiteButton>
+                <WhiteButton key={index}>{courseType.title}</WhiteButton>
               ),
             )}
           </CoursesTab>
