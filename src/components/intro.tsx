@@ -144,7 +144,9 @@ export const Intro = props => {
             )}
           </CoursesTab>
           <CoursesList>
-            {courses?.data?.getCourses?.map(course => <Course key={course.id.toString()} {...course} />)}
+            {courses?.data?.getCourses?.map(course => (
+              <Course key={course.id.toString()} {...course} />
+            ))}
           </CoursesList>
           <JoinSacrillBlock>
             <Title>Join Sacrill Club And Get Access</Title>
