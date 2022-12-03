@@ -79,8 +79,16 @@ const ImageBlock = SC.div`
   height: 100%;
 `;
 
+type Media = {
+  id?: bigint;
+  uuid?: string;
+  collection_name?: string;
+  file_name?: string;
+  generated_conversions?: any;
+};
+
 type CourseProps = {
-  media?: any | null;
+  media?: Media[];
   id?: any;
   title?: any;
   author_info?: any;

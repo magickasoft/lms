@@ -34,7 +34,7 @@ const course = objectType({
     t.json('author_info');
     t.list.field('media', {
       type: mediaObjectType,
-      resolve(parent, args, ctx) {
+      resolve(parent: any, args, ctx) {
         return parent.media;
         // return ctx.getCourses(root.id).media()
       },
