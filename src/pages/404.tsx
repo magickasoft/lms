@@ -81,7 +81,7 @@ const NotFoundPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) =>
       </Img>
     </Page>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps<Props> = async ({locale}) => ({
   props: {
