@@ -1,5 +1,9 @@
 import SC from '@emotion/styled';
+import type {GetStaticProps, InferGetStaticPropsType} from 'next';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
+import {Trans, useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 
 import {Page} from '../components';
 import {Icon} from '../components/icon';
@@ -53,21 +57,36 @@ const Img = SC.div`
   justify-content: flex-end;
 `;
 
-const NotFoundPage = () => (
-  <Page>
-    <div>
-      <Title>{`Этой страницы \nне существует`}</Title>
-      <Text>
-        Вы перешли по неверной ссылке, либо эта страница была удалена.&nbsp;
-        <Link rel="canonical" href="/" passHref>
-          Начните с главной страницы
-        </Link>
-      </Text>
-    </div>
-    <Img>
-      <NotFound name="notFound" size="260" />
-    </Img>
-  </Page>
-);
+type Props = {
+  // Add custom props here
+};
+
+const NotFoundPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const router = useRouter();
+  const {t} = useTranslation('common');
+
+  return (
+    <Page>
+      <div>
+        <Title>{t('404Header')}</Title>
+        <Text>
+          {t('404Text')}
+          <Link rel="canonical" href="/" passHref>
+            {t('mainStart')}
+          </Link>
+        </Text>
+      </div>
+      <Img>
+        <NotFound name="notFound" size="260" />
+      </Img>
+    </Page>
+  );
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({locale}) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? 'es', ['common'])),
+  },
+});
 
 export default NotFoundPage;

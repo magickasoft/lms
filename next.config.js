@@ -3,6 +3,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   openAnalyzer: false,
 });
 
+const { i18n } = require('./next-i18next.config.js');
+const { loadCustomBuildParams } = require('./next-utils.config');
+const { esmExternals = false, tsconfigPath } = loadCustomBuildParams();
+
 /** @type {import('next').NextConfig} */
 const {
   PHASE_DEVELOPMENT_SERVER,
@@ -27,6 +31,13 @@ const defaultConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     domains: ['cdn.pixabay.com', 'media.istockphoto.com', 'novostroiki-54.ru', 'author.edston.com'],
   },
+  experimental: {
+    esmExternals,
+  },
+  i18n,
+  typescript: {
+    tsconfigPath,
+  },
 };
 
 module.exports = (phase) => {
@@ -43,7 +54,6 @@ module.exports = (phase) => {
       gaMeasurementId: 'G-CZ2JMN4FYD',
       yaMetrikaId: '88802971',
       jwtSecret: 'test',
-      imageDomain: 'https://author.edston.com'
     },
   });
 };

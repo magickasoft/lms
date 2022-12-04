@@ -8,6 +8,7 @@ import {WhiteButton} from './Button/whiteButton';
 import {Text} from './common';
 import {Icon} from './icon';
 import {InputSearch} from './inputSearch';
+import {LocaleSwitcher} from './localeSwitcher';
 import {ScrollIndicator} from './scrollIndicator';
 import {SearchForm} from './searchForm';
 
@@ -151,6 +152,7 @@ export const Header = props => {
             <SearchForm />
           </Search>
           <RightButtons>
+            <LocaleSwitcher />
             <BlackButtons>Log In</BlackButtons>
             <WhiteButton>En</WhiteButton>
           </RightButtons>

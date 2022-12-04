@@ -1,5 +1,4 @@
 import {FieldResolver} from 'nexus';
-import {Collection} from 'nexus-prisma';
 
 export const getCoursesResolver: FieldResolver<'Query', 'courses'> = async (_, __, {prisma, req}) => {
   const courses = await prisma.course.findMany({

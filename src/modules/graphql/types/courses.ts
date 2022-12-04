@@ -1,5 +1,4 @@
 import {extendType, list, objectType} from 'nexus';
-import {Course} from 'nexus-prisma';
 
 import {getCoursesResolver, getPopularCoursesResolver} from '../resolvers/coursesResolvers';
 

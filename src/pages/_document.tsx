@@ -2,6 +2,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import Document, {Head, Html, Main, NextScript} from 'next/document';
 import React from 'react';
 
+import i18nextConfig from '../../next-i18next.config';
 import {createEmotionCache} from '../helpers/createEmotionCache';
 import theme from '../styles/theme';
 
@@ -37,8 +38,9 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    const currentLocale = this.props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale;
     return (
-      <Html lang="ru">
+      <Html lang={currentLocale}>
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />

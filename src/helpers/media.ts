@@ -12,5 +12,5 @@ export const getCourseThumbnail = (media: any, size: string) => {
     fileThumbnail = '-thumb_' + size;
   }
 
-  return `${process.env.imageDomain}/storage/media/${id}/conversions/${fileName}${fileThumbnail}.${fileExtension}`;
+  return `https://author.edston.com/storage/media/${id}/conversions/${fileName}${fileThumbnail}.${fileExtension}`;
 };
