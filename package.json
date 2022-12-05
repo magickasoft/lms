@@ -78,7 +78,7 @@
     "@graphql-codegen/typescript-operations": "^2.5.8",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@types/bcrypt": "^5.0.0",
-    "@types/cors": "^2.8.12",
+    "@types/cors": "^2.8.13",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.26",
