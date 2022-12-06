@@ -1,45 +1,29 @@
 import SC from '@emotion/styled';
-import Image from 'next/image';
 import React from 'react';
 
 import {ibmplexsans400, maxDevice} from '../styles';
 import {Button} from './Button/button';
 import {WhiteButton} from './Button/whiteButton';
-import {Text} from './common';
 import {Icon} from './icon';
-import {InputSearch} from './inputSearch';
 import {LocaleSwitcher} from './localeSwitcher';
 import {ScrollIndicator} from './scrollIndicator';
 import {SearchForm} from './searchForm';
 
-type ContainerProps = {
-  active: boolean;
-};
-const Container = SC.header<ContainerProps>`
+const Container = SC.header`
   font-family: ${ibmplexsans400.style.fontFamily};
-  background: ${({active}) => (active ? '#ffffff05' : '#ffffff05')};
+  background: #ffffff05;
   z-index: 9998;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  height: 4.45rem;
   margin: 0 auto;
-  padding: 0 140px;
+  padding: 0 200px;
+  height: 76px;
   background-color: #FFFFFF;
   @media ${maxDevice.tablet} {
-    padding: 0 30px;
-    height: 3.5rem;
+    padding: 0 20px;
   }
-`;
-
-const SCIcon = SC(Icon)`
-  background-color: #fff;
-  border-radius: 50%;
-  margin-left: 15px;
 `;
 
 const Label = SC.div`
@@ -66,10 +50,6 @@ const Link = SC.a`
   -webkit-background-clip: text;
 `;
 
-const Row = SC.div`
-  display: flex;
-  flex-direction: row;
-`;
 const LeftSide = SC.div`
   width: 50%;
   display: flex;
@@ -97,47 +77,13 @@ const BlackButtons = SC(Button)`
   margin-right: 10px;
 `;
 
-const useScroll = () => {
-  const [active, setActive] = React.useState(false);
-
-  const onScroll = () => {
-    setActive(window?.scrollY >= 400);
-  };
-
-  React.useEffect(() => {
-    window?.addEventListener('scroll', onScroll);
-
-    return () => window?.removeEventListener('scroll', onScroll);
-  }, []);
-
-  return [active];
-};
-
-export const Header = props => {
-  const [active] = useScroll();
-  const [loading, setLoading] = React.useState(false);
-
-  const handleSend = React.useCallback(async (phone = '') => {
-    setLoading(true);
-    try {
-      // await contact({phone});
-      // const data: any = {action: 'submit_form', category: 'contact_phone', label: phone};
-      // event(data);
-      // reachGoal('contact_phone');
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
+export const Header = () => {
   return (
     <>
-      {/* <ScrollIndicator /> */}
-      <Container active={active}>
+      <ScrollIndicator />
+      <Container>
         <LeftSide>
-          <Image src="/images/icons/logo.svg" alt="Sacrill Logo" width={136} height={30} />
+          <Icon name="logo" width={136} height={30} />
           <HeaderLinks>
             <Label>
               <Link href="#">Categories</Link>
@@ -152,16 +98,10 @@ export const Header = props => {
             <SearchForm />
           </Search>
           <RightButtons>
-            <LocaleSwitcher />
             <BlackButtons>Log In</BlackButtons>
-            <WhiteButton>En</WhiteButton>
+            <LocaleSwitcher />
           </RightButtons>
         </RightSide>
-        {/* <Row>
-          <Label>
-            <Link href="mailto:hello@sacrill.com">hello@sacrill.com</Link>
-          </Label>
-        </Row> */}
       </Container>
     </>
   );
