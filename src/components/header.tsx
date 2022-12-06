@@ -113,7 +113,7 @@ const useScroll = () => {
   return [active];
 };
 
-export const Header = props => {
+export const Header: React.FC = props => {
   const [active] = useScroll();
   const [loading, setLoading] = React.useState(false);
 

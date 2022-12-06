@@ -18,7 +18,7 @@ const defaultConfig = {
   compiler: {
     styledComponents: true,
     removeConsole: {
-      exclude: ['error'],
+      exclude: ['error', 'log'],
     },
   },
   swcMinify: true,

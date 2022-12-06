@@ -1,6 +1,6 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Element} from 'react-scroll';
 
 import {useGetCoursesQuery, useGetPopularCoursesQuery} from '../../generated/graphql';
@@ -120,15 +120,37 @@ const SmallText = SC.span`
   line-height: 150%;
 `;
 
-const courseTypes = [
+type CourseType = {
+  type: string;
+  title: string;
+};
+
+const courseTypes: CourseType[] = [
   {type: 'new', title: 'New classes'},
   {type: 'top', title: 'Top classes'},
-  {type: 'sale', title: 'Courses on sale'},
+  // {type: 'sale', title: 'Courses on sale'},
   {type: 'popular', title: 'Popular courses'},
 ];
 
-export const Intro = props => {
+export const Intro = (props: any) => {
+  const [selectedType, setSelectedType] = useState('new')
   const courses = useGetCoursesQuery({variables: {}});
+  const popularCourses = useGetPopularCoursesQuery({variables: {}});
+
+  const handleSelectType = (course: CourseType) => {
+    setSelectedType(course.type)
+  };
+
+  useEffect(() => {
+    console.log(selectedType)
+  }, [selectedType]);
+
+  let coursesItems = [];
+  if(selectedType === 'new') {
+    coursesItems = courses?.data?.getCourses?.map(course => <Course key={course.id.toString()} {...course} />)
+  } else if(selectedType === 'popular') {
+    coursesItems = popularCourses?.data?.getPopularCourses?.map(course => <Course key={course.id.toString()} {...course} />)
+  }
 
   return (
     <Element name="intro">
@@ -136,17 +158,17 @@ export const Intro = props => {
         <Container>
           <CoursesTab>
             {courseTypes.map((courseType, index) =>
-              courseType.type == 'new' ? (
-                <BlackButton key={index}>{courseType.title}</BlackButton>
-              ) : (
-                <WhiteButton key={index}>{courseType.title}</WhiteButton>
-              ),
+              <WhiteButton 
+                key={index}
+                onClick={() => handleSelectType(courseType)}
+                active={selectedType === courseType.type}
+              >
+                {courseType.title}
+              </WhiteButton>
             )}
           </CoursesTab>
           <CoursesList>
-            {courses?.data?.getCourses?.map(course => (
-              <Course key={course.id.toString()} {...course} />
-            ))}
+            {coursesItems}
           </CoursesList>
           <JoinSacrillBlock>
             <Title>Join Sacrill Club And Get Access</Title>
@@ -195,3 +217,4 @@ export const Intro = props => {
     </Element>
   );
 };
+
