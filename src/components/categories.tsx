@@ -3,7 +3,7 @@ import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {Element} from 'react-scroll';
 
-import {useGetCoursesQuery, useGetPopularCoursesQuery} from '../../generated/graphql';
+import {useGetCoursesQuery, useGetPopularCoursesQuery, useGetTopCoursesQuery} from '../../generated/graphql';
 import {ibmplexsans400, maxDevice} from '../styles';
 import {Button} from './Button/button';
 import {WhiteButton} from './Button/whiteButton';
@@ -65,7 +65,7 @@ const defaultResponsive = [
 const courseTypes = [
   {type: 'new', label: 'Categories.courseType1'},
   {type: 'top', label: 'Categories.courseType2'},
-  {type: 'sale', label: 'Categories.courseType3'},
+  // {type: 'sale', label: 'Categories.courseType3'},
   {type: 'popular', label: 'Categories.courseType4'},
 ];
 
@@ -78,29 +78,44 @@ export const Categories = props => {
   const [activeType, setActiveType] = React.useState('new');
   const {t} = useTranslation('common');
   const courses = useGetCoursesQuery({variables: {}});
-  const list = courses?.data?.getCourses || [];
+  const popularCourses = useGetPopularCoursesQuery({variables: {}});
+  const topCourses = useGetTopCoursesQuery({variables: {}});
 
   const onClickType = (type: string) => () => {
     setActiveType(type);
   };
 
+  let coursesItems = [];
+  if(activeType === 'new') {
+    coursesItems = courses?.data?.getCourses?.map(course => <Course key={course.id.toString()} {...course} />)
+  } else if(activeType === 'popular') {
+    coursesItems = popularCourses?.data?.getPopularCourses?.map(course => <Course key={course.id.toString()} {...course} />)
+  } else if(activeType === 'top') {
+    coursesItems = topCourses?.data?.getTopCourses?.map(course => <Course key={course.id.toString()} {...course} />)
+  }
+
+  console.log(activeType)
+
+  React.useEffect(() => {
+    console.log(activeType)
+  }, [activeType]);
+
   return (
     <Element name="categories">
       <Container>
         <Content>
-          {courseTypes.map(({type, label}: CourseTypeProps, index) => {
-            const Component = type == activeType ? BlackButton : WhiteButton;
-            return (
-              <Component key={index} onClick={onClickType(type)}>
-                {t(label)}
-              </Component>
-            );
-          })}
+          {courseTypes.map(({type, label}: CourseTypeProps, index) =>
+            <WhiteButton 
+              key={index}
+              onClick={onClickType(type)}
+              active={activeType === type}
+            >
+              {t(label)}
+            </WhiteButton>
+          )}
         </Content>
-        <CustomSlider centerMode={false} responsive={defaultResponsive}>
-          {list.map(course => (
-            <Course key={course.id.toString()} {...course} />
-          ))}
+        <CustomSlider autoplay={false} centerMode={false} responsive={defaultResponsive}>
+          {coursesItems}
         </CustomSlider>
       </Container>
     </Element>

@@ -1,13 +1,14 @@
 import SC from '@emotion/styled';
+import { Button } from '@mui/material';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
 import {useTranslation} from 'next-i18next';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Element} from 'react-scroll';
 
 import {useGetCoursesQuery, useGetPopularCoursesQuery, useGetTopCoursesQuery} from '../../generated/graphql';
 import {ibmplexsans400, maxDevice} from '../styles';
 import {GreenButton} from './Button/greenButton';
+import { Course } from './course';
 
 const Container = SC.div`
   font-family: ${ibmplexsans400.style.fontFamily};
@@ -119,6 +120,8 @@ const SmallText = SC.span`
   line-height: 150%;
 `;
 
+const CoursesList = SC.div``;
+
 type CourseType = {
   type: string;
   title: string;
@@ -158,20 +161,6 @@ export const Intro = (props: any) => {
     <Element name="intro">
       <section>
         <Container>
-          <CoursesTab>
-            {courseTypes.map((courseType, index) =>
-              <WhiteButton 
-                key={index}
-                onClick={() => handleSelectType(courseType)}
-                active={selectedType === courseType.type}
-              >
-                {courseType.title}
-              </WhiteButton>
-            )}
-          </CoursesTab>
-          <CoursesList>
-            {coursesItems}
-          </CoursesList>
           <JoinSacrillBlock>
             <Title>Join Sacrill Club And Get Access</Title>
             <SubTitle>To All Courses In One Subscription</SubTitle>

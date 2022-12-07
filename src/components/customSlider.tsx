@@ -28,11 +28,12 @@ type CustomSliderProps = {
   children?: any;
   withControls?: boolean;
   centerMode?: boolean;
+  autoplay?: boolean;
   responsive?: any;
 };
 
 export const CustomSlider = ({withControls = true, initialSlide = 0, children, ...props}: CustomSliderProps) => {
-  const slider: any = React.useRef();
+  const slider: any = React.useRef(null);
   const [hasSetPosition, setHasSetPosition] = React.useState(false);
 
   const settings = {
