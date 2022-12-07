@@ -1,5 +1,16 @@
 {
     "mainStart": "Empezar desde la página de inicio",
     "404Header": "Esta página \no existe",
-    "404Text": "Seguiste el enlace incorrecto o esta página se eliminó.&nbsp;"
-  }
+    "404Text": "Seguiste el enlace incorrecto o esta página se eliminó. ",
+    "categories": "Categorías",
+    "joinSCC": "Únete a la comunidad Sacrill Club",
+    "support": "Apoyo",
+    "teachSacrill": "Enseñar en Sacrill",
+    "logIn": "Iniciar sesión",
+    "Categories": {
+        "courseType1": "Clases nuevas",
+        "courseType2": "Las mejores clases",
+        "courseType3": "Cursos en venta",
+        "courseType4": "Cursos populares"
+      }
+}

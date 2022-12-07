@@ -1,10 +1,16 @@
+import type {GetStaticProps, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import {Events, scrollSpy} from 'react-scroll';
 
-import {Intro} from '../components';
+import {Categories, Intro} from '../components';
 
-const Home = props => {
+type Props = {
+  // Add custom props here
+};
+
+const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   React.useEffect(() => {
     Events.scrollEvent.register('begin', function (to, element) {
       console.log('begin', to);
@@ -46,9 +52,16 @@ const Home = props => {
         <meta property="twitter:url" content="https://sacrill.com/" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
+      <Categories />
       <Intro />
     </>
   );
 };
+
+export const getStaticProps: GetStaticProps<Props> = async ({locale}) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? 'es', ['common'])),
+  },
+});
 
 export default Home;

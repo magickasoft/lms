@@ -16,13 +16,15 @@ const Locale = SC(Link)`
 
 export const LocaleSwitcher = () => {
   const router = useRouter();
-  const {locales, pathname, query, asPath} = router;
+  const {locale, locales, pathname, query, asPath} = router;
+  const list = (locales || []).filter(l => l !== locale);
+
   return (
     <Container>
-      {(locales || []).map(locale => (
+      {list.map(locale => (
         <Locale key={locale} href={{pathname, query}} as={asPath} locale={locale} legacyBehavior>
-        <WhiteButton>{capitalize(locale)}</WhiteButton> 
-      </Locale>
+          <WhiteButton>{capitalize(locale)}</WhiteButton>
+        </Locale>
       ))}
     </Container>
   );

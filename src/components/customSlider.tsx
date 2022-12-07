@@ -10,10 +10,10 @@ import {maxDevice} from '../styles';
 
 const Controls = SC.div`
   display: flex;
-  justify-content: flex-end;
-  padding: 0 140px 0 140px;
+  justify-content: flex-start;
+  padding: 0 200px 0 200px;
   @media ${maxDevice.tablet} {
-    padding: 0 30px 0 30px;
+    padding: 0 20px 0 20px;
   }
 `;
 
@@ -55,6 +55,9 @@ export const CustomSlider = ({withControls = true, initialSlide = 0, children, .
 
   return (
     <>
+      <Slider ref={slider} {...settings}>
+        {children}
+      </Slider>
       {withControls && (
         <Controls>
           <Btn onClick={slider.current?.slickPrev}>
@@ -65,9 +68,6 @@ export const CustomSlider = ({withControls = true, initialSlide = 0, children, .
           </Btn>
         </Controls>
       )}
-      <Slider ref={slider} {...settings}>
-        {children}
-      </Slider>
     </>
   );
 };
