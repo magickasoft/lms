@@ -1,5 +1,6 @@
 import {ApolloProvider} from '@apollo/client';
 import {CacheProvider} from '@emotion/react';
+import SC from '@emotion/styled';
 import {CssBaseline} from '@mui/material';
 import {ThemeProvider} from '@mui/material/styles';
 import Head from 'next/head';
@@ -18,6 +19,10 @@ import {GlobalStyle} from '../styles';
 import theme from '../styles/theme';
 
 const clientSideEmotionCache = createEmotionCache();
+const MainDiv = SC.div`
+  max-width: 1680px;
+  margin: 0 auto;
+`;
 
 const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
   const apolloClient = useApollo(pageProps);
@@ -58,11 +63,12 @@ const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
           <meta name="yandex-verification" content="bed3ff7aa8f6b9a4" />
         </Head>
         <ThemeProvider theme={theme}>
-          {/* <div className="halo"></div> */}
-          <CssBaseline />
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
+          <MainDiv>
+            <CssBaseline />
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </MainDiv>
         </ThemeProvider>
       </CacheProvider>
     </ApolloProvider>

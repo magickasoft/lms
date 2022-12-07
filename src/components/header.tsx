@@ -3,10 +3,8 @@ import React from 'react';
 
 import {ibmplexsans400, maxDevice} from '../styles';
 import {Button} from './Button/button';
-import {WhiteButton} from './Button/whiteButton';
 import {Icon} from './icon';
 import {LocaleSwitcher} from './localeSwitcher';
-import {ScrollIndicator} from './scrollIndicator';
 import {SearchForm} from './searchForm';
 
 const Container = SC.header`
@@ -18,7 +16,7 @@ const Container = SC.header`
   flex-direction: row;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 0 200px;
+  padding: 0 260px;
   height: 76px;
   background-color: #FFFFFF;
   @media ${maxDevice.tablet} {
@@ -80,7 +78,6 @@ const BlackButtons = SC(Button)`
 export const Header = () => {
   return (
     <>
-      <ScrollIndicator />
       <Container>
         <LeftSide>
           <Icon name="logo" width={136} height={30} />

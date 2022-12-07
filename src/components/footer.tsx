@@ -7,6 +7,7 @@ import {ibmplexsans400, maxDevice, minDevice} from '../styles';
 const Container = SC.footer`
   font-family: ${ibmplexsans400.style.fontFamily};
   padding: 0 140px 0.75rem 140px;
+  padding: 0 260px;
   @media ${maxDevice.tablet} {
     padding: 0 30px 0.75rem 30px;
   }

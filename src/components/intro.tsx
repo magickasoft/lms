@@ -12,7 +12,8 @@ import {Course} from './course';
 
 const Container = SC.div`
   font-family: ${ibmplexsans400.style.fontFamily};
-  padding: 23vh 140px 0 140px;
+  // padding: 23vh 140px 0 140px;
+  padding: 23vh 260px;
   @media ${maxDevice.tablet} {
     padding: 18vh 30px 0 30px;
   }
@@ -40,6 +41,16 @@ const CoursesList = SC.div`
 `;
 
 const JoinSacrillBlock = SC.div`
+  margin-bottom: 120px;
+`;
+
+const HowSacrillWorks = SC.div`
+
+`;
+
+const CenterBlock = SC.div`
+  text-align: center;
+  margin-bottom: 60px;
 `;
 
 const Title = SC.div`
@@ -51,6 +62,16 @@ const Title = SC.div`
 `;
 
 const SubTitle = SC.div`
+  font-family: 'Bebas Neue Light';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 92px;
+  line-height: 100%;
+  text-align: right;
+  margin-bottom: 40px;
+`;
+
+const SubSpan = SC.span`
   font-family: 'Bebas Neue Light';
   font-style: normal;
   font-weight: 600;
@@ -215,6 +236,14 @@ export const Intro = (props: any) => {
               </Pluses>
             </Row>
           </JoinSacrillBlock>
+
+          <HowSacrillWorks>
+              <CenterBlock>
+                <Title>How <SubSpan>Sacrill works</SubSpan></Title>
+
+                
+              </CenterBlock>
+          </HowSacrillWorks>
         </Container>
       </section>
     </Element>
