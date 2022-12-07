@@ -3,11 +3,14 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import React from 'react';
 
-const Container = SC.div`
-  margin: 0 10px;
+import {capitalize} from '../utils/capitalize';
+import {WhiteButton} from './Button/whiteButton';
+
+const Container = SC.span`
+  margin: 0;
 `;
 
-const Locale = SC.span`
+const Locale = SC(Link)`
   margin: 0 5px;
 `;
 
@@ -17,11 +20,9 @@ export const LocaleSwitcher = () => {
   return (
     <Container>
       {(locales || []).map(locale => (
-        <Locale key={locale}>
-          <Link href={{pathname, query}} as={asPath} locale={locale} legacyBehavior>
-            {locale}
-          </Link>
-        </Locale>
+        <Locale key={locale} href={{pathname, query}} as={asPath} locale={locale} legacyBehavior>
+        <WhiteButton>{capitalize(locale)}</WhiteButton> 
+      </Locale>
       ))}
     </Container>
   );
