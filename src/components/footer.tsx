@@ -1,212 +1,231 @@
 import SC from '@emotion/styled';
+import Grid from '@mui/material/Grid';
+import Image from 'next/image';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {Link} from 'react-scroll';
 
+// import {Link} from 'react-scroll';
 import {ibmplexsans400, maxDevice, minDevice} from '../styles';
+import {Button} from './Button/button';
+import {WhiteButton} from './Button/whiteButton';
+import {Icon} from './icon';
 
 const Container = SC.footer`
   font-family: ${ibmplexsans400.style.fontFamily};
   padding: 0 140px 0.75rem 140px;
-  padding: 0 260px;
   @media ${maxDevice.tablet} {
-    padding: 0 30px 0.75rem 30px;
-  }
-`;
-
-const Content = SC.div`
-  border-top: 1px solid #1f2326;
-  padding-top: 3rem;
-  @media ${maxDevice.tablet} {
-    padding-top: 2.5rem;
-  }
-  @media ${maxDevice.mobileL} {
-    padding-top: 2rem;
+    padding: 0 20px 90px 20px;
   }
 `;
 
 const Copyright = SC.div`
-  padding: 1rem 0 0;
-  color: #7f7f7f;
-  font-size: 1rem;
-  line-height: 1.375rem;
-  @media ${minDevice.tablet} {
-    padding: 0;
-  }
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #808080;
 `;
 
 const A = SC.a`
-  transition: .25s ease;
-  transition-property: background-position,border,color,left,margin,padding,right,opacity;
-  color: #1f2326;
-  font-size: 1.75rem;
-  font-weight: 500;
-  line-height: 2.625rem;
-  background-image: linear-gradient(-90deg,#181818 0%,#181818 49.99%,#f1477e 50%,#fa477e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-position: 100%;
-  background-size: 200%;
-  &:hover {
-    background-position: 0;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 110%;
+  color: #333333;
+  margin-bottom: 40px;
+  @media ${maxDevice.laptop} {
+    font-size: 45px;
   }
-  @media ${minDevice.mobileL} {
-    font-size: 2rem;
+  @media ${maxDevice.tablet} {
+    font-size: 42px;
   }
-  @media ${minDevice.tablet} {
-    font-size: 2.25rem;
-    line-height: 2.9375rem;
+  @media ${maxDevice.mobileL} {
+    font-size: 38px;
   }
 `;
 
-const Contacts = SC.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 0 0 2.5rem;
-  @media ${minDevice.laptopL} {
-    flex-direction: row;
-    justify-content: space-between;
+const ExternalLink = SC.a`
+    margin-left: 7px;
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #808080;
+`;
+
+const Support = SC.div`
+  text-align: end;
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #808080;
+  margin-bottom: 20px;
+  @media ${maxDevice.laptop} {
+    text-align: start;
+  }
+  @media ${maxDevice.tablet} {
+    text-align: start;
+  }
+  @media ${maxDevice.mobileL} {
+    text-align: start;
   }
 `;
 
 const Email = SC.div`
-  padding: 0 3rem 0 0;
-`;
-
-const Note = SC.div`
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-between;
-  position: relative;
-  @media ${minDevice.tablet} {
-    flex-direction: row;
+  text-align: end;
+  margin-bottom: 20px;
+  @media ${maxDevice.laptop} {
+    text-align: start;
+  }
+  @media ${maxDevice.tablet} {
+    text-align: start;
+  }
+  @media ${maxDevice.mobileL} {
+    text-align: start;
   }
 `;
 
-const Social = SC.div`
-  display: flex;
-  flex-wrap: wrap;
-  @media ${minDevice.tablet} {
-    margin-left: auto;
+const BlackButtons = SC(Button)`
+  margin-left: 10px;
+  margin-top: 10px;
+`;
+const WhiteButtons = SC(WhiteButton)`
+  margin-left: 10px;
+  margin-top: 10px;
+`;
+
+const Actions = SC.div`
+  text-align: end;
+  @media ${maxDevice.laptop} {
+    text-align: start;
+  }
+  @media ${maxDevice.tablet} {
+    text-align: start;
+  }
+  @media ${maxDevice.mobileL} {
+    text-align: start;
   }
 `;
 
-const SocialLink = SC.a`
-  color: #181818;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 22px;
-  margin: 0 15px 0 0;
-  background-image: linear-gradient(-90deg,#181818 0%,#181818 49.99%,#FD0009 50%,#FE00DD 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-position: 100%;
-  background-size: 200%;
-  
-  &:hover {
-    background-position: 0;
-  }
-  
-  @media ${minDevice.tablet} {
-    font-size: rem(16px);
-    margin: rem(0 0 0 20px);
-  }
-
-  @media ${minDevice.laptop} {
-    font-size: 14px;
-    font-weight: normal;
-  }
+const Text = SC.div`
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #808080;
+  margin: 30px 0;
 `;
 
-const Nav = SC.nav`
-  display: none;
-  padding: 0 0 1rem;
-  @media ${minDevice.laptop} {
-    display: block;
-  }
+const IconImage = SC(Image)`
+  margin-left: 7px;
 `;
 
-const Ul = SC.ul`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: calc(380px);
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+const Label = SC.div`
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #333333;
+  margin-bottom: 20px;
 `;
 
-const Li = SC.li`
-  padding: 0 0 0.25rem;
-  width: 10rem;
-  display: list-item;
-  text-align: -webkit-match-parent;
+const LabelLink = SC.a`
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #808080;
+  margin-bottom: 10px;
 `;
 
-const NavLink = SC(Link)`
-  cursor: pointer !important;
-  color: #22262A;
-  font-size: 14px;
-  line-height: 20px;
-  background-image: linear-gradient(-90deg,#181818 0%,#181818 49.99%,#FD0009 50%,#FE00DD 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-position: 100%;
-  background-size: 200%;
+export const Footer = () => {
+  const {t} = useTranslation('common');
+  return (
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
+          <Grid container spacing={3.5}>
+            <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+              <Icon name="logo" width={136} height={30} />
+              <Text>
+                At Sacrill, expert practitioners in their fields share their expertise in online video courses at
+                reasonable prices.
+              </Text>
+              <IconImage src="/images/icons/visa.svg" height={46} width={76} alt="visa" />
+              <IconImage src="/images/icons/stripe.svg" height={46} width={53} alt="stripe" />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+              <Label>Collections</Label>
+              <div>
+                <LabelLink href="#">Featured on Sacrill</LabelLink>
+              </div>
+              <div>
+                <LabelLink href="#">New courses</LabelLink>
+              </div>
+              <div>
+                <LabelLink href="#">High rating</LabelLink>
+              </div>
+              <div>
+                <LabelLink href="#">{`Editor's Choice`}</LabelLink>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+              <Label>Sacrill</Label>
+              <div>
+                <LabelLink href="#">Get access to all courses</LabelLink>
+              </div>
+              <div>
+                <LabelLink href="#">Become a Sacrill Author</LabelLink>
+              </div>
+              <div>
+                <LabelLink href="#">Referral program</LabelLink>
+              </div>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Support>Support service</Support>
+          <Email>
+            <A href="mailto:hello@sacrill.com">hello@sacrill.com</A>
+          </Email>
+          <Actions>
+            <BlackButtons>{t('logIn')}</BlackButtons>
+            <WhiteButtons>Sign In for Authors</WhiteButtons>
+          </Actions>
+        </Grid>
+      </Grid>
 
-  &:hover {
-    background-position: 0;
-  }
-`;
-
-const linkProps = {
-  activeClass: 'active',
-  hashSpy: true,
-  spy: true,
-  smooth: true,
-  duration: 500,
-  offset: 50,
+      <Grid container spacing={2} marginTop={2.5}>
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={8}>
+          <Copyright>
+            © {new Date().getFullYear()} Bon Digital Pte. Ltd. 68 Circular Road, #02-01, 049422, Singapore.
+          </Copyright>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={12} xl={4}>
+          <Actions>
+            <ExternalLink target="_blank" href="https://test1.ru">
+              Contract Offer
+            </ExternalLink>
+            <ExternalLink target="_blank" href="https://test2.ru">
+              Privacy Policy
+            </ExternalLink>
+            <ExternalLink target="_blank" href="https://test3.ru">
+              User Agreement
+            </ExternalLink>
+          </Actions>
+        </Grid>
+      </Grid>
+    </Container>
+  );
 };
-
-const socialLinkItems = [
-  {label: 'test1', target: '_blank', href: 'https://test1.ru'},
-  {label: 'test2', target: '_blank', href: 'https://test2.ru'},
-  {label: 'test3', target: '_blank', href: 'https://test3.ru'},
-  {label: 'test4', target: '_blank', href: 'https://test4.ru'},
-  {label: 'test5', target: '_blank', href: 'https://test5.ru'},
-];
-
-const linkItems = [{label: 'Главная', href: '/#intro', to: 'intro', id: 'intro'}];
-
-export const Footer = () => (
-  <Container>
-    <Content>
-      <Contacts>
-        <Email>
-          <A href="mailto:hello@sacrill.com">hello@sacrill.com</A>
-        </Email>
-      </Contacts>
-      <Nav>
-        <Ul>
-          {linkItems.map(({label, ...props}, index) => (
-            <Li key={index}>
-              <NavLink {...linkProps} {...props}>
-                {label}
-              </NavLink>
-            </Li>
-          ))}
-        </Ul>
-      </Nav>
-      <Note>
-        <Copyright>© sacrill, {new Date().getFullYear()}</Copyright>
-        <Social>
-          {socialLinkItems.map(({label, ...props}, index) => (
-            <SocialLink key={index} {...props}>
-              {label}
-            </SocialLink>
-          ))}
-        </Social>
-      </Note>
-    </Content>
-  </Container>
-);
