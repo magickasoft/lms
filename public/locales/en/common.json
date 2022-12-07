@@ -1,5 +1,16 @@
 {
     "mainStart": "Start from the home page",
     "404Header": "This page \ndoes not exist",
-    "404Text": "You followed the wrong link, or this page has been removed.&nbsp;"
-  }
+    "404Text": "You followed the wrong link, or this page has been removed. ",
+    "categories": "Categories",
+    "joinSCC": "Join Sacrill Club community",
+    "support": "Support",
+    "teachSacrill": "Teach on Sacrill",
+    "logIn": "Log In",
+    "Categories": {
+      "courseType1": "New classes",
+      "courseType2": "Top classes",
+      "courseType3": "Courses on sale",
+      "courseType4": "Popular courses"
+    }
+}

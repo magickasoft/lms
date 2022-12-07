@@ -1,4 +1,5 @@
 import SC from '@emotion/styled';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
 
 import {ibmplexsans400, maxDevice} from '../styles';
@@ -28,7 +29,6 @@ const Label = SC.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  // flex-direction: column;
   @media ${maxDevice.tablet} {
     display: none
   }
@@ -44,7 +44,6 @@ const Link = SC.a`
   font-size: 13px;
   line-height: 150%;
   color: #333333;
-  // background: linear-gradient(90deg,#fe00dd -56.25%,#fd0009 135.94%);
   -webkit-background-clip: text;
 `;
 
@@ -75,7 +74,20 @@ const BlackButtons = SC(Button)`
   margin-right: 10px;
 `;
 
+const linksList = [
+  {href: '#', label: 'categories'},
+  {href: '#', label: 'joinSCC'},
+  {href: '#', label: 'support'},
+  {href: '#', label: 'teachSacrill'},
+];
+
+type LinkProps = {
+  href?: string;
+  label?: any;
+};
+
 export const Header = () => {
+  const {t} = useTranslation('common');
   return (
     <>
       <Container>
@@ -83,10 +95,11 @@ export const Header = () => {
           <Icon name="logo" width={136} height={30} />
           <HeaderLinks>
             <Label>
-              <Link href="#">Categories</Link>
-              <Link href="#">Join Sacrill Club community</Link>
-              <Link href="#">Support</Link>
-              <Link href="#">Teach on Sacrill</Link>
+              {linksList.map(({label, ...props}: LinkProps) => (
+                <Link key={label} {...props}>
+                  {t(label)}
+                </Link>
+              ))}
             </Label>
           </HeaderLinks>
         </LeftSide>
@@ -95,7 +108,7 @@ export const Header = () => {
             <SearchForm />
           </Search>
           <RightButtons>
-            <BlackButtons>Log In</BlackButtons>
+            <BlackButtons>{t('logIn')}</BlackButtons>
             <LocaleSwitcher />
           </RightButtons>
         </RightSide>

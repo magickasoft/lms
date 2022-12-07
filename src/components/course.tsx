@@ -24,7 +24,6 @@ const CourseItem = SC.div`
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  margin-bottom: 40px;
 `;
 
 const Details = SC.div`
