@@ -45,6 +45,7 @@ export type Query = {
   getCourses?: Maybe<Array<Maybe<Course>>>;
   getPopularCourses?: Maybe<Array<Maybe<Course>>>;
   getPosts?: Maybe<Array<Maybe<Post>>>;
+  getTopCourses?: Maybe<Array<Maybe<Course>>>;
   implicitLogin?: Maybe<ImplicitLoginResponse>;
   test?: Maybe<Scalars['Boolean']>;
 };
@@ -119,6 +120,11 @@ export type GetPopularCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetPopularCoursesQuery = { __typename?: 'Query', getPopularCourses?: Array<{ __typename?: 'course', id?: bigint | null, title?: string | null, slug?: string | null, author_info?: any | null, price?: string | null, media?: Array<{ __typename?: 'media', id?: bigint | null, uuid?: string | null, collection_name?: string | null, file_name?: string | null, generated_conversions?: any | null } | null> | null } | null> | null };
+
+export type GetTopCoursesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTopCoursesQuery = { __typename?: 'Query', getTopCourses?: Array<{ __typename?: 'course', id?: bigint | null, title?: string | null, slug?: string | null, author_info?: any | null, price?: string | null, media?: Array<{ __typename?: 'media', id?: bigint | null, uuid?: string | null, collection_name?: string | null, file_name?: string | null, generated_conversions?: any | null } | null> | null } | null> | null };
 
 export type TestQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -247,6 +253,51 @@ export function useGetPopularCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type GetPopularCoursesQueryHookResult = ReturnType<typeof useGetPopularCoursesQuery>;
 export type GetPopularCoursesLazyQueryHookResult = ReturnType<typeof useGetPopularCoursesLazyQuery>;
 export type GetPopularCoursesQueryResult = Apollo.QueryResult<GetPopularCoursesQuery, GetPopularCoursesQueryVariables>;
+export const GetTopCoursesDocument = gql`
+    query GetTopCourses {
+  getTopCourses {
+    id
+    title
+    slug
+    author_info
+    price
+    media {
+      id
+      uuid
+      collection_name
+      file_name
+      generated_conversions
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTopCoursesQuery__
+ *
+ * To run a query within a React component, call `useGetTopCoursesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTopCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTopCoursesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTopCoursesQuery(baseOptions?: Apollo.QueryHookOptions<GetTopCoursesQuery, GetTopCoursesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTopCoursesQuery, GetTopCoursesQueryVariables>(GetTopCoursesDocument, options);
+      }
+export function useGetTopCoursesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTopCoursesQuery, GetTopCoursesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTopCoursesQuery, GetTopCoursesQueryVariables>(GetTopCoursesDocument, options);
+        }
+export type GetTopCoursesQueryHookResult = ReturnType<typeof useGetTopCoursesQuery>;
+export type GetTopCoursesLazyQueryHookResult = ReturnType<typeof useGetTopCoursesLazyQuery>;
+export type GetTopCoursesQueryResult = Apollo.QueryResult<GetTopCoursesQuery, GetTopCoursesQueryVariables>;
 export const TestDocument = gql`
     query Test {
   test(bool: false)

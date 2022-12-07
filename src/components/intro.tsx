@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import {Element} from 'react-scroll';
 
-import {useGetCoursesQuery, useGetPopularCoursesQuery} from '../../generated/graphql';
+import {useGetCoursesQuery, useGetPopularCoursesQuery, useGetTopCoursesQuery} from '../../generated/graphql';
 import {ibmplexsans400, maxDevice} from '../styles';
 import {Button} from './Button/button';
 import {GreenButton} from './Button/greenButton';
@@ -136,6 +136,7 @@ export const Intro = (props: any) => {
   const [selectedType, setSelectedType] = useState('new')
   const courses = useGetCoursesQuery({variables: {}});
   const popularCourses = useGetPopularCoursesQuery({variables: {}});
+  const topCourses = useGetTopCoursesQuery({variables: {}});
 
   const handleSelectType = (course: CourseType) => {
     setSelectedType(course.type)
@@ -150,6 +151,8 @@ export const Intro = (props: any) => {
     coursesItems = courses?.data?.getCourses?.map(course => <Course key={course.id.toString()} {...course} />)
   } else if(selectedType === 'popular') {
     coursesItems = popularCourses?.data?.getPopularCourses?.map(course => <Course key={course.id.toString()} {...course} />)
+  } else if(selectedType === 'top') {
+    coursesItems = topCourses?.data?.getTopCourses?.map(course => <Course key={course.id.toString()} {...course} />)
   }
 
   return (

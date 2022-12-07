@@ -100,3 +100,41 @@ export const getPopularCoursesResolver: FieldResolver<'Query', 'courses'> = asyn
     image: course.media[0].file_name,
   }));
 };
+
+export const getTopCoursesResolver: FieldResolver<'Query', 'courses'> = async (_, __, {prisma, req}) => {
+  const courses = await prisma.course.findMany({
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      author_info: true,
+      price: true,
+      lang: true,
+      media: {
+        select: {
+          id: true,
+          uuid: true,
+          collection_name: true,
+          file_name: true,
+          generated_conversions: true,
+        },
+        where: {
+          model_type: 'App\\Models\\Course',
+          collection_name: 'file__course_thumb',
+        },
+      },
+    },
+    where: {
+      id: {
+        in: [84, 314, 531, 199],
+      },
+      status: 1,
+    },
+    take: 25,
+    orderBy: {
+      id: 'asc',
+    },
+  });
+
+  return [...courses];
+};

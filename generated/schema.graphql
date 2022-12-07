@@ -27,6 +27,7 @@ type Query {
   getCourses: [course]
   getPopularCourses: [course]
   getPosts: [post]
+  getTopCourses: [course]
   implicitLogin: implicitLoginResponse
   test(bool: Boolean!): Boolean
 }

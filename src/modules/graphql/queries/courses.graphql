@@ -31,3 +31,20 @@ query GetPopularCourses {
     }
   }
 }
+
+query GetTopCourses {
+  getTopCourses {
+    id,
+    title,
+    slug,
+    author_info,
+    price,
+    media {
+      id,
+      uuid,
+      collection_name,
+      file_name,
+      generated_conversions
+    }
+  }
+}

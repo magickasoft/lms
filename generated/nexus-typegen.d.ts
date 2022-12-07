@@ -135,6 +135,7 @@ export interface NexusGenFieldTypes {
     getCourses: Array<NexusGenRootTypes['course'] | null> | null; // [course]
     getPopularCourses: Array<NexusGenRootTypes['course'] | null> | null; // [course]
     getPosts: Array<NexusGenRootTypes['post'] | null> | null; // [post]
+    getTopCourses: Array<NexusGenRootTypes['course'] | null> | null; // [course]
     implicitLogin: NexusGenRootTypes['implicitLoginResponse'] | null; // implicitLoginResponse
     test: boolean | null; // Boolean
   }
@@ -186,6 +187,7 @@ export interface NexusGenFieldTypeNames {
     getCourses: 'course'
     getPopularCourses: 'course'
     getPosts: 'post'
+    getTopCourses: 'course'
     implicitLogin: 'implicitLoginResponse'
     test: 'Boolean'
   }

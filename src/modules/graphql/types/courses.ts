@@ -1,6 +1,6 @@
 import {extendType, list, objectType} from 'nexus';
 
-import {getCoursesResolver, getPopularCoursesResolver} from '../resolvers/coursesResolvers';
+import {getCoursesResolver, getPopularCoursesResolver, getTopCoursesResolver} from '../resolvers/coursesResolvers';
 
 export const getCourses = extendType({
   type: 'Query',
@@ -18,6 +18,16 @@ export const getPopularCourses = extendType({
     t.field('getPopularCourses', {
       type: list(course),
       resolve: getPopularCoursesResolver,
+    });
+  },
+});
+
+export const getTopCourses = extendType({
+  type: 'Query',
+  definition: t => {
+    t.field('getTopCourses', {
+      type: list(course),
+      resolve: getTopCoursesResolver,
     });
   },
 });
