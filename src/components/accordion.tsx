@@ -2,6 +2,7 @@ import SC from '@emotion/styled';
 import React from 'react';
 import {animated, useSpring} from 'react-spring';
 
+import {maxDevice} from '../styles';
 import {Icon} from './icon';
 
 const Container = SC.div`
@@ -9,20 +10,20 @@ const Container = SC.div`
   justify-content: space-between;
   border: 1px solid #DFE3F3;
   box-sizing: border-box;
-  border-radius: 3px;
-  margin: 10px 0;
-  padding: 0 20px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
 `;
 
 const Title = SC.div`
   width: 100%;
+  font-family: 'SF Pro Display';
   font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 150%;
+  color: #333333;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #008E5B;
   overflow: hidden;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -37,7 +38,7 @@ const Header = SC.div`
   overflow: hidden;
   justify-content: space-between;
   cursor: pointer;
-  margin: 7px 0 0 0;
+  margin: 20px 0 20px 0;
 `;
 
 const Content = SC.div`

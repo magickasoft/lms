@@ -160,7 +160,7 @@ const Icon = SC.div`
     width: 30px;
     height: 30px;
   }
-`
+`;
 
 export const Teach = props => {
   const {t} = useTranslation('common');
@@ -173,7 +173,9 @@ export const Teach = props => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
                 <Left>
-                  <Title>Publish Courses   <Icon/></Title>
+                  <Title>
+                    Publish Courses <Icon />
+                  </Title>
                   <SubTitle>on Sacrill for Free</SubTitle>
                   <Text>Be part of the community and help members develop themselves</Text>
                   <BlackButton>Teach on Sacrill</BlackButton>

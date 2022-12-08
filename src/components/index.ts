@@ -4,6 +4,7 @@ export {Label, Section, Text} from './common';
 export {Contact} from './contact';
 export {ContactForm} from './contactForm';
 export {Course} from './course';
+export {FAQ} from './faq';
 export {Footer} from './footer';
 export {Header} from './header';
 export {InputPhone} from './inputPhone';
