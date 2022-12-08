@@ -42,6 +42,8 @@ const Title = SC.div`
   font-weight: 700;
   font-size: 92px;
   line-height: 100%;
+  display: flex;
+  align-items: center;
   @media ${maxDevice.laptop} {
     font-size: 45px;
   }
@@ -135,6 +137,31 @@ const Bg = SC.div`
   }
 `;
 
+const Icon = SC.div`
+  background-image: url("/images/icons/teach.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 80px;
+  height: 80px;
+  margin-left: 14px;
+  @media ${maxDevice.laptop} {
+    margin-left: 7px;
+    width: 40px;
+    height: 40px;
+  }
+  @media ${maxDevice.tablet} {
+    margin-left: 7px;
+    width: 35px;
+    height: 35px;
+  }
+  @media ${maxDevice.mobileL} {
+    margin-left: 7px;
+    width: 30px;
+    height: 30px;
+  }
+`
+
 export const Teach = props => {
   const {t} = useTranslation('common');
 
@@ -146,7 +173,7 @@ export const Teach = props => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
                 <Left>
-                  <Title>Publish Courses</Title>
+                  <Title>Publish Courses   <Icon/></Title>
                   <SubTitle>on Sacrill for Free</SubTitle>
                   <Text>Be part of the community and help members develop themselves</Text>
                   <BlackButton>Teach on Sacrill</BlackButton>
