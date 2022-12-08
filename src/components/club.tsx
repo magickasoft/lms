@@ -158,21 +158,15 @@ export const Club = props => {
             <Title1>
               <Icon /> Community
             </Title1>
-            <Text>
-              Chat with authors and other course participants on the mobile app.
-            </Text>
+            <Text>Chat with authors and other course participants on the mobile app.</Text>
             <Title1>
               <Icon /> Self-development courses
             </Title1>
-            <Text>
-              Self-development courses, health, sports, relationships, dance and other categories
-            </Text>
+            <Text>Self-development courses, health, sports, relationships, dance and other categories</Text>
             <Title1>
               <Icon /> New programs every month
             </Title1>
-            <Text>
-              Each month more than 10 new courses are published
-            </Text>
+            <Text>Each month more than 10 new courses are published</Text>
             <Title1>
               <Icon /> Audio and video tutorials
             </Title1>
