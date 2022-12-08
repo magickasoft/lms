@@ -35,12 +35,19 @@ const defaultResponsive = [
   {
     breakpoint: 2560,
     settings: {
-      slidesToShow: 4,
+      slidesToShow: 6,
       slidesToScroll: 1,
     },
   },
   {
     breakpoint: 1440,
+    settings: {
+      slidesToShow: 5,
+      slidesToScroll: 1,
+    },
+  },
+  {
+    breakpoint: 1205,
     settings: {
       slidesToShow: 4,
       slidesToScroll: 1,
@@ -55,6 +62,20 @@ const defaultResponsive = [
   },
   {
     breakpoint: 768,
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 1,
+    },
+  },
+  {
+    breakpoint: 400,
+    settings: {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    },
+  },
+  {
+    breakpoint: 375,
     settings: {
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -93,12 +114,6 @@ export const Categories = props => {
   } else if(activeType === 'top') {
     coursesItems = topCourses?.data?.getTopCourses?.map(course => <Course key={course.id.toString()} {...course} />)
   }
-
-  console.log(activeType)
-
-  React.useEffect(() => {
-    console.log(activeType)
-  }, [activeType]);
 
   return (
     <Element name="categories">

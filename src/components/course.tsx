@@ -1,6 +1,7 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
 import React from 'react';
+import {maxDevice} from '../styles';
 
 import {getCourseThumbnail} from '../helpers/media';
 import {getPrices} from '../helpers/price';
@@ -19,6 +20,10 @@ const CourseItem = SC.div`
   width: 240px;
   height: 290px;
   margin-right: 20px;
+
+  @media ${maxDevice.mobileL} {
+    width: 100%;
+  }
   
   font-size: 1rem;
   font-weight: 400;

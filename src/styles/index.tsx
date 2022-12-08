@@ -34,6 +34,20 @@ export const GlobalStyle = props => (
       }
 
       @font-face {
+        font-family: 'SF Pro Display Thin Italic';
+        font-style: normal;
+        font-weight: 700;
+        src: local(''), url('/fonts/SFProDisplayThinItalic.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'SF Pro Display Regular Italic';
+        font-style: normal;
+        font-weight: 700;
+        src: local(''), url('/fonts/SFProDisplayRegularItalic.ttf') format('truetype');
+      }
+
+      @font-face {
         font-family: 'Bebas Neue';
         font-style: normal;
         font-weight: 400;

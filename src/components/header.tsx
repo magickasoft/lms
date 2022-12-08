@@ -17,7 +17,7 @@ const Container = SC.header`
   flex-direction: row;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 0 260px;
+  padding: 0 200px;
   height: 76px;
   background-color: #FFFFFF;
   @media ${maxDevice.tablet} {
