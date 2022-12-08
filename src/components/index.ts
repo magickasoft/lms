@@ -13,3 +13,4 @@ export {Page} from './page';
 export {Price} from './price';
 export {SearchForm} from './searchForm';
 export {Select} from './select';
+export {Teach} from './teach';
