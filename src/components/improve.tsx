@@ -123,7 +123,8 @@ export const Improve = props => {
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Block>
               <Text>
-                Based on the most advanced science, Saсrill creates the most effective programs for personal and professional development. Join our platform and be part of the development and improvement of people.
+                Based on the most advanced science, Saсrill creates the most effective programs for personal and
+                professional development. Join our platform and be part of the development and improvement of people.
               </Text>
             </Block>
           </Grid>
