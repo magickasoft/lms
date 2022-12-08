@@ -107,27 +107,25 @@ export const Categories = props => {
   };
 
   let coursesItems = [];
-  if(activeType === 'new') {
-    coursesItems = courses?.data?.getCourses?.map(course => <Course key={course.id.toString()} {...course} />)
-  } else if(activeType === 'popular') {
-    coursesItems = popularCourses?.data?.getPopularCourses?.map(course => <Course key={course.id.toString()} {...course} />)
-  } else if(activeType === 'top') {
-    coursesItems = topCourses?.data?.getTopCourses?.map(course => <Course key={course.id.toString()} {...course} />)
+  if (activeType === 'new') {
+    coursesItems = courses?.data?.getCourses?.map(course => <Course key={course.id.toString()} {...course} />);
+  } else if (activeType === 'popular') {
+    coursesItems = popularCourses?.data?.getPopularCourses?.map(course => (
+      <Course key={course.id.toString()} {...course} />
+    ));
+  } else if (activeType === 'top') {
+    coursesItems = topCourses?.data?.getTopCourses?.map(course => <Course key={course.id.toString()} {...course} />);
   }
 
   return (
     <Element name="categories">
       <Container>
         <Content>
-          {courseTypes.map(({type, label}: CourseTypeProps, index) =>
-            <WhiteButton 
-              key={index}
-              onClick={onClickType(type)}
-              active={activeType === type}
-            >
+          {courseTypes.map(({type, label}: CourseTypeProps, index) => (
+            <WhiteButton key={index} onClick={onClickType(type)} active={activeType === type}>
               {t(label)}
             </WhiteButton>
-          )}
+          ))}
         </Content>
         <CustomSlider autoplay={false} centerMode={false} responsive={defaultResponsive}>
           {coursesItems}

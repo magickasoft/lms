@@ -126,7 +126,7 @@ export const getTopCoursesResolver: FieldResolver<'Query', 'courses'> = async (_
     },
     where: {
       id: {
-        in: [56, 7, 89, 76, 54, 32,84, 314, 531, 199],
+        in: [56, 7, 89, 76, 54, 32, 84, 314, 531, 199],
       },
       status: 1,
     },

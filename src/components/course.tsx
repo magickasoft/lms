@@ -1,10 +1,10 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
 import React from 'react';
-import {maxDevice} from '../styles';
 
 import {getCourseThumbnail} from '../helpers/media';
 import {getPrices} from '../helpers/price';
+import {maxDevice} from '../styles';
 import {Price} from './price';
 
 const CourseItem = SC.div`

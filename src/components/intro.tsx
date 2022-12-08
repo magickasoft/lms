@@ -2,13 +2,13 @@ import SC from '@emotion/styled';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import React from 'react';
-import { Element } from 'react-scroll';
+import {Element} from 'react-scroll';
 
-import { ibmplexsans400, maxDevice } from '../styles';
-import { GreenButton } from './Button/greenButton';
-import { CustomSlider } from './customSlider';
-import { Icon } from './icon';
-import { Rating } from './rating';
+import {ibmplexsans400, maxDevice} from '../styles';
+import {GreenButton} from './Button/greenButton';
+import {CustomSlider} from './customSlider';
+import {Icon} from './icon';
+import {Rating} from './rating';
 
 const Container = SC.div`
   font-family: ${ibmplexsans400.style.fontFamily};
@@ -60,7 +60,6 @@ const BoldText = SC.div`
   font-size: 92px;
   line-height: 100%;
 `;
-
 
 const RightTitle = SC.div`
   font-family: 'Bebas Neue Light';
@@ -280,7 +279,7 @@ const RatingTitle = SC.div`
   margin-top: 0px;
   margin-bottom: 20px;
 `;
-  
+
 const defaultResponsive = [
   {
     breakpoint: 2560,
@@ -319,10 +318,19 @@ type ReviewProps = {
 };
 
 const reviews: ReviewProps[] = [
-  { avatar: 'student_says_1.png', name: 'Linda', feedback: 'The subscription to Sacrill has helped me to know what I really like, what topics are close and interesting and what is not worth wasting time on. It is an unlimited opportunity to learn for a small amount of money. I have always bought different online courses, but it often happened that the topic is interesting but the expert\'s presentation is boring and I quickly lost interest and left the course without getting the desired result. However, I can choose which author I feel more comfortable with, which topics I want to delve into, and which ones don\'t suit me at all. Sacrill is a great way to find a new hobby and get better every day. I definitely recommend it to those who want to improve themselves, their lives and strive to be a well-rounded and interesting person.' },
-  { avatar: 'student_says_2.png', name: 'Marco', feedback: 'The subscription to Sacrill has helped me to know what I really like, what topics are close and interesting and what is not worth wasting time on. It is an unlimited opportunity to learn for a small amount of money. I have always bought different online courses, but it often happened that the topic is interesting but the expert\'s presentation is boring and I quickly lost interest and left the course without getting the desired result. However, I can choose which author I feel more comfortable with, which topics I want to delve into, and which ones don\'t suit me at all. Sacrill is a great way to find a new hobby and get better every day. I definitely recommend it to those who want to improve themselves, their lives and strive to be a well-rounded and interesting person.' },
+  {
+    avatar: 'student_says_1.png',
+    name: 'Linda',
+    feedback:
+      'The subscription to Sacrill has helped me to know what I really like, what topics are close and interesting and what is not worth wasting time on. It is an unlimited opportunity to learn for a small amount of money. I have always bought different online courses, but it often happened that the topic is interesting but the expert&apos;s presentation is boring and I quickly lost interest and left the course without getting the desired result. However, I can choose which author I feel more comfortable with, which topics I want to delve into, and which ones don&apos;t suit me at all. Sacrill is a great way to find a new hobby and get better every day. I definitely recommend it to those who want to improve themselves, their lives and strive to be a well-rounded and interesting person.',
+  },
+  {
+    avatar: 'student_says_2.png',
+    name: 'Marco',
+    feedback:
+      'The subscription to Sacrill has helped me to know what I really like, what topics are close and interesting and what is not worth wasting time on. It is an unlimited opportunity to learn for a small amount of money. I have always bought different online courses, but it often happened that the topic is interesting but the expert&apos;s presentation is boring and I quickly lost interest and left the course without getting the desired result. However, I can choose which author I feel more comfortable with, which topics I want to delve into, and which ones don&apos;t suit me at all. Sacrill is a great way to find a new hobby and get better every day. I definitely recommend it to those who want to improve themselves, their lives and strive to be a well-rounded and interesting person.',
+  },
 ];
-
 
 export const Intro = (props: any) => {
   const photos = [...Array(10)].map((key: number, index: number) => {
@@ -380,25 +388,35 @@ export const Intro = (props: any) => {
 
           <HowSacrillWorks>
             <CenterBlock>
-              <HowWorksTitle>How <SubSpan>Sacrill works</SubSpan></HowWorksTitle>
+              <HowWorksTitle>
+                How <SubSpan>Sacrill works</SubSpan>
+              </HowWorksTitle>
 
               <HowWorksItems>
                 <HWSection>
                   <HWItem>
                     <ItemTop>
-                      <Image src={'/images/how_sacrill_works_1.png'} height={220} width={360} alt="How Sacrill works image" />
+                      <Image
+                        src={'/images/how_sacrill_works_1.png'}
+                        height={220}
+                        width={360}
+                        alt="How Sacrill works image"
+                      />
                     </ItemTop>
                     <ItemBottom>
                       <ItemTitle>Learn</ItemTitle>
-                      <ItemDescription>
-                        Level up your life with the world’s best trainers & programs
-                      </ItemDescription>
+                      <ItemDescription>Level up your life with the world’s best trainers & programs</ItemDescription>
                     </ItemBottom>
                   </HWItem>
                   <HWFeedback>
                     <FeedbackRow>
                       <Avatar>
-                        <Image src={'/images/how_sacrill_works_sub_1.png'} height={80} width={80} alt="How Sacrill works image" />
+                        <Image
+                          src={'/images/how_sacrill_works_sub_1.png'}
+                          height={80}
+                          width={80}
+                          alt="How Sacrill works image"
+                        />
                       </Avatar>
                       <Info>
                         <UserName>Helen Williams</UserName>
@@ -408,7 +426,8 @@ export const Intro = (props: any) => {
                     <FeedbackBlock>
                       <FeedbackRow>
                         <FeedbackText>
-                          I'm participating on multiple Sacrill programs and integrated it easily into my daily routine. It completely fall into my squedule. I feel pumped up and limitless now!
+                          I&apos;m participating on multiple Sacrill programs and integrated it easily into my daily
+                          routine. It completely fall into my squedule. I feel pumped up and limitless now!
                         </FeedbackText>
                       </FeedbackRow>
 
@@ -422,19 +441,27 @@ export const Intro = (props: any) => {
                 <HWSection>
                   <HWItem>
                     <ItemTop>
-                      <Image src={'/images/how_sacrill_works_1.png'} height={220} width={360} alt="How Sacrill works image" />
+                      <Image
+                        src={'/images/how_sacrill_works_1.png'}
+                        height={220}
+                        width={360}
+                        alt="How Sacrill works image"
+                      />
                     </ItemTop>
                     <ItemBottom>
                       <ItemTitle>Learn</ItemTitle>
-                      <ItemDescription>
-                        Level up your life with the world’s best trainers & programs
-                      </ItemDescription>
+                      <ItemDescription>Level up your life with the world’s best trainers & programs</ItemDescription>
                     </ItemBottom>
                   </HWItem>
                   <HWFeedback>
                     <FeedbackRow>
                       <Avatar>
-                        <Image src={'/images/how_sacrill_works_sub_2.png'} height={80} width={80} alt="How Sacrill works image" />
+                        <Image
+                          src={'/images/how_sacrill_works_sub_2.png'}
+                          height={80}
+                          width={80}
+                          alt="How Sacrill works image"
+                        />
                       </Avatar>
                       <Info>
                         <UserName>Mike Tombler</UserName>
@@ -444,7 +471,8 @@ export const Intro = (props: any) => {
                     <FeedbackBlock>
                       <FeedbackRow>
                         <FeedbackText>
-                          Sacrill brings together like-minded individuals to inspire each other with their daily transformations
+                          Sacrill brings together like-minded individuals to inspire each other with their daily
+                          transformations
                         </FeedbackText>
                       </FeedbackRow>
 
@@ -458,7 +486,12 @@ export const Intro = (props: any) => {
                 <HWSection>
                   <HWItem>
                     <ItemTop>
-                      <Image src={'/images/how_sacrill_works_3.png'} height={220} width={360} alt="How Sacrill works image" />
+                      <Image
+                        src={'/images/how_sacrill_works_3.png'}
+                        height={220}
+                        width={360}
+                        alt="How Sacrill works image"
+                      />
                     </ItemTop>
                     <ItemBottom>
                       <ItemTitle>Get result</ItemTitle>
@@ -470,7 +503,12 @@ export const Intro = (props: any) => {
                   <HWFeedback>
                     <FeedbackRow>
                       <Avatar>
-                        <Image src={'/images/how_sacrill_works_sub_3.png'} height={80} width={80} alt="How Sacrill works image" />
+                        <Image
+                          src={'/images/how_sacrill_works_sub_3.png'}
+                          height={80}
+                          width={80}
+                          alt="How Sacrill works image"
+                        />
                       </Avatar>
                       <Info>
                         <UserName>Tara Brangston</UserName>
@@ -480,7 +518,8 @@ export const Intro = (props: any) => {
                     <FeedbackBlock>
                       <FeedbackRow>
                         <FeedbackText>
-                          Great materials Sacrill international community is a combination that caused a mind shift, helped me understand who I am. I finally started my online business and it is going well!
+                          Great materials Sacrill international community is a combination that caused a mind shift,
+                          helped me understand who I am. I finally started my online business and it is going well!
                         </FeedbackText>
                       </FeedbackRow>
 
@@ -496,9 +535,12 @@ export const Intro = (props: any) => {
 
           <SuccessStories>
             <CenterBlock>
-              <Title><SubSpan>176,405</SubSpan> success stories</Title>
+              <Title>
+                <SubSpan>176,405</SubSpan> success stories
+              </Title>
               <NormalTitle>
-                Sacrill constantly doing student feedback loops to ensure that our products not only enjoyable to get through, but transform the life of our learners and help to get the bright future.
+                Sacrill constantly doing student feedback loops to ensure that our products not only enjoyable to get
+                through, but transform the life of our learners and help to get the bright future.
               </NormalTitle>
 
               <CustomSlider withControls={false} autoplay={false} centerMode={false} responsive={defaultResponsive}>
@@ -510,12 +552,14 @@ export const Intro = (props: any) => {
           <WhatStudentSay>
             <BoldText>What students say</BoldText>
 
-            <RightTitle>about Sacrill club <Image src={'/images/heart.png'} height={80} width={80} alt="Heart image" /></RightTitle>
+            <RightTitle>
+              about Sacrill club <Image src={'/images/heart.png'} height={80} width={80} alt="Heart image" />
+            </RightTitle>
 
             <ReviewBlock>
               {reviews.map(review => {
                 return (
-                  <ReviewSection>
+                  <ReviewSection key={review.name}>
                     <TopItem>
                       <FeedbackRow>
                         <Avatar>
@@ -526,9 +570,7 @@ export const Intro = (props: any) => {
                         </Info>
                       </FeedbackRow>
                     </TopItem>
-                    <BottomItem>
-                      {review.feedback}
-                    </BottomItem>
+                    <BottomItem>{review.feedback}</BottomItem>
                   </ReviewSection>
                 );
               })}
@@ -540,19 +582,26 @@ export const Intro = (props: any) => {
               <BoldText>Student reviews</BoldText>
               <Title>about our courses</Title>
 
-              <NormalTitle>
-                All our students are delighted with the results and the work of online trainers
-              </NormalTitle>
+              <NormalTitle>All our students are delighted with the results and the work of online trainers</NormalTitle>
 
-              <Grid container rowSpacing={4} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
+              <Grid container rowSpacing={4} columnSpacing={{xs: 0, sm: 0, md: 0}}>
                 <Grid item xs={6}>
                   <Item>
                     <Rating stars={5} />
                     <RatingTitle>@dBarnes · 7 March 2022</RatingTitle>
-                    <StudentFeedbackText>A wonderful, healthy pastime! Great, exciting and giving hope for a full perception of the world in its best light! Developing motor skills-we develop acute and quick problem solving! Great! Thanks!</StudentFeedbackText>
+                    <StudentFeedbackText>
+                      A wonderful, healthy pastime! Great, exciting and giving hope for a full perception of the world
+                      in its best light! Developing motor skills-we develop acute and quick problem solving! Great!
+                      Thanks!
+                    </StudentFeedbackText>
                     <FeedbackRow>
                       <Avatar>
-                        <Image src={'/images/student_reviews_1.png'} height={80} width={80} alt="Student review image" />
+                        <Image
+                          src={'/images/student_reviews_1.png'}
+                          height={80}
+                          width={80}
+                          alt="Student review image"
+                        />
                       </Avatar>
                       <Info>
                         <UserName>Tara Brangston</UserName>
@@ -562,14 +611,21 @@ export const Intro = (props: any) => {
                   </Item>
                 </Grid>
                 <Grid item xs={6}>
-                <Item>
+                  <Item>
                     <Rating stars={5} />
                     <RatingTitle>@Mikeeeee · 5 March 2022</RatingTitle>
-                    <StudentFeedbackText>Now I feel my inner power
-                      After this program I does not feel my daily weakness without taking any pills and medications. This is unbelieveble!</StudentFeedbackText>
+                    <StudentFeedbackText>
+                      Now I feel my inner power After this program I does not feel my daily weakness without taking any
+                      pills and medications. This is unbelieveble!
+                    </StudentFeedbackText>
                     <FeedbackRow>
                       <Avatar>
-                        <Image src={'/images/student_reviews_2.png'} height={80} width={80} alt="Student review image" />
+                        <Image
+                          src={'/images/student_reviews_2.png'}
+                          height={80}
+                          width={80}
+                          alt="Student review image"
+                        />
                       </Avatar>
                       <Info>
                         <UserName>Mike Thomson</UserName>
@@ -579,13 +635,21 @@ export const Intro = (props: any) => {
                   </Item>
                 </Grid>
                 <Grid item xs={6}>
-                <Item>
+                  <Item>
                     <Rating stars={4} />
                     <RatingTitle>@BrianAl · 9 April 2022</RatingTitle>
-                    <StudentFeedbackText>Hello. Thank you so much for the course program!!! It was a pleasure, I liked everything very much!!! The result speaks better than any words!</StudentFeedbackText>
+                    <StudentFeedbackText>
+                      Hello. Thank you so much for the course program!!! It was a pleasure, I liked everything very
+                      much!!! The result speaks better than any words!
+                    </StudentFeedbackText>
                     <FeedbackRow>
                       <Avatar>
-                        <Image src={'/images/student_reviews_3.png'} height={80} width={80} alt="Student review image" />
+                        <Image
+                          src={'/images/student_reviews_3.png'}
+                          height={80}
+                          width={80}
+                          alt="Student review image"
+                        />
                       </Avatar>
                       <Info>
                         <UserName>Brian Alexander</UserName>
@@ -595,13 +659,21 @@ export const Intro = (props: any) => {
                   </Item>
                 </Grid>
                 <Grid item xs={6}>
-                <Item>
+                  <Item>
                     <Rating stars={5} />
                     <RatingTitle>@NicGray · 7 July 2022</RatingTitle>
-                    <StudentFeedbackText>I've been doing it for 2 months, 3 times a week - the result is minus 8 cm in the waistline. Very cool result! Thank you for this useful course.</StudentFeedbackText>
+                    <StudentFeedbackText>
+                      I&apos;ve been doing it for 2 months, 3 times a week - the result is minus 8 cm in the waistline.
+                      Very cool result! Thank you for this useful course.
+                    </StudentFeedbackText>
                     <FeedbackRow>
                       <Avatar>
-                        <Image src={'/images/student_reviews_4.png'} height={80} width={80} alt="Student review image" />
+                        <Image
+                          src={'/images/student_reviews_4.png'}
+                          height={80}
+                          width={80}
+                          alt="Student review image"
+                        />
                       </Avatar>
                       <Info>
                         <UserName>Nicole Gray</UserName>
@@ -613,10 +685,8 @@ export const Intro = (props: any) => {
               </Grid>
             </CenterBlock>
           </StudentReviews>
-
         </Container>
       </section>
     </Element>
   );
 };
-

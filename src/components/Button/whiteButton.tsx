@@ -34,12 +34,12 @@ const Container = SC.button`
     margin-right: 10px;
   }
 
-  ${({active}:any) =>
+  ${({active}: any) =>
     active &&
     css`
       background: ${theme.colors.Gray};
       color: ${theme.colors.White};
-  `}
+    `}
 
   ${({disabled}) =>
     disabled &&
@@ -49,7 +49,7 @@ const Container = SC.button`
       background: rgba(255, 255, 255, 0.1);
       pointer-events: none;
       cursor: default;
-  `}
+    `}
 `;
 
 export const WhiteButton = ({children, ...props}) => <Container {...props}>{children}</Container>;
