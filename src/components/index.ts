@@ -7,6 +7,7 @@ export {Course} from './course';
 export {FAQ} from './faq';
 export {Footer} from './footer';
 export {Header} from './header';
+export {Improve} from './improve';
 export {InputPhone} from './inputPhone';
 export {InputSearch} from './inputSearch';
 export {Intro} from './intro';

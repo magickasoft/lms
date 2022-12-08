@@ -96,6 +96,7 @@ export const FAQ = props => {
                 <Desc>{d.desc}</Desc>
               </Accordion>
             ))}
+            <Divider /> 
           </Grid>
         </Grid>
       </Container>
