@@ -15,12 +15,25 @@ const Container = SC.div`
   // padding: 23vh 140px 0 140px;
   padding: 23vh 200px;
   @media ${maxDevice.tablet} {
-    padding: 18vh 30px 0 30px;
+    padding: 2vh 30px 0 30px;
   }
 `;
 
 const JoinSacrillBlock = SC.div`
   margin-bottom: 120px;
+`;
+
+const IntroSection = SC.section`
+  background-image: url('images/middle_gradient.png');
+  background-repeat: no-repeat;
+  background-position-y: -165px;
+  
+  @media ${maxDevice.tablet} {
+    background-image: url('images/middle_gradient_second.png');
+    background-repeat: revert;
+    background-position-y: 0;
+    background-position-x: 15px;
+  }
 `;
 
 const HowSacrillWorks = SC.div`
@@ -51,6 +64,10 @@ const Title = SC.div`
   font-size: 92px;
   line-height: 100%;
   margin-bottom: 40px;
+
+  @media ${maxDevice.tablet} {
+    font-size: 36px;
+  }
 `;
 
 const BoldText = SC.div`
@@ -59,6 +76,10 @@ const BoldText = SC.div`
   font-weight: 700;
   font-size: 92px;
   line-height: 100%;
+
+  @media ${maxDevice.tablet} {
+    font-size: 36px;
+  }
 `;
 
 const RightTitle = SC.div`
@@ -69,6 +90,10 @@ const RightTitle = SC.div`
   line-height: 100%;
   text-align: right;
   margin-bottom: 40px;
+
+  @media ${maxDevice.tablet} {
+    font-size: 36px;
+  }
 `;
 
 const HowWorksTitle = SC.div`
@@ -78,6 +103,10 @@ const HowWorksTitle = SC.div`
   font-size: 92px;
   line-height: 100%;
   margin-bottom: 40px;
+
+  @media ${maxDevice.tablet} {
+    font-size: 36px;
+  }
 `;
 
 const SubSpan = SC.span`
@@ -88,16 +117,31 @@ const SubSpan = SC.span`
   line-height: 100%;
   text-align: right;
   margin-bottom: 40px;
+
+  @media ${maxDevice.tablet} {
+    font-size: 36px;
+  }
 `;
 
 const Row = SC.div`
   display: flex;
   margin-bottom: 60px;
-`;
 
-const Column = SC.div`
+  @media ${maxDevice.tablet} {
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: left;
+  }
+  `;
+  
+  const Column = SC.div`
   width: 50%;
   display: flex;
+  
+  @media ${maxDevice.tablet} {
+    width: 100%;
+    margin-bottom: 30px;
+  }
 `;
 
 const ButtonBlock = SC.div`
@@ -112,6 +156,10 @@ const Text = SC.div`
   font-size: 16px;
   line-height: 150%;
   max-width: 75%;
+
+  @media ${maxDevice.tablet} {
+    max-width: 100%;
+  }
 `;
 
 const NormalTitle = SC.div`
@@ -123,22 +171,38 @@ const NormalTitle = SC.div`
   text-align: center;
   padding: 0 130px;
   margin-bottom: 60px;
+
+  @media ${maxDevice.tablet} {
+    padding: 0;
+  }
 `;
 
 const Pluses = SC.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media ${maxDevice.tablet} {
+    flex-direction: column;
+  }
 `;
 
 const PlusItem = SC.div`
-  width: 275px;
+  width: 245px;
   height: 276px;
   padding: 30px;
-  border: 1px solid gray;
+  // border: 1px solid gray;
+  background-color: #FFFFFF;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  
+  @media ${maxDevice.tablet} {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+    flex-direction: row;
+  }
 `;
 
 const IconImage = SC(Image)`
@@ -151,19 +215,38 @@ const SmallText = SC.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
+
+  @media ${maxDevice.tablet} {
+    margin-left: 20px;
+  }
 `;
 
 const HowWorksItems = SC.div`
   display: flex;
   justify-content: space-between;
+
+  @media ${maxDevice.tablet} {
+    flex-direction: column;
+  }
 `;
-const HWSection = SC.div``;
+const HWSection = SC.div`
+  margin-right: 40px;
+  
+  @media ${maxDevice.tablet} {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+`;
 const HWFeedback = SC.div`
   height: 376px;
   width: 360px;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
   padding: 30px;
+
+  @media ${maxDevice.tablet} {
+    width: 100%;
+  }
 `;
 const FeedbackRow = SC.div`
   display: flex;
@@ -224,10 +307,30 @@ const HWItem = SC.div`
   background: #F5F5F5;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
+
+  @media ${maxDevice.tablet} {
+    width: 100%;
+  }
 `;
 const ItemTop = SC.div`
   width: 360px;
   height: 220px;
+
+  @media ${maxDevice.tablet} {
+    width: 100%;
+  }
+`;
+const Image1 = SC.div`
+  background-image: url('images/how_sacrill_works_1.png');
+  height: 100%;
+`;
+const Image2 = SC.div`
+  background-image: url('images/how_sacrill_works_2.png');
+  height: 100%;
+`;
+const Image3 = SC.div`
+  background-image: url('images/how_sacrill_works_3.png');
+  height: 100%;
 `;
 const ItemBottom = SC.div`
   font-family: 'SF Pro Display';
@@ -252,6 +355,10 @@ const ReviewBlock = SC.div`
   position: relative;
   left: 245px;
   width: 1000%;
+
+  @media ${maxDevice.tablet} {
+    position: initial;
+  }
 `;
 const ReviewSection = SC.div`
   width: 760px;
@@ -261,13 +368,20 @@ const ReviewSection = SC.div`
   padding: 60px;
   margin-right: 20px;
   border: 1px solid gray;
-  `;
+
+  @media ${maxDevice.tablet} {
+    width: 100%;
+    padding: 20px;
+    max-width: 340px;
+    height: 100%;
+  }
+`;
 const TopItem = SC.div``;
 const BottomItem = SC.div`
   margin-top: 20px;
   `;
 const Item = SC.div`
-  width: 560px;
+  width: 500px;
   height: 384px;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
@@ -311,6 +425,16 @@ const defaultResponsive = [
   },
 ];
 
+const defaultPhotoResponsive = [
+  {
+    breakpoint: 2560,
+    settings: {
+      slidesToShow: 5,
+      slidesToScroll: 1,
+    },
+  },
+];
+
 type ReviewProps = {
   avatar: string;
   name: string;
@@ -341,7 +465,7 @@ export const Intro = (props: any) => {
 
   return (
     <Element name="intro">
-      <section>
+      <IntroSection>
         <Container>
           <JoinSacrillBlock>
             <BoldText>Join Sacrill Club And Get Access</BoldText>
@@ -396,12 +520,7 @@ export const Intro = (props: any) => {
                 <HWSection>
                   <HWItem>
                     <ItemTop>
-                      <Image
-                        src={'/images/how_sacrill_works_1.png'}
-                        height={220}
-                        width={360}
-                        alt="How Sacrill works image"
-                      />
+                      <Image1></Image1>
                     </ItemTop>
                     <ItemBottom>
                       <ItemTitle>Learn</ItemTitle>
@@ -441,16 +560,11 @@ export const Intro = (props: any) => {
                 <HWSection>
                   <HWItem>
                     <ItemTop>
-                      <Image
-                        src={'/images/how_sacrill_works_1.png'}
-                        height={220}
-                        width={360}
-                        alt="How Sacrill works image"
-                      />
+                      <Image2></Image2>
                     </ItemTop>
                     <ItemBottom>
-                      <ItemTitle>Learn</ItemTitle>
-                      <ItemDescription>Level up your life with the world’s best trainers & programs</ItemDescription>
+                      <ItemTitle>Connect</ItemTitle>
+                      <ItemDescription>Be part of a supporting community</ItemDescription>
                     </ItemBottom>
                   </HWItem>
                   <HWFeedback>
@@ -486,12 +600,7 @@ export const Intro = (props: any) => {
                 <HWSection>
                   <HWItem>
                     <ItemTop>
-                      <Image
-                        src={'/images/how_sacrill_works_3.png'}
-                        height={220}
-                        width={360}
-                        alt="How Sacrill works image"
-                      />
+                    <Image3></Image3>
                     </ItemTop>
                     <ItemBottom>
                       <ItemTitle>Get result</ItemTitle>
@@ -543,7 +652,7 @@ export const Intro = (props: any) => {
                 through, but transform the life of our learners and help to get the bright future.
               </NormalTitle>
 
-              <CustomSlider withControls={false} autoplay={false} centerMode={false} responsive={defaultResponsive}>
+              <CustomSlider withControls={false} autoplay={false} centerMode={false} responsive={defaultPhotoResponsive}>
                 {photos}
               </CustomSlider>
             </CenterBlock>
@@ -686,7 +795,7 @@ export const Intro = (props: any) => {
             </CenterBlock>
           </StudentReviews>
         </Container>
-      </section>
+      </IntroSection>
     </Element>
   );
 };

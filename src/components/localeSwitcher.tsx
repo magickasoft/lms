@@ -8,6 +8,10 @@ import {WhiteButton} from './Button/whiteButton';
 
 const Container = SC.span`
   margin: 0;
+
+  @media (max-width: 1130px) {
+    display: none;
+  }
 `;
 
 const Locale = SC(Link)`

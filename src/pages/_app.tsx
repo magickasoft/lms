@@ -22,6 +22,8 @@ const clientSideEmotionCache = createEmotionCache();
 const MainDiv = SC.div`
   max-width: 1680px;
   margin: 0 auto;
+  background-image: url(images/top_gradient.png);
+  background-repeat: no-repeat;
 `;
 
 const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {

@@ -1,3 +1,4 @@
+export {Brand} from './brand';
 export {Button} from './Button/button';
 export {Categories} from './categories';
 export {Club} from './club';

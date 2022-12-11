@@ -2,10 +2,10 @@ import SC from '@emotion/styled';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {Element} from 'react-scroll';
+import useWindowDimensions from 'src/hooks/useWindowDimensions';
 
 import {useGetCoursesQuery, useGetPopularCoursesQuery, useGetTopCoursesQuery} from '../../generated/graphql';
 import {ibmplexsans400, maxDevice} from '../styles';
-import {Button} from './Button/button';
 import {WhiteButton} from './Button/whiteButton';
 import {Course} from './course';
 import {CustomSlider} from './customSlider';
@@ -15,20 +15,26 @@ const Container = SC.section`
   overflow: hidden;
   padding: 0 0 120px 0;
   @media ${maxDevice.tablet} {
-    padding: 0 0 80px 0;
+    padding: 0 20px 0 20px;
   }
 `;
 
 const Content = SC.div`
   font-family: ${ibmplexsans400.style.fontFamily};
-  padding: 23vh 200px 60px 200px;
+  padding: 40px 200px 60px 200px;
   @media ${maxDevice.tablet} {
     padding: 18vh 20px 30px 20px;
   }
+  @media ${maxDevice.mobileL} {
+    padding: 0 0 30px 0;
+    display: flex;
+  }
 `;
 
-const BlackButton = SC(Button)`
-  margin-right: 10px;
+const CategoryButton = SC(WhiteButton)`
+  @media ${maxDevice.mobileL} {
+    width: 100%;
+  }
 `;
 
 const defaultResponsive = [
@@ -122,9 +128,9 @@ export const Categories = props => {
       <Container>
         <Content>
           {courseTypes.map(({type, label}: CourseTypeProps, index) => (
-            <WhiteButton key={index} onClick={onClickType(type)} active={activeType === type}>
+            <CategoryButton key={index} onClick={onClickType(type)} active={activeType === type}>
               {t(label)}
-            </WhiteButton>
+            </CategoryButton>
           ))}
         </Content>
         <CustomSlider autoplay={false} centerMode={false} responsive={defaultResponsive}>
