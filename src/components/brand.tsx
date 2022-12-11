@@ -1,9 +1,8 @@
-
 import SC from '@emotion/styled';
 import Image from 'next/image';
 import React from 'react';
 import {Element} from 'react-scroll';
-import { getImageRatio } from 'src/helpers/imageRatio';
+import {getImageRatio} from 'src/helpers/imageRatio';
 import useWindowDimensions from 'src/hooks/useWindowDimensions';
 
 import {ibmplexsans400, maxDevice} from '../styles';
@@ -198,7 +197,7 @@ const FingersRockImage = SC.div`
     z-index: 5;
   }
 `;
-  
+
 const BigFlexBoldText = SC.div`
   font-family: 'Bebas Neue Bold';
   font-style: normal;
@@ -297,25 +296,24 @@ const NormalBlowTitle = SC.div`
 `;
 
 export const Brand = (props: any) => {
-  const { width } = useWindowDimensions();
-  
-  React.useEffect(() => {
-  }, [width]);
+  const {width} = useWindowDimensions();
+
+  React.useEffect(() => {}, [width]);
 
   const imageRatio = getImageRatio(width);
   let topImageSizes = {
     1: {width: 120, height: 120},
     2: {width: 90, height: 90},
     3: {width: 60, height: 60},
-    4: {width: 90, height: 90}
+    4: {width: 90, height: 90},
   };
 
-  if(width > 768) {
+  if (width > 768) {
     topImageSizes = {
       1: {width: 300 * imageRatio, height: 300 * imageRatio},
       2: {width: 160 * imageRatio, height: 160 * imageRatio},
       3: {width: 180 * imageRatio, height: 180 * imageRatio},
-      4: {width: 260 * imageRatio, height: 260 * imageRatio}
+      4: {width: 260 * imageRatio, height: 260 * imageRatio},
     };
   }
   console.log('image ration: ', imageRatio, width);
@@ -324,77 +322,75 @@ export const Brand = (props: any) => {
     <Element name="brand">
       <section>
         <Container>
-            <TextContainer>
-              <BigFlexBoldText>
-                <TopText>
-                  Level up
-                </TopText>
-                <TopImage3>
-                  <Image
-                    src={'/images/top_3.png'}
-                    height={topImageSizes[3].height}
-                    width={topImageSizes[3].width}
-                    alt="Top 3 image"
-                  />
-                </TopImage3>
-                <SupergirlImage>
-                  <Image
-                    src={'/images/supergirl.png'}
-                    height={80 * imageRatio}
-                    width={80 * imageRatio}
-                    alt="Supergirl image"
-                  />
-                </SupergirlImage>
-                <TopImage4>
-                  <Image
-                    src={'/images/top_4.png'}
-                    height={topImageSizes[4].height}
-                    width={topImageSizes[4].width}
-                    alt="Top 4 image"
-                  />
-                </TopImage4>
-              </BigFlexBoldText>
-              <RightTitle>
-                <TopImage1>
-                  <Image
-                    src={'/images/top_1.png'}
-                    height={topImageSizes[1].height}
-                    width={topImageSizes[1].width}
-                    alt="Top 1 image"
-                  />
-                </TopImage1>
-                <TopImage2>
-                  <Image
-                    src={'/images/top_2.png'}
-                    height={topImageSizes[2].height}
-                    width={topImageSizes[2].width}
-                    alt="Top 2 image"
-                  />
-                </TopImage2>
-                <FingersRockImage>
-                  <Image
-                    src={'/images/fingers_rock.png'}
-                    height={80 * imageRatio}
-                    width={80 * imageRatio}
-                    alt="Fingers rock image"
-                  />
-                </FingersRockImage>
-                <BigBoldText>your life</BigBoldText>
-              </RightTitle>
-            </TextContainer>
+          <TextContainer>
+            <BigFlexBoldText>
+              <TopText>Level up</TopText>
+              <TopImage3>
+                <Image
+                  src={'/images/top_3.png'}
+                  height={topImageSizes[3].height}
+                  width={topImageSizes[3].width}
+                  alt="Top 3 image"
+                />
+              </TopImage3>
+              <SupergirlImage>
+                <Image
+                  src={'/images/supergirl.png'}
+                  height={80 * imageRatio}
+                  width={80 * imageRatio}
+                  alt="Supergirl image"
+                />
+              </SupergirlImage>
+              <TopImage4>
+                <Image
+                  src={'/images/top_4.png'}
+                  height={topImageSizes[4].height}
+                  width={topImageSizes[4].width}
+                  alt="Top 4 image"
+                />
+              </TopImage4>
+            </BigFlexBoldText>
+            <RightTitle>
+              <TopImage1>
+                <Image
+                  src={'/images/top_1.png'}
+                  height={topImageSizes[1].height}
+                  width={topImageSizes[1].width}
+                  alt="Top 1 image"
+                />
+              </TopImage1>
+              <TopImage2>
+                <Image
+                  src={'/images/top_2.png'}
+                  height={topImageSizes[2].height}
+                  width={topImageSizes[2].width}
+                  alt="Top 2 image"
+                />
+              </TopImage2>
+              <FingersRockImage>
+                <Image
+                  src={'/images/fingers_rock.png'}
+                  height={80 * imageRatio}
+                  width={80 * imageRatio}
+                  alt="Fingers rock image"
+                />
+              </FingersRockImage>
+              <BigBoldText>your life</BigBoldText>
+            </RightTitle>
+          </TextContainer>
 
-            <RightBlowTitle>
-              <Image
-                src={'/images/blow.png'}
-                height={imageRatio > 0.5 ? 60 : 40}
-                width={imageRatio > 0.5 ? 60 : 40}
-                alt="Blow image"
-              />
-              <NormalBlowTitle>
-                Improve health, relationships, emotional and spiritual well-being, learn new skills and tranform your life
-              </NormalBlowTitle>
-            </RightBlowTitle>
-          </Container>
+          <RightBlowTitle>
+            <Image
+              src={'/images/blow.png'}
+              height={imageRatio > 0.5 ? 60 : 40}
+              width={imageRatio > 0.5 ? 60 : 40}
+              alt="Blow image"
+            />
+            <NormalBlowTitle>
+              Improve health, relationships, emotional and spiritual well-being, learn new skills and tranform your life
+            </NormalBlowTitle>
+          </RightBlowTitle>
+        </Container>
       </section>
     </Element>
   );

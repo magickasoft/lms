@@ -133,8 +133,8 @@ const Row = SC.div`
     text-align: left;
   }
   `;
-  
-  const Column = SC.div`
+
+const Column = SC.div`
   width: 50%;
   display: flex;
   
@@ -600,7 +600,7 @@ export const Intro = (props: any) => {
                 <HWSection>
                   <HWItem>
                     <ItemTop>
-                    <Image3></Image3>
+                      <Image3></Image3>
                     </ItemTop>
                     <ItemBottom>
                       <ItemTitle>Get result</ItemTitle>
@@ -652,7 +652,12 @@ export const Intro = (props: any) => {
                 through, but transform the life of our learners and help to get the bright future.
               </NormalTitle>
 
-              <CustomSlider withControls={false} autoplay={false} centerMode={false} responsive={defaultPhotoResponsive}>
+              <CustomSlider
+                withControls={false}
+                autoplay={false}
+                centerMode={false}
+                responsive={defaultPhotoResponsive}
+              >
                 {photos}
               </CustomSlider>
             </CenterBlock>

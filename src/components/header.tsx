@@ -1,5 +1,5 @@
 import SC from '@emotion/styled';
-import { Spin as Hamburger } from 'hamburger-react'
+import {Spin as Hamburger} from 'hamburger-react';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 
@@ -177,7 +177,6 @@ export const Header = () => {
           <RightButtons>
             <BlackButtons>{t('logIn')}</BlackButtons>
             <LocaleSwitcher />
-
           </RightButtons>
           <HamburgerRightMenu>
             <Hamburger toggled={isOpen} toggle={setOpen} size={20} />
