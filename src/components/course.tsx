@@ -103,7 +103,7 @@ type CourseProps = {
 const SMALL_SIZE = '440';
 
 export const Course = ({id, media, title, author_info, price, ...props}: CourseProps) => {
-  const coursePrice = getPrices(price);
+  // const coursePrice = getPrices(price);
 
   return (
     <section>
