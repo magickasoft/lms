@@ -207,52 +207,52 @@ export const SacrillWorks: FC = (props: any) => {
     <Element name="SacrillWorks">
       <Container>
         <CenterBlock>
-            <HowWorksTitle>
-              How <SubSpan>Sacrill works</SubSpan>
-            </HowWorksTitle>
+          <HowWorksTitle>
+            How <SubSpan>Sacrill works</SubSpan>
+          </HowWorksTitle>
 
-            <Grid container>
-              {feedbacks.map((feedback: FeedbackProps) => {
-                  return (
-                    <Grid key={feedback.id} item xs={12} sm={12} md={12} lg={4} xl={4}>
-                      <HWSection>
-                        <HWItem>
-                          <ItemTop>
-                            {feedback.id == 1 && <Image1></Image1>}
-                            {feedback.id == 2 && <Image2></Image2>}
-                            {feedback.id == 3 && <Image3></Image3>}
-                          </ItemTop>
-                          <ItemBottom>
-                            <ItemTitle>{feedback.title}</ItemTitle>
-                            <ItemDescription>{feedback.text}</ItemDescription>
-                          </ItemBottom>
-                        </HWItem>
-                        <HWFeedback>
-                          <FeedbackRow>
-                            <Avatar>
-                              <Image src={feedback.avatar} height={80} width={80} alt="How Sacrill works image" />
-                            </Avatar>
-                            <Info>
-                              <UserName>{feedback.name}</UserName>
-                              <UserTitle>{feedback.jobTitle}</UserTitle>
-                            </Info>
-                          </FeedbackRow>
-                          <FeedbackBlock>
-                            <FeedbackRow>
-                              <FeedbackText>{feedback.review}</FeedbackText>
-                            </FeedbackRow>
+          <Grid container>
+            {feedbacks.map((feedback: FeedbackProps) => {
+              return (
+                <Grid key={feedback.id} item xs={12} sm={12} md={12} lg={4} xl={4}>
+                  <HWSection>
+                    <HWItem>
+                      <ItemTop>
+                        {feedback.id == 1 && <Image1></Image1>}
+                        {feedback.id == 2 && <Image2></Image2>}
+                        {feedback.id == 3 && <Image3></Image3>}
+                      </ItemTop>
+                      <ItemBottom>
+                        <ItemTitle>{feedback.title}</ItemTitle>
+                        <ItemDescription>{feedback.text}</ItemDescription>
+                      </ItemBottom>
+                    </HWItem>
+                    <HWFeedback>
+                      <FeedbackRow>
+                        <Avatar>
+                          <Image src={feedback.avatar} height={80} width={80} alt="How Sacrill works image" />
+                        </Avatar>
+                        <Info>
+                          <UserName>{feedback.name}</UserName>
+                          <UserTitle>{feedback.jobTitle}</UserTitle>
+                        </Info>
+                      </FeedbackRow>
+                      <FeedbackBlock>
+                        <FeedbackRow>
+                          <FeedbackText>{feedback.review}</FeedbackText>
+                        </FeedbackRow>
 
-                            <FeedbackRow>
-                              <Rating stars={feedback.stars} />
-                            </FeedbackRow>
-                          </FeedbackBlock>
-                        </HWFeedback>
-                      </HWSection>
-                    </Grid>
-                  );
-                })}
-            </Grid>
-          </CenterBlock>
+                        <FeedbackRow>
+                          <Rating stars={feedback.stars} />
+                        </FeedbackRow>
+                      </FeedbackBlock>
+                    </HWFeedback>
+                  </HWSection>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </CenterBlock>
       </Container>
     </Element>
   );
