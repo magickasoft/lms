@@ -1,4 +1,5 @@
 import SC from '@emotion/styled';
+import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import {useTranslation} from 'next-i18next';
 import {FC} from 'react';
@@ -7,12 +8,10 @@ import {Element} from 'react-scroll';
 import {maxDevice} from '../styles';
 import {Rating} from './rating';
 
-const Container = SC.div`
-  padding: 0 200px;
+const Container = SC.section`
+  padding: 120px 160px;
 `;
-const HowSacrillWorks = SC.div`
-  margin-bottom: 120px;
-`;
+
 const CenterBlock = SC.div`
   text-align: center;
   margin-bottom: 60px;
@@ -59,15 +58,10 @@ const HWSection = SC.div`
   }
 `;
 const HWFeedback = SC.div`
-  height: 376px;
-  width: 360px;
+  min-height: 376px;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
   padding: 30px;
-
-  @media ${maxDevice.tablet} {
-    width: 100%;
-  }
 `;
 const FeedbackRow = SC.div`
   display: flex;
@@ -91,36 +85,33 @@ const FeedbackText = SC.div`
   color: #333333;
 `;
 const HWItem = SC.div`
-  width: 360px;
-  height: 385px;
-
+  min-height: 385px;
   background: #F5F5F5;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
-
-  @media ${maxDevice.tablet} {
-    width: 100%;
-  }
 `;
 const ItemTop = SC.div`
-  width: 360px;
+  width: 100%;
   height: 220px;
-
-  @media ${maxDevice.tablet} {
-    width: 100%;
-  }
 `;
+
 const Image1 = SC.div`
   background-image: url('images/how_sacrill_works_1.png');
   height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 const Image2 = SC.div`
   background-image: url('images/how_sacrill_works_2.png');
   height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 const Image3 = SC.div`
   background-image: url('images/how_sacrill_works_3.png');
   height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 const ItemBottom = SC.div`
   font-family: 'SF Pro Display';
@@ -215,53 +206,53 @@ export const SacrillWorks: FC = (props: any) => {
   return (
     <Element name="SacrillWorks">
       <Container>
-        <HowSacrillWorks>
-          <CenterBlock>
+        <CenterBlock>
             <HowWorksTitle>
               How <SubSpan>Sacrill works</SubSpan>
             </HowWorksTitle>
 
-            <HowWorksItems>
+            <Grid container>
               {feedbacks.map((feedback: FeedbackProps) => {
-                return (
-                  <HWSection key={feedback.id}>
-                    <HWItem>
-                      <ItemTop>
-                        {feedback.id == 1 && <Image1></Image1>}
-                        {feedback.id == 2 && <Image2></Image2>}
-                        {feedback.id == 3 && <Image3></Image3>}
-                      </ItemTop>
-                      <ItemBottom>
-                        <ItemTitle>{feedback.title}</ItemTitle>
-                        <ItemDescription>{feedback.text}</ItemDescription>
-                      </ItemBottom>
-                    </HWItem>
-                    <HWFeedback>
-                      <FeedbackRow>
-                        <Avatar>
-                          <Image src={feedback.avatar} height={80} width={80} alt="How Sacrill works image" />
-                        </Avatar>
-                        <Info>
-                          <UserName>{feedback.name}</UserName>
-                          <UserTitle>{feedback.jobTitle}</UserTitle>
-                        </Info>
-                      </FeedbackRow>
-                      <FeedbackBlock>
-                        <FeedbackRow>
-                          <FeedbackText>{feedback.review}</FeedbackText>
-                        </FeedbackRow>
+                  return (
+                    <Grid key={feedback.id} item xs={12} sm={12} md={12} lg={4} xl={4}>
+                      <HWSection>
+                        <HWItem>
+                          <ItemTop>
+                            {feedback.id == 1 && <Image1></Image1>}
+                            {feedback.id == 2 && <Image2></Image2>}
+                            {feedback.id == 3 && <Image3></Image3>}
+                          </ItemTop>
+                          <ItemBottom>
+                            <ItemTitle>{feedback.title}</ItemTitle>
+                            <ItemDescription>{feedback.text}</ItemDescription>
+                          </ItemBottom>
+                        </HWItem>
+                        <HWFeedback>
+                          <FeedbackRow>
+                            <Avatar>
+                              <Image src={feedback.avatar} height={80} width={80} alt="How Sacrill works image" />
+                            </Avatar>
+                            <Info>
+                              <UserName>{feedback.name}</UserName>
+                              <UserTitle>{feedback.jobTitle}</UserTitle>
+                            </Info>
+                          </FeedbackRow>
+                          <FeedbackBlock>
+                            <FeedbackRow>
+                              <FeedbackText>{feedback.review}</FeedbackText>
+                            </FeedbackRow>
 
-                        <FeedbackRow>
-                          <Rating stars={feedback.stars} />
-                        </FeedbackRow>
-                      </FeedbackBlock>
-                    </HWFeedback>
-                  </HWSection>
-                );
-              })}
-            </HowWorksItems>
+                            <FeedbackRow>
+                              <Rating stars={feedback.stars} />
+                            </FeedbackRow>
+                          </FeedbackBlock>
+                        </HWFeedback>
+                      </HWSection>
+                    </Grid>
+                  );
+                })}
+            </Grid>
           </CenterBlock>
-        </HowSacrillWorks>
       </Container>
     </Element>
   );
