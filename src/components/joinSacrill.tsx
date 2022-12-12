@@ -1,11 +1,11 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import { Element } from 'react-scroll';
+import {Element} from 'react-scroll';
 
-import { maxDevice } from '../styles';
-import { GreenButton } from './Button/greenButton';
+import {maxDevice} from '../styles';
+import {GreenButton} from './Button/greenButton';
 
 const JoinSacrillBlock = SC.div`
   margin-bottom: 120px;
@@ -126,7 +126,7 @@ const JoinSacrillGradient = SC.div`
 `;
 
 export const JoinSacrill = (props: any) => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
 
   return (
     <Element name="JoinSacrill">

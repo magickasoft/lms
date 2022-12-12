@@ -1,11 +1,11 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
-import { FC } from 'react';
-import { Element } from 'react-scroll';
+import {useTranslation} from 'next-i18next';
+import {FC} from 'react';
+import {Element} from 'react-scroll';
 
-import { maxDevice } from '../styles';
-import { Rating } from './rating';
+import {maxDevice} from '../styles';
+import {Rating} from './rating';
 
 const Container = SC.div`
   padding: 0 200px;
@@ -172,7 +172,7 @@ type FeedbackProps = {
   jobTitle: string;
   review: string;
   stars: number;
-}
+};
 
 const feedbacks: FeedbackProps[] = [
   {
@@ -182,7 +182,8 @@ const feedbacks: FeedbackProps[] = [
     avatar: '/images/how_sacrill_works_sub_1.png',
     name: 'Helen Williams',
     jobTitle: 'Bank employee',
-    review: 'I&apos;m participating on multiple Sacrill programs and integrated it easily into my daily routine. It completely fall into my squedule. I feel pumped up and limitless now!',
+    review:
+      'I&apos;m participating on multiple Sacrill programs and integrated it easily into my daily routine. It completely fall into my squedule. I feel pumped up and limitless now!',
     stars: 5,
   },
   {
@@ -202,18 +203,18 @@ const feedbacks: FeedbackProps[] = [
     avatar: '/images/how_sacrill_works_sub_3.png',
     name: 'Tara Brangston',
     jobTitle: 'Online entrepreneur',
-    review: 'Great materials Sacrill international community is a combination that caused a mind shift, helped me understand who I am. I finally started my online business and it is going well!',
+    review:
+      'Great materials Sacrill international community is a combination that caused a mind shift, helped me understand who I am. I finally started my online business and it is going well!',
     stars: 5,
   },
 ];
 
 export const SacrillWorks: FC = (props: any) => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
 
   return (
     <Element name="SacrillWorks">
       <Container>
-
         <HowSacrillWorks>
           <CenterBlock>
             <HowWorksTitle>
@@ -226,15 +227,9 @@ export const SacrillWorks: FC = (props: any) => {
                   <HWSection key={feedback.id}>
                     <HWItem>
                       <ItemTop>
-                        {feedback.id == 1 && (
-                          <Image1></Image1>
-                        )}
-                        {feedback.id == 2 && (
-                          <Image2></Image2>
-                        )}
-                        {feedback.id == 3 && (
-                          <Image3></Image3>
-                        )}
+                        {feedback.id == 1 && <Image1></Image1>}
+                        {feedback.id == 2 && <Image2></Image2>}
+                        {feedback.id == 3 && <Image3></Image3>}
                       </ItemTop>
                       <ItemBottom>
                         <ItemTitle>{feedback.title}</ItemTitle>
@@ -244,12 +239,7 @@ export const SacrillWorks: FC = (props: any) => {
                     <HWFeedback>
                       <FeedbackRow>
                         <Avatar>
-                          <Image
-                            src={feedback.avatar}
-                            height={80}
-                            width={80}
-                            alt="How Sacrill works image"
-                          />
+                          <Image src={feedback.avatar} height={80} width={80} alt="How Sacrill works image" />
                         </Avatar>
                         <Info>
                           <UserName>{feedback.name}</UserName>

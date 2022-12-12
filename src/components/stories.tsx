@@ -1,11 +1,11 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import { Element } from 'react-scroll';
+import {Element} from 'react-scroll';
 
-import { maxDevice } from '../styles';
-import { CustomSlider } from './customSlider';
+import {maxDevice} from '../styles';
+import {CustomSlider} from './customSlider';
 
 const Container = SC.div`
   padding: 0 200px;
@@ -68,7 +68,7 @@ const defaultPhotoResponsive = [
 ];
 
 export const Stories = (props: any) => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
   const photos = [...Array(10)].map((key: number, index: number) => {
     return (
       <Image key={index} src={'/images/slider_' + (index + 1) + '.png'} height={250} width={180} alt="Trainer image" />
@@ -88,12 +88,7 @@ export const Stories = (props: any) => {
               through, but transform the life of our learners and help to get the bright future.
             </NormalTitle>
 
-            <CustomSlider
-              withControls={false}
-              autoplay={false}
-              centerMode={false}
-              responsive={defaultPhotoResponsive}
-            >
+            <CustomSlider withControls={false} autoplay={false} centerMode={false} responsive={defaultPhotoResponsive}>
               {photos}
             </CustomSlider>
           </CenterBlock>

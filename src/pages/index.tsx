@@ -4,7 +4,19 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import {Events, scrollSpy} from 'react-scroll';
 
-import {Brand, Categories, Club, FAQ, Improve, JoinSacrill, SacrillWorks, Stories, StudentReviews, StudentSay, Teach} from '../components';
+import {
+  Brand,
+  Categories,
+  Club,
+  FAQ,
+  Improve,
+  JoinSacrill,
+  SacrillWorks,
+  Stories,
+  StudentReviews,
+  StudentSay,
+  Teach,
+} from '../components';
 
 type Props = {
   // Add custom props here

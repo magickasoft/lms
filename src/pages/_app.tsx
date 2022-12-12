@@ -30,7 +30,7 @@ const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
   const apolloClient = useApollo(pageProps);
   const router = useRouter();
   React.useEffect(() => {
-    const handleRouteChange = url => pageview(url);
+    const handleRouteChange = (url: string) => pageview(url);
     router.events.on('routeChangeComplete', handleRouteChange);
     router.events.on('hashChangeComplete', handleRouteChange);
 

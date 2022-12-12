@@ -1,10 +1,10 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import { Element } from 'react-scroll';
+import {Element} from 'react-scroll';
 
-import { maxDevice } from '../styles';
+import {maxDevice} from '../styles';
 
 const Container = SC.div`
   padding: 0 200px;
@@ -107,7 +107,7 @@ const reviews: ReviewProps[] = [
 ];
 
 export const StudentSay = (props: any) => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
 
   return (
     <Element name="StudentSay">
