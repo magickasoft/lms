@@ -17,4 +17,5 @@ export {Page} from './page';
 export {Price} from './price';
 export {SearchForm} from './searchForm';
 export {Select} from './select';
+export {StudentReviews} from './studentReviews';
 export {Teach} from './teach';

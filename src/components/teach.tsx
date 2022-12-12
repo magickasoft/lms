@@ -1,6 +1,5 @@
 import SC from '@emotion/styled';
 import Grid from '@mui/material/Grid';
-import Image from 'next/image';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {Element} from 'react-scroll';

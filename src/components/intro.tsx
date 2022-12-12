@@ -1,5 +1,4 @@
 import SC from '@emotion/styled';
-import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import React from 'react';
 import {Element} from 'react-scroll';
@@ -7,7 +6,6 @@ import {Element} from 'react-scroll';
 import {ibmplexsans400, maxDevice} from '../styles';
 import {GreenButton} from './Button/greenButton';
 import {CustomSlider} from './customSlider';
-import {Icon} from './icon';
 import {Rating} from './rating';
 
 const Container = SC.div`
@@ -45,10 +43,6 @@ const SuccessStories = SC.div`
 `;
 
 const WhatStudentSay = SC.div`
-  margin-bottom: 120px;
-`;
-
-const StudentReviews = SC.div`
   margin-bottom: 120px;
 `;
 
@@ -269,15 +263,7 @@ const FeedbackText = SC.div`
   text-align: left;
   color: #333333;
 `;
-const StudentFeedbackText = SC.div`
-  font-family: 'SF Pro Display Regular Italic';
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 150%;
-  text-align: left;
-  color: #333333;
-  margin-bottom: 30px;
-`;
+
 const Avatar = SC.div`
   margin-right: 20px;
 `;
@@ -380,50 +366,6 @@ const TopItem = SC.div``;
 const BottomItem = SC.div`
   margin-top: 20px;
   `;
-const Item = SC.div`
-  width: 500px;
-  height: 384px;
-  border: 1px solid #E5E5E5;
-  border-radius: 12px;
-  padding: 40px;
-`;
-
-const RatingTitle = SC.div`
-  text-align: left;
-  margin-top: 0px;
-  margin-bottom: 20px;
-`;
-
-const defaultResponsive = [
-  {
-    breakpoint: 2560,
-    settings: {
-      slidesToShow: 4,
-      slidesToScroll: 1,
-    },
-  },
-  {
-    breakpoint: 1440,
-    settings: {
-      slidesToShow: 4,
-      slidesToScroll: 1,
-    },
-  },
-  {
-    breakpoint: 1024,
-    settings: {
-      slidesToShow: 3,
-      slidesToScroll: 1,
-    },
-  },
-  {
-    breakpoint: 768,
-    settings: {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    },
-  },
-];
 
 const defaultPhotoResponsive = [
   {
@@ -690,115 +632,6 @@ export const Intro = (props: any) => {
               })}
             </ReviewBlock>
           </WhatStudentSay>
-
-          <StudentReviews>
-            <CenterBlock>
-              <BoldText>Student reviews</BoldText>
-              <Title>about our courses</Title>
-
-              <NormalTitle>All our students are delighted with the results and the work of online trainers</NormalTitle>
-
-              <Grid container rowSpacing={4} columnSpacing={{xs: 0, sm: 0, md: 0}}>
-                <Grid item xs={6}>
-                  <Item>
-                    <Rating stars={5} />
-                    <RatingTitle>@dBarnes · 7 March 2022</RatingTitle>
-                    <StudentFeedbackText>
-                      A wonderful, healthy pastime! Great, exciting and giving hope for a full perception of the world
-                      in its best light! Developing motor skills-we develop acute and quick problem solving! Great!
-                      Thanks!
-                    </StudentFeedbackText>
-                    <FeedbackRow>
-                      <Avatar>
-                        <Image
-                          src={'/images/student_reviews_1.png'}
-                          height={80}
-                          width={80}
-                          alt="Student review image"
-                        />
-                      </Avatar>
-                      <Info>
-                        <UserName>Tara Brangston</UserName>
-                        <UserTitle>Online entrepreneur</UserTitle>
-                      </Info>
-                    </FeedbackRow>
-                  </Item>
-                </Grid>
-                <Grid item xs={6}>
-                  <Item>
-                    <Rating stars={5} />
-                    <RatingTitle>@Mikeeeee · 5 March 2022</RatingTitle>
-                    <StudentFeedbackText>
-                      Now I feel my inner power After this program I does not feel my daily weakness without taking any
-                      pills and medications. This is unbelieveble!
-                    </StudentFeedbackText>
-                    <FeedbackRow>
-                      <Avatar>
-                        <Image
-                          src={'/images/student_reviews_2.png'}
-                          height={80}
-                          width={80}
-                          alt="Student review image"
-                        />
-                      </Avatar>
-                      <Info>
-                        <UserName>Mike Thomson</UserName>
-                        <UserTitle>Nutrition Coach</UserTitle>
-                      </Info>
-                    </FeedbackRow>
-                  </Item>
-                </Grid>
-                <Grid item xs={6}>
-                  <Item>
-                    <Rating stars={4} />
-                    <RatingTitle>@BrianAl · 9 April 2022</RatingTitle>
-                    <StudentFeedbackText>
-                      Hello. Thank you so much for the course program!!! It was a pleasure, I liked everything very
-                      much!!! The result speaks better than any words!
-                    </StudentFeedbackText>
-                    <FeedbackRow>
-                      <Avatar>
-                        <Image
-                          src={'/images/student_reviews_3.png'}
-                          height={80}
-                          width={80}
-                          alt="Student review image"
-                        />
-                      </Avatar>
-                      <Info>
-                        <UserName>Brian Alexander</UserName>
-                        <UserTitle>Successful businessman</UserTitle>
-                      </Info>
-                    </FeedbackRow>
-                  </Item>
-                </Grid>
-                <Grid item xs={6}>
-                  <Item>
-                    <Rating stars={5} />
-                    <RatingTitle>@NicGray · 7 July 2022</RatingTitle>
-                    <StudentFeedbackText>
-                      I&apos;ve been doing it for 2 months, 3 times a week - the result is minus 8 cm in the waistline.
-                      Very cool result! Thank you for this useful course.
-                    </StudentFeedbackText>
-                    <FeedbackRow>
-                      <Avatar>
-                        <Image
-                          src={'/images/student_reviews_4.png'}
-                          height={80}
-                          width={80}
-                          alt="Student review image"
-                        />
-                      </Avatar>
-                      <Info>
-                        <UserName>Nicole Gray</UserName>
-                        <UserTitle>Novice disco dancer</UserTitle>
-                      </Info>
-                    </FeedbackRow>
-                  </Item>
-                </Grid>
-              </Grid>
-            </CenterBlock>
-          </StudentReviews>
         </Container>
       </IntroSection>
     </Element>
