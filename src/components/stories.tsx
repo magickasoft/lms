@@ -59,11 +59,11 @@ const NormalTitle = SC.div`
 `;
 type ImgProps = {
   src: string;
-}
+};
 
 const Img = SC.div<ImgProps>`
   height: 250px;
-  background-image: ${(props) => `url(${props.src})`};
+  background-image: ${props => `url(${props.src})`};
   background-repeat: no-repeat;
   background-size: cover;
 `;
@@ -123,9 +123,7 @@ const defaultPhotoResponsive = [
 export const Stories = (props: any) => {
   const {t} = useTranslation('common');
   const photos = [...Array(10)].map((key: number, index: number) => {
-    return (
-      <Img key={index} src={'/images/slider_' + (index + 1) + '.png'} />
-    );
+    return <Img key={index} src={'/images/slider_' + (index + 1) + '.png'} />;
   });
 
   return (
