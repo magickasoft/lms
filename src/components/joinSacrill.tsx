@@ -151,9 +151,7 @@ export const JoinSacrill = (props: any) => {
           <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
             <PlusItem>
               <IconImage src="/images/icons/brain.svg" height={46} width={46} alt="Brain image" />
-              <SmallText>
-                Self-development courses, health, sports, relationships, dance and other categories
-              </SmallText>
+              <SmallText>Self-development courses, health, sports, relationships, dance and other categories</SmallText>
             </PlusItem>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
