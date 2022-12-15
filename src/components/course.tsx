@@ -1,13 +1,13 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import React from 'react';
 
-import { getCourseThumbnail } from '../helpers/media';
-import { getPrices } from '../helpers/price';
-import { maxDevice } from '../styles';
-import { Price } from './price';
+import {getCourseThumbnail} from '../helpers/media';
+import {getPrices} from '../helpers/price';
+import {maxDevice} from '../styles';
+import {Price} from './price';
 
 const CourseItem = SC.div`
   position: relative;
@@ -106,7 +106,7 @@ type CourseProps = {
 
 const SMALL_SIZE = '440';
 
-export const Course = ({ id, media, title, slug, author_info, price, ...props }: CourseProps) => {
+export const Course = ({id, media, title, slug, author_info, price, ...props}: CourseProps) => {
   // const coursePrice = getPrices(price);
 
   const router = useRouter();
@@ -123,7 +123,7 @@ export const Course = ({ id, media, title, slug, author_info, price, ...props }:
           <Details>
             <div>
               <Title>{title}</Title>
-              <Author>{author_info.map((author: { name: any }) => author.name).join(' • ')}</Author>
+              <Author>{author_info.map((author: {name: any}) => author.name).join(' • ')}</Author>
             </div>
             {/* <div>
             <Hr />

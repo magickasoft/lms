@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import {NextApiRequest, NextApiResponse} from 'next';
 
 const {MailtrapClient} = require('mailtrap');
 export default function (req: NextApiRequest, res: NextApiResponse) {

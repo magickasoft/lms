@@ -1,12 +1,12 @@
 import e from 'cors';
 import type {GetServerSideProps, GetStaticProps, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, {createContext, useCallback, useContext, useEffect, useState} from 'react';
 import {Events, scrollSpy} from 'react-scroll';
-import { CourseContent, Footer } from 'src/components';
-import { CourseHeader } from 'src/components/courseHeader';
+import {CourseContent, Footer} from 'src/components';
+import {CourseHeader} from 'src/components/courseHeader';
 
 type Course = {
   id: string;
@@ -16,7 +16,7 @@ type Course = {
   author_info: string;
   rating: number;
   price: number;
-}
+};
 
 type Props = {
   course: Course | null;
@@ -24,16 +24,16 @@ type Props = {
 };
 
 export type GlobalContext = {
-  course: Course | null
-  setCourse:(course: Course) => void
-}
+  course: Course | null;
+  setCourse: (course: Course) => void;
+};
 
 export const MyGlobalContext = createContext<GlobalContext>({
   course: null,
-  setCourse: () => {}
+  setCourse: () => {},
 });
 
-export const useGlobalContext = () => useContext(MyGlobalContext)
+export const useGlobalContext = () => useContext(MyGlobalContext);
 
 const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
   const router = useRouter();
@@ -45,20 +45,20 @@ const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
     Events.scrollEvent.register('begin', function (to, element) {
       console.log('begin', to);
     });
-  
+
     Events.scrollEvent.register('end', function (to, element) {
       console.log('end', to);
     });
-  
+
     scrollSpy.update();
-  
+
     return () => {
       Events.scrollEvent.remove('begin');
       Events.scrollEvent.remove('end');
     };
   }, []);
-  
-  if(serverCourse == undefined) {
+
+  if (serverCourse == undefined) {
     return <>Loading...</>;
   }
 
@@ -74,8 +74,6 @@ const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
 
   console.log('course: ', serverCourse);
   console.log('slug: ', slug);
-
-  
 
   return (
     <>
@@ -101,7 +99,7 @@ const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
         <meta property="twitter:url" content="https://sacrill.com/" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
-      <MyGlobalContext.Provider value= {{ course, setCourse }}>
+      <MyGlobalContext.Provider value={{course, setCourse}}>
         <CourseHeader />
         <CourseContent />
         {/* <h1>{serverCourse?.title}</h1>
@@ -116,19 +114,19 @@ const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
 interface CourseServerSideProps extends GetServerSideProps<Props> {
   query: {
     slug?: string;
-  },
+  };
   locale: string;
 }
 
-export const getServerSideProps = async ({query, locale} : CourseServerSideProps) => {
+export const getServerSideProps = async ({query, locale}: CourseServerSideProps) => {
   const response = await fetch(`http://edston.lc/api/course-by-slug/${query.slug}`);
   const course = await response.json();
 
   return {
     props: {
-      ...(course),
+      ...course,
       ...(await serverSideTranslations(locale ?? 'es', ['common'])),
-    }
+    },
   };
 };
 

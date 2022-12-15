@@ -1,6 +1,6 @@
 import {ApolloProvider} from '@apollo/client';
 import {CacheProvider} from '@emotion/react';
-import SC, { StyledComponent } from '@emotion/styled';
+import SC, {StyledComponent} from '@emotion/styled';
 import {CssBaseline, StyledComponentProps} from '@mui/material';
 import {ThemeProvider} from '@mui/material/styles';
 import Head from 'next/head';
@@ -30,7 +30,7 @@ const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
     margin: 0 auto;
   `;
 
-  if(router.route == '/') {
+  if (router.route == '/') {
     MainDiv = SC.div`
       max-width: 1680px;
       margin: 0 auto;
@@ -38,7 +38,7 @@ const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
       background-repeat: no-repeat;
     `;
   }
-  
+
   React.useEffect(() => {
     const handleRouteChange = (url: string) => pageview(url);
     router.events.on('routeChangeComplete', handleRouteChange);

@@ -17,19 +17,23 @@ const DiscountPrice = SC.span`
   text-decoration-line: line-through;
 `;
 
-
 type SidebarPriceProps = {
   price: number;
   discountPrice?: number;
   currency: string;
-}
+};
 
 export const SidebarPrice = (props: SidebarPriceProps) => {
   const {currency, price, discountPrice} = props;
 
   return (
     <Price>
-      <DiscountPrice>{currency} {(discountPrice ?? price * 10)}</DiscountPrice> <Alert>{currency} {price}</Alert>
+      <DiscountPrice>
+        {currency} {discountPrice ?? price * 10}
+      </DiscountPrice>{' '}
+      <Alert>
+        {currency} {price}
+      </Alert>
     </Price>
-  )
-}
+  );
+};

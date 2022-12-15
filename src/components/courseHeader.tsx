@@ -2,8 +2,8 @@ import SC from '@emotion/styled';
 import {Spin as Hamburger} from 'hamburger-react';
 import Link from 'next/link';
 import {useTranslation} from 'next-i18next';
-import React, { use } from 'react';
-import { useGlobalContext } from 'src/pages/[slug]';
+import React, {use} from 'react';
+import {useGlobalContext} from 'src/pages/[slug]';
 
 import {maxDevice} from '../styles';
 import {Button} from './Button/button';
@@ -140,7 +140,7 @@ export const CourseHeader = () => {
       <Container>
         <LeftSide>
           <HeaderLogo>
-            <AuthorLink href='/'>
+            <AuthorLink href="/">
               <AuthorImage></AuthorImage>
               <Author>
                 <AuthorName>{authorName[0].name}</AuthorName>
@@ -151,9 +151,7 @@ export const CourseHeader = () => {
         </LeftSide>
         <RightSide>
           <RightButtons>
-            <LinkHref href={'/support'}>
-              Support
-            </LinkHref>
+            <LinkHref href={'/support'}>Support</LinkHref>
             <LoginButton>
               <BlackButtons padding={'10px 20px'}>{t('logIn')}</BlackButtons>
             </LoginButton>

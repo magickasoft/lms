@@ -1,11 +1,11 @@
 import SC from '@emotion/styled';
-import { Moment } from 'moment';
-import { useCountdown } from 'src/hooks/useCountdown';
+import {Moment} from 'moment';
+import {useCountdown} from 'src/hooks/useCountdown';
 
 type SaleTimerProps = {
   endDate: Moment;
   percentage: number;
-}
+};
 
 const TimerBlock = SC.div`
   font-family: 'SF Pro Display';
@@ -24,14 +24,17 @@ const Alert = SC.span`
 `;
 
 export const SaleTimer = (props: SaleTimerProps) => {
-  const { percentage, endDate } = props;
+  const {percentage, endDate} = props;
   const [days, hours, minutes, seconds] = useCountdown(endDate.unix() * 1000);
 
   return (
     <>
       <TimerBlock>
-        -{percentage}% off before <Alert>{endDate.format('D MMM')}</Alert>. Time left: <Alert>{hours}:{minutes}:{seconds}</Alert>
+        -{percentage}% off before <Alert>{endDate.format('D MMM')}</Alert>. Time left:{' '}
+        <Alert>
+          {hours}:{minutes}:{seconds}
+        </Alert>
       </TimerBlock>
     </>
-  )
-}
+  );
+};

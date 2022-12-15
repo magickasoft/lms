@@ -81,8 +81,6 @@ const Home = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
   );
 };
 
-
-
 // export const getStaticProps: GetStaticProps<Props> = async ({locale}) => ({
 //   props: {
 //     ...(await serverSideTranslations(locale ?? 'es', ['common'])),
@@ -94,6 +92,5 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({locale}) =>
     ...(await serverSideTranslations(locale ?? 'es', ['common'])),
   },
 });
-
 
 export default Home;

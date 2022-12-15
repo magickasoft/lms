@@ -157,8 +157,8 @@ export const Header = () => {
       <Container>
         <LeftSide>
           <HeaderLogo>
-            <Link href='/'>
-                <Icon name="logo" width={136} height={30} />
+            <Link href="/">
+              <Icon name="logo" width={136} height={30} />
             </Link>
           </HeaderLogo>
           <HeaderLinks>
@@ -168,9 +168,9 @@ export const Header = () => {
             <Label>
               {linksList.map(({label, ...props}: LinkProps) => (
                 // <Link key={label} href="#" passHref>
-                  <LinkHref key={label} {...props}>
-                    {t(label)}
-                  </LinkHref>
+                <LinkHref key={label} {...props}>
+                  {t(label)}
+                </LinkHref>
                 // </Link>
               ))}
             </Label>

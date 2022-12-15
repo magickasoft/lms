@@ -1,7 +1,7 @@
 import {css} from '@emotion/react';
 import SC from '@emotion/styled';
-import { ButtonProps, StyledComponentProps } from '@mui/material';
-import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
+import {ButtonProps, StyledComponentProps} from '@mui/material';
+import {ThemeProviderProps} from '@mui/material/styles/ThemeProvider';
 import React from 'react';
 
 import {theme} from '../../styles';
@@ -18,13 +18,13 @@ const Container = SC.button<CustomButtonProps>`
   font-size: 13px;
   line-height: 150%;
   ${({padding}) =>
-    padding ? (
-    css`
-      padding: ${padding};
-    `) : (
-      css`
-      padding: 8px 16px;
-    `)}
+    padding
+      ? css`
+          padding: ${padding};
+        `
+      : css`
+          padding: 8px 16px;
+        `}
   border-radius: 1000px;
   transition: background-color 250ms cubic-bezier(0.4,0,0.2,1) 0ms,box-shadow 250ms cubic-bezier(0.4,0,0.2,1) 0ms,border-color 250ms cubic-bezier(0.4,0,0.2,1) 0ms,color 250ms cubic-bezier(0.4,0,0.2,1) 0ms;
   color: ${theme.colors.White};
