@@ -38,6 +38,9 @@ const defaultConfig = {
   typescript: {
     tsconfigPath,
   },
+  // plugins: {
+  //   webpackContainer
+  // }
 };
 
 module.exports = (phase) => {

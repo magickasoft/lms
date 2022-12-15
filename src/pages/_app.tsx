@@ -1,12 +1,13 @@
 import {ApolloProvider} from '@apollo/client';
 import {CacheProvider} from '@emotion/react';
-import SC from '@emotion/styled';
-import {CssBaseline} from '@mui/material';
+import SC, { StyledComponent } from '@emotion/styled';
+import {CssBaseline, StyledComponentProps} from '@mui/material';
 import {ThemeProvider} from '@mui/material/styles';
 import Head from 'next/head';
 import Router, {useRouter} from 'next/router';
 import Script from 'next/script';
 import {appWithTranslation} from 'next-i18next';
+import NextNprogress from 'nextjs-progressbar';
 import React from 'react';
 
 import nextI18NextConfig from '../../next-i18next.config.js';
@@ -19,16 +20,25 @@ import {GlobalStyle} from '../styles';
 import theme from '../styles/theme';
 
 const clientSideEmotionCache = createEmotionCache();
-const MainDiv = SC.div`
-  max-width: 1680px;
-  margin: 0 auto;
-  background-image: url(images/top_gradient.png);
-  background-repeat: no-repeat;
-`;
 
 const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
   const apolloClient = useApollo(pageProps);
   const router = useRouter();
+
+  let MainDiv = SC.div`
+    max-width: 1680px;
+    margin: 0 auto;
+  `;
+
+  if(router.route == '/') {
+    MainDiv = SC.div`
+      max-width: 1680px;
+      margin: 0 auto;
+      background-image: url(images/top_gradient.png);
+      background-repeat: no-repeat;
+    `;
+  }
+  
   React.useEffect(() => {
     const handleRouteChange = (url: string) => pageview(url);
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -67,7 +77,7 @@ const App = ({Component, emotionCache = clientSideEmotionCache, pageProps}) => {
         <ThemeProvider theme={theme}>
           <MainDiv>
             <CssBaseline />
-            <Header />
+            <NextNprogress color="#73C371" startPosition={0.3} stopDelayMs={200} height={3} />
             <Component {...pageProps} />
             <Footer />
           </MainDiv>

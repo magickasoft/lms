@@ -316,7 +316,6 @@ export const Brand = (props: any) => {
       4: {width: 260 * imageRatio, height: 260 * imageRatio},
     };
   }
-  console.log('image ration: ', imageRatio, width);
 
   return (
     <Element name="brand">

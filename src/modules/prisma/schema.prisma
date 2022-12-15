@@ -8,8 +8,8 @@ generator nexusPrisma {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://edston_remote:Lf%2A%24f10%24d2@45.80.70.235:3306/production"
-  // url      = "mysql://root:123@localhost:3306/edston"
+  // url      = "mysql://edston_remote:Lf%2A%24f10%24d2@45.80.70.235:3306/production"
+  url      = "mysql://root:123@localhost:3306/edston"
 }
 
 model Course {

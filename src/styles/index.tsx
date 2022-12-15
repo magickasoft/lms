@@ -120,15 +120,15 @@ export const GlobalStyle = props => (
         }
       }
 
-      a:hover {
-        background: #000;
-        text-decoration: underline;
-        -webkit-background-clip: text;
-      }
+      // a:hover {
+      //   background: #000;
+      //   text-decoration: underline;
+      //   -webkit-background-clip: text;
+      // }
 
       a:active,
       a:hover {
-        outline: 0;
+        outline: none;
       }
 
       * {

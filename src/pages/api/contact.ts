@@ -1,5 +1,7 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
 const {MailtrapClient} = require('mailtrap');
-export default function (req, res) {
+export default function (req: NextApiRequest, res: NextApiResponse) {
   const client = new MailtrapClient({token: '16daf367bfd3849d5c135286c71d55c5'});
 
   const message = {

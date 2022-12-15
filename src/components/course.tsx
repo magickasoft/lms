@@ -1,11 +1,13 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
-import {getCourseThumbnail} from '../helpers/media';
-import {getPrices} from '../helpers/price';
-import {maxDevice} from '../styles';
-import {Price} from './price';
+import { getCourseThumbnail } from '../helpers/media';
+import { getPrices } from '../helpers/price';
+import { maxDevice } from '../styles';
+import { Price } from './price';
 
 const CourseItem = SC.div`
   position: relative;
@@ -82,6 +84,7 @@ const ImageBlock = SC.div`
   max-height: 115px;
   height: 100%;
 `;
+const LinkHref = SC.a``;
 
 type Media = {
   id?: bigint;
@@ -95,6 +98,7 @@ type CourseProps = {
   media?: Media[];
   id?: any;
   title?: any;
+  slug?: string;
   author_info?: any;
   price?: any;
   children?: any;
@@ -102,30 +106,35 @@ type CourseProps = {
 
 const SMALL_SIZE = '440';
 
-export const Course = ({id, media, title, author_info, price, ...props}: CourseProps) => {
+export const Course = ({ id, media, title, slug, author_info, price, ...props }: CourseProps) => {
   // const coursePrice = getPrices(price);
+
+  const router = useRouter();
+  // router.push('/dashboard');
 
   return (
     <section>
-      <CourseItem>
-        <ImageBlock>
-          <Image src={getCourseThumbnail(media, SMALL_SIZE)} height={130} width={240} alt="Course image" />
-        </ImageBlock>
+      <Link href={`/${slug}`}>
+        <CourseItem>
+          <ImageBlock>
+            <Image src={getCourseThumbnail(media, SMALL_SIZE)} height={130} width={240} alt="Course image" />
+          </ImageBlock>
 
-        <Details>
-          <div>
-            <Title>{title}</Title>
-            <Author>{author_info.map((author: {name: any}) => author.name).join(' • ')}</Author>
-          </div>
-          {/* <div>
+          <Details>
+            <div>
+              <Title>{title}</Title>
+              <Author>{author_info.map((author: { name: any }) => author.name).join(' • ')}</Author>
+            </div>
+            {/* <div>
             <Hr />
             <BottomBlock>
-              <Price price={coursePrice?.rub} price_without_discount={coursePrice?.rub * 10} />
-              <Arrow>&gt;</Arrow>
+            <Price price={coursePrice?.rub} price_without_discount={coursePrice?.rub * 10} />
+            <Arrow>&gt;</Arrow>
             </BottomBlock>
           </div> */}
-        </Details>
-      </CourseItem>
+          </Details>
+        </CourseItem>
+      </Link>
     </section>
   );
 };

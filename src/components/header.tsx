@@ -1,5 +1,6 @@
 import SC from '@emotion/styled';
 import {Spin as Hamburger} from 'hamburger-react';
+import Link from 'next/link';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 
@@ -45,7 +46,7 @@ const Label = SC.div`
   }
 `;
 
-const Link = SC.a`
+const LinkHref = SC.a`
   font-size: 0.9rem;
   line-height: 1.125rem;
   background: #000;
@@ -56,6 +57,7 @@ const Link = SC.a`
   line-height: 150%;
   color: #333333;
   -webkit-background-clip: text;
+  cursor: pointer;
 `;
 
 const LeftSide = SC.div`
@@ -155,7 +157,9 @@ export const Header = () => {
       <Container>
         <LeftSide>
           <HeaderLogo>
-            <Icon name="logo" width={136} height={30} />
+            <Link href='/'>
+                <Icon name="logo" width={136} height={30} />
+            </Link>
           </HeaderLogo>
           <HeaderLinks>
             <HamburgerMenu>
@@ -163,9 +167,11 @@ export const Header = () => {
             </HamburgerMenu>
             <Label>
               {linksList.map(({label, ...props}: LinkProps) => (
-                <Link key={label} {...props}>
-                  {t(label)}
-                </Link>
+                // <Link key={label} href="#" passHref>
+                  <LinkHref key={label} {...props}>
+                    {t(label)}
+                  </LinkHref>
+                // </Link>
               ))}
             </Label>
           </HeaderLinks>

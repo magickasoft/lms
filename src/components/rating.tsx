@@ -16,13 +16,19 @@ type RatingProps = {
 export const Rating = (props: RatingProps) => {
   const {stars} = props;
 
+  [...Array(5)].map((key: number, index: number) => (
+      console.log('key', index, ((index + 1 <= stars) ? true : false), ((index + 1 <= stars) ? '#FFA51E' : '#808080'))
+  ))
+
   return (
     <Container>
-      {[...Array(stars)].map((key: number, index: number) => (
-        <StarIcon key={index}>
-          <Icon name="star" width={13} height={12} />
-        </StarIcon>
-      ))}
+      {[...Array(5)].map((key: number, index: number) => {
+        return (
+          <StarIcon key={index}>
+            <Icon name="star" width={13} height={12} color={((index + 1 <= stars) ? '#FFA51E' : '#808080')} />
+          </StarIcon>
+        )
+      })}
     </Container>
   );
 };

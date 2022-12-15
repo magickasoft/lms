@@ -29,6 +29,7 @@ const Container = SC.button`
   user-select: none;
   vertical-align: middle;
   text-decoration: none;
+  width: 100%;
 
   &:not(:last-child) {
     margin-right: 10px;

@@ -1,4 +1,4 @@
-import type {GetStaticProps, InferGetStaticPropsType} from 'next';
+import type {GetServerSideProps, GetStaticProps, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import React from 'react';
@@ -9,6 +9,7 @@ import {
   Categories,
   Club,
   FAQ,
+  Header,
   Improve,
   JoinSacrill,
   SacrillWorks,
@@ -22,7 +23,7 @@ type Props = {
   // Add custom props here
 };
 
-const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
   React.useEffect(() => {
     Events.scrollEvent.register('begin', function (to, element) {
       console.log('begin', to);
@@ -64,6 +65,7 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <meta property="twitter:url" content="https://sacrill.com/" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
+      <Header />
       <Brand />
       <Categories />
       <JoinSacrill />
@@ -79,10 +81,19 @@ const Home = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({locale}) => ({
+
+
+// export const getStaticProps: GetStaticProps<Props> = async ({locale}) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale ?? 'es', ['common'])),
+//   },
+// });
+
+export const getServerSideProps: GetServerSideProps<Props> = async ({locale}) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'es', ['common'])),
   },
 });
+
 
 export default Home;
