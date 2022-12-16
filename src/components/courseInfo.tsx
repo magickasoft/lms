@@ -4,6 +4,10 @@ import React from 'react';
 import {Element} from 'react-scroll';
 import {useGlobalContext} from 'src/pages/[slug]';
 
+import {GreenBox} from './courseSections/greenBox';
+import {StudentFeedback} from './courseSections/studentFeedback';
+import {UlList} from './courseSections/ulList';
+
 const Container = SC.div`
   width: 950px;
 `;
@@ -33,6 +37,15 @@ const Text = SC.div`
   line-height: 150%;
   color: #333333;
 `;
+const TextWithBr = SC.div`
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  color: #333333;
+  margin-bottom: 10px;
+`;
 const CourseExcerpt = SC.div`
   margin-bottom: 30px;
 `;
@@ -49,6 +62,9 @@ const CourseUpdateAt = SC.div`
 const ImageClock = SC(Image)`
   margin-right: 14px;
 `;
+const AcademicPlan = SC.div`
+  margin-top: 50px;
+`;
 
 export const CourseInfo = () => {
   const {course} = useGlobalContext();
@@ -57,6 +73,7 @@ export const CourseInfo = () => {
     <Element name="courseInfo">
       <Container>
         <VideoPlayer></VideoPlayer>
+
         <CourseBigTitle>{course.title}</CourseBigTitle>
         <CourseExcerpt>
           <Text>{course.excerpt}</Text>
@@ -65,16 +82,42 @@ export const CourseInfo = () => {
           <ImageClock src={'/images/clock.png'} width={33} height={33} alt="Clock image" />
           <Text>Updated: May 2022</Text>
         </CourseUpdateAt>
+
         <CourseBigTitle>Are you ready to keep your mind always sharp and young?</CourseBigTitle>
-        <Text>
-          If so, Brain Biohacking is the course for you. This course is for those who want: To keep the mind always
-          sharp and young. Have a perfect memory. Easy to learn languages, memorize a large amount of information. Avoid
-          age-related diseases such as Alzheimer&apos;s or Parkinson&apos;s disease. Freely memorize dates, phone
-          numbers, numbers, important events. It is easy to prepare and pass tests and exams for the highest score. Be
-          cheerful and energetic, increase your efficiency. Cope more effectively with tasks at work and at home. Learn
-          to easily analyze information, situations. Develop creativity and a non-standard approach to solving various
-          issues.
-        </Text>
+        <UlList />
+
+        <StudentFeedback />
+
+        <CourseBigTitle>
+          Have you ever considered what it&apos;s like for your brain to wake up in the morning?
+        </CourseBigTitle>
+        <TextWithBr>
+          Over the years, the productivity of the brain decreases, it degrades and begins to cope with its functions
+          worse. It is more difficult for us to concentrate, to learn something new, memory deteriorates, and we begin
+          to forget more and more.
+        </TextWithBr>
+        <TextWithBr>
+          This is due to the fact that mitochondria are small &quot;energy stations&quot; of cells, over time they cease to cope
+          with the negative influence of various factors, their quality deteriorates. And after 30, the number of
+          mitochondria decreases by 2 times. As a result, the brain does not receive the energy it needs.
+        </TextWithBr>
+        <TextWithBr>
+          That&apos;s why we get up in the morning broken, not rested, without strength and energy. We reach for sweets, we
+          hardly remember something, we get annoyed at every trifle, we snap at our relatives and subordinates, we feel
+          squeezed out like a lemon.
+        </TextWithBr>
+
+        <GreenBox {...course} />
+
+        <StudentFeedback />
+
+        <AcademicPlan>
+          <CourseBigTitle>Academic plan</CourseBigTitle>
+          <Text>17 video lessons</Text>
+          {/* <SmallVideoPlayer>
+            <Image src={'/images/lesson_video_template.png'} width={240} height={134} />
+          </SmallVideoPlayer> */}
+        </AcademicPlan>
       </Container>
     </Element>
   );

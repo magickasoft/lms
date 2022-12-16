@@ -36,8 +36,6 @@ export const MyGlobalContext = createContext<GlobalContext>({
 export const useGlobalContext = () => useContext(MyGlobalContext);
 
 const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
-  const router = useRouter();
-  const slug = router.query.slug as string;
   const {course: serverCourse} = _props as Props;
   const [course, setCourse] = useState<Course>(serverCourse);
 
@@ -62,18 +60,7 @@ const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
     return <>Loading...</>;
   }
 
-  // const getCourse = (userType: string):Course | null => {
-  //   if (userType.toLowerCase() === 'admin')
-  //   {
-  //       return 'Hello Admin User!'
-  //   }
-  //   return 'Welcome user!'
-  // }
-
-  // const course = useContext<Course>(serverCourse)
-
   console.log('course: ', serverCourse);
-  console.log('slug: ', slug);
 
   return (
     <>

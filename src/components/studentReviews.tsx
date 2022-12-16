@@ -15,12 +15,10 @@ const Container = SC.section`
     padding: 40px 0;
   }
 `;
-
 const CenterBlock = SC.div`
   text-align: center;
   margin-bottom: 60px;
 `;
-
 const Title = SC.div`
   font-family: 'Bebas Neue Light';
   font-style: normal;
@@ -33,7 +31,6 @@ const Title = SC.div`
     font-size: 36px;
   }
 `;
-
 const BoldText = SC.div`
   font-family: 'Bebas Neue Bold';
   font-style: normal;
@@ -45,7 +42,6 @@ const BoldText = SC.div`
     font-size: 36px;
   }
 `;
-
 const NormalTitle = SC.div`
   font-family: 'SF Pro Display';
   font-style: normal;
@@ -60,12 +56,10 @@ const NormalTitle = SC.div`
     padding: 0;
   }
 `;
-
 const FeedbackRow = SC.div`
   display: flex;
   align-items: center;
 `;
-
 const StudentFeedbackText = SC.div`
   font-family: 'SF Pro Display Regular Italic';
   font-weight: 400;
@@ -107,7 +101,6 @@ const Item = SC.div`
     margin: 10px 10px;
   }
 `;
-
 const RatingTitle = SC.div`
   text-align: left;
   margin-top: 0px;

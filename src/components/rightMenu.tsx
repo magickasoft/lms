@@ -1,6 +1,5 @@
 import {css} from '@emotion/react';
 import SC from '@emotion/styled';
-import {ThemeProviderProps} from '@mui/material/styles/ThemeProvider';
 import moment from 'moment';
 import Image from 'next/image';
 import React, {useCallback, useEffect, useState} from 'react';
@@ -157,14 +156,6 @@ const IncludeItem = SC.div`
   margin-bottom: 5px;
 `;
 
-const includesArray = [
-  '40 hours of video lessons',
-  '17 practice files',
-  'Access without time limit',
-  'Access via computer or phone',
-  'Certificate of passing',
-];
-
 type IncludeItemProps = {
   text: string;
   icon: string;
@@ -176,7 +167,7 @@ export const RightMenu = () => {
   const onScroll = useCallback((event: any) => {
     setScrollY(window.pageYOffset);
   }, []);
-  const endDate = moment().days(4).endOf('day');
+  const endDate = moment().add(1, 'day').endOf('day');
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll, {passive: true});

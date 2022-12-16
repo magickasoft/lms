@@ -1,5 +1,6 @@
 import SC from '@emotion/styled';
 import {Moment} from 'moment';
+import { getNumberWithZero } from 'src/helpers/number';
 import {useCountdown} from 'src/hooks/useCountdown';
 
 type SaleTimerProps = {
@@ -31,9 +32,13 @@ export const SaleTimer = (props: SaleTimerProps) => {
     <>
       <TimerBlock>
         -{percentage}% off before <Alert>{endDate.format('D MMM')}</Alert>. Time left:{' '}
-        <Alert>
-          {hours}:{minutes}:{seconds}
-        </Alert>
+        {(days + hours + minutes + seconds > 0) ? (
+          <Alert>
+            {getNumberWithZero(hours)}:{getNumberWithZero(minutes)}:{getNumberWithZero(seconds)}
+          </Alert>
+        ) : (
+          <Alert>Expired</Alert>
+        )}
       </TimerBlock>
     </>
   );
