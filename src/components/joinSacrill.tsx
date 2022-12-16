@@ -1,4 +1,5 @@
 import SC from '@emotion/styled';
+import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
@@ -7,9 +8,6 @@ import {Element} from 'react-scroll';
 import {maxDevice} from '../styles';
 import {GreenButton} from './Button/greenButton';
 
-const JoinSacrillBlock = SC.div`
-  margin-bottom: 120px;
-`;
 const BoldText = SC.div`
   font-family: 'Bebas Neue Bold';
   font-style: normal;
@@ -69,34 +67,27 @@ const Text = SC.div`
     max-width: 100%;
   }
 `;
-const Pluses = SC.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-  @media ${maxDevice.tablet} {
-    flex-direction: column;
-  }
-`;
 const PlusItem = SC.div`
-  width: 245px;
-  height: 276px;
-  padding: 30px;
-  // border: 1px solid gray;
-  background-color: #FFFFFF;
-  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  
+  min-height: 276px;
+  padding: 30px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+  margin: 10px;
   @media ${maxDevice.tablet} {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
     flex-direction: row;
+    align-items: center;
+    background: #FFFFFF;
+    margin: 5px 20px;
+    min-height: 105px;
   }
 `;
 const IconImage = SC(Image)`
   margin-bottom: 40px;
+  @media ${maxDevice.tablet} {
+    margin-bottom: 0px;
+  }
 `;
 const SmallText = SC.span`
   font-family: 'SF Pro Display';
@@ -110,14 +101,15 @@ const SmallText = SC.span`
   }
 `;
 
-const JoinSacrillGradient = SC.div`
-  padding: 0 200px;
+const Container = SC.section`
+  padding: 120px 160px;
   
   background-image: url('images/middle_gradient.png');
   background-repeat: no-repeat;
   background-position-y: -165px;
   
   @media ${maxDevice.tablet} {
+    padding: 40px 0;
     background-image: url('images/middle_gradient_second.png');
     background-repeat: revert;
     background-position-y: 0;
@@ -130,50 +122,52 @@ export const JoinSacrill = (props: any) => {
 
   return (
     <Element name="JoinSacrill">
-      <JoinSacrillGradient>
-        <JoinSacrillBlock>
-          <BoldText>Join Sacrill Club And Get Access</BoldText>
-          <RightTitle>To All Courses In One Subscription</RightTitle>
+      <Container>
+        <BoldText>Join Sacrill Club And Get Access</BoldText>
+        <RightTitle>To All Courses In One Subscription</RightTitle>
 
-          <Row>
-            <Column>
-              <ButtonBlock>
-                <GreenButton>Join Sacrill Club</GreenButton>
-              </ButtonBlock>
-            </Column>
-            <Column>
-              <Text>
-                Saсrill is an educational platform with video courses on relevant topics. We help clients find and
-                purchase online courses from experts in their fields, and we help authors share their knowledge and
-                expertise with a wider audience and get paid for their sales.
-              </Text>
-            </Column>
-          </Row>
+        <Row>
+          <Column>
+            <ButtonBlock>
+              <GreenButton>Join Sacrill Club</GreenButton>
+            </ButtonBlock>
+          </Column>
+          <Column>
+            <Text>
+              Saсrill is an educational platform with video courses on relevant topics. We help clients find and
+              purchase online courses from experts in their fields, and we help authors share their knowledge and
+              expertise with a wider audience and get paid for their sales.
+            </Text>
+          </Column>
+        </Row>
 
-          <Row>
-            <Pluses>
-              <PlusItem>
-                <IconImage src="/images/icons/typing.svg" height={46} width={46} alt="Typing image" />
-                <SmallText>Chat with authors and other students</SmallText>
-              </PlusItem>
-              <PlusItem>
-                <IconImage src="/images/icons/brain.svg" height={46} width={46} alt="Brain image" />
-                <SmallText>
-                  Self-development courses, health, sports, relationships, dance and other categories
-                </SmallText>
-              </PlusItem>
-              <PlusItem>
-                <IconImage src="/images/icons/thumbup.svg" height={46} width={46} alt="Thumb up image" />
-                <SmallText>10+ new courses published each month</SmallText>
-              </PlusItem>
-              <PlusItem>
-                <IconImage src="/images/icons/girl_notebook.svg" height={46} width={46} alt="Typing image" />
-                <SmallText>Audio and video tutorials</SmallText>
-              </PlusItem>
-            </Pluses>
-          </Row>
-        </JoinSacrillBlock>
-      </JoinSacrillGradient>
+        <Grid container>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <PlusItem>
+              <IconImage src="/images/icons/typing.svg" height={46} width={46} alt="Typing image" />
+              <SmallText>Chat with authors and other students</SmallText>
+            </PlusItem>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <PlusItem>
+              <IconImage src="/images/icons/brain.svg" height={46} width={46} alt="Brain image" />
+              <SmallText>Self-development courses, health, sports, relationships, dance and other categories</SmallText>
+            </PlusItem>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <PlusItem>
+              <IconImage src="/images/icons/thumbup.svg" height={46} width={46} alt="Thumb up image" />
+              <SmallText>10+ new courses published each month</SmallText>
+            </PlusItem>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+            <PlusItem>
+              <IconImage src="/images/icons/girl_notebook.svg" height={46} width={46} alt="Typing image" />
+              <SmallText>Audio and video tutorials</SmallText>
+            </PlusItem>
+          </Grid>
+        </Grid>
+      </Container>
     </Element>
   );
 };

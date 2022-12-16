@@ -98,7 +98,7 @@ const Item = SC.div`
   padding: 40px;
   margin: 20px;
   @media ${maxDevice.tablet} {
-    margin: 10px 10px;
+    margin: 10px;
   }
 `;
 const RatingTitle = SC.div`
