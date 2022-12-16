@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 
 import {maxDevice} from '../../styles';
-import { Rating } from '../rating';
+import {Rating} from '../rating';
 
 const Item = SC.div`
   min-height: 40vh;

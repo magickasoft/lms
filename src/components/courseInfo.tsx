@@ -97,14 +97,14 @@ export const CourseInfo = () => {
           to forget more and more.
         </TextWithBr>
         <TextWithBr>
-          This is due to the fact that mitochondria are small &quot;energy stations&quot; of cells, over time they cease to cope
-          with the negative influence of various factors, their quality deteriorates. And after 30, the number of
-          mitochondria decreases by 2 times. As a result, the brain does not receive the energy it needs.
+          This is due to the fact that mitochondria are small &quot;energy stations&quot; of cells, over time they cease
+          to cope with the negative influence of various factors, their quality deteriorates. And after 30, the number
+          of mitochondria decreases by 2 times. As a result, the brain does not receive the energy it needs.
         </TextWithBr>
         <TextWithBr>
-          That&apos;s why we get up in the morning broken, not rested, without strength and energy. We reach for sweets, we
-          hardly remember something, we get annoyed at every trifle, we snap at our relatives and subordinates, we feel
-          squeezed out like a lemon.
+          That&apos;s why we get up in the morning broken, not rested, without strength and energy. We reach for sweets,
+          we hardly remember something, we get annoyed at every trifle, we snap at our relatives and subordinates, we
+          feel squeezed out like a lemon.
         </TextWithBr>
 
         <GreenBox {...course} />

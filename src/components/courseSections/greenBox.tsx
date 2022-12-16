@@ -1,7 +1,7 @@
 import SC from '@emotion/styled';
 import Image from 'next/image';
 
-import { Rating } from '../rating';
+import {Rating} from '../rating';
 
 const Container = SC.div`
   margin-top: 60px;
@@ -115,7 +115,7 @@ const RatingImage5 = SC(Image)`
 
 export const GreenBox = (props: any) => {
   const {rating} = props;
-  
+
   return (
     <Container>
       <Text>
