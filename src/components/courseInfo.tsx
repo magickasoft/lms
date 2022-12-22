@@ -716,6 +716,7 @@ export const CourseInfo = () => {
           </FormBlock>
           <GreenButton>Continue</GreenButton>
           <CheckboxBlock>
+            <Checkbox sx={checkboxStyle} />
             <SmallText>
               I consent to process my personal data and agree Terms of Services agreement, Privacy policy, and User
               Agreement.

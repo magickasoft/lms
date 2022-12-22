@@ -6,6 +6,8 @@ import {Events, scrollSpy} from 'react-scroll';
 import {CourseContent, Footer} from 'src/components';
 import {CourseHeader} from 'src/components/courseHeader';
 
+import NotFoundPage from './404';
+
 type Course = {
   id: string;
   title: string;
@@ -69,11 +71,14 @@ const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
     };
   }, []);
 
+  //TODO need to check this logic
+  if (course == null) {
+    return <NotFoundPage />;
+  }
+
   if (serverCourse == undefined) {
     return <>Loading...</>;
   }
-
-  console.log('course: ', serverCourse);
 
   return (
     <>
@@ -115,7 +120,8 @@ interface CourseServerSideProps extends GetServerSideProps<Props> {
 }
 
 export const getServerSideProps = async ({query, locale}: CourseServerSideProps) => {
-  const response = await fetch(`http://edston.lc/api/course-by-slug/${query.slug}`);
+  const response = await fetch(`https://edston.com/api/course-by-slug/${query.slug}`);
+  // const response = await fetch(`http://edston.lc/api/course-by-slug/${query.slug}`);
   const course = await response.json();
 
   return {
