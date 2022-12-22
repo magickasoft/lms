@@ -162,7 +162,7 @@ type IncludeItemProps = {
 };
 
 export const RightMenu = () => {
-  const {course} = useGlobalContext();
+  const {course, setOpen} = useGlobalContext();
   const [scrollY, setScrollY] = useState(typeof window != 'undefined' ? window.pageYOffset : 0);
   const onScroll = useCallback((event: any) => {
     setScrollY(window.pageYOffset);
@@ -189,7 +189,7 @@ export const RightMenu = () => {
         <ContentContainer>
           <SidebarPrice price={price?.usd} currency={'$'} />
           <ButtonContainer>
-            <GreenButton>Open Access Now</GreenButton>
+            <GreenButton onClick={() => setOpen(true)}>Open Access Now</GreenButton>
           </ButtonContainer>
           <Text>100% money back guarantee within 14 days</Text>
           <ReviewsBlock>

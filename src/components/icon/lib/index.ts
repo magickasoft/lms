@@ -2,6 +2,7 @@ import {notFound} from './404';
 import {arrowDown} from './arrowDown';
 import {arrowUp} from './arrowUp';
 import {call} from './call';
+import {email} from './email';
 import {logo} from './logo';
 import {star} from './star';
 import {telegram} from './telegram';
@@ -16,4 +17,5 @@ export default {
   star,
   whatsApp,
   telegram,
+  email,
 };

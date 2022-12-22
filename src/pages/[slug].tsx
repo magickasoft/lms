@@ -1,7 +1,5 @@
-import e from 'cors';
-import type {GetServerSideProps, GetStaticProps, InferGetStaticPropsType} from 'next';
+import type {GetServerSideProps, InferGetStaticPropsType} from 'next';
 import Head from 'next/head';
-import {useRouter} from 'next/router';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import React, {createContext, useCallback, useContext, useEffect, useState} from 'react';
 import {Events, scrollSpy} from 'react-scroll';
@@ -16,6 +14,16 @@ type Course = {
   author_info: string;
   rating: number;
   price: number;
+  sections: Section;
+};
+type Section = {
+  id: number;
+  title: string;
+  course_id: number;
+  lessons: Lesson;
+};
+type Lesson = {
+  id: number;
 };
 
 type Props = {
@@ -26,11 +34,15 @@ type Props = {
 export type GlobalContext = {
   course: Course | null;
   setCourse: (course: Course) => void;
+  open: boolean;
+  setOpen: (status: boolean) => void;
 };
 
 export const MyGlobalContext = createContext<GlobalContext>({
   course: null,
   setCourse: () => {},
+  open: false,
+  setOpen: () => {},
 });
 
 export const useGlobalContext = () => useContext(MyGlobalContext);
@@ -38,6 +50,7 @@ export const useGlobalContext = () => useContext(MyGlobalContext);
 const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
   const {course: serverCourse} = _props as Props;
   const [course, setCourse] = useState<Course>(serverCourse);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     Events.scrollEvent.register('begin', function (to, element) {
@@ -86,13 +99,9 @@ const Course = (_props: InferGetStaticPropsType<typeof getServerSideProps>) => {
         <meta property="twitter:url" content="https://sacrill.com/" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
-      <MyGlobalContext.Provider value={{course, setCourse}}>
+      <MyGlobalContext.Provider value={{course, setCourse, open, setOpen}}>
         <CourseHeader />
         <CourseContent />
-        {/* <h1>{serverCourse?.title}</h1>
-        <div>
-          {serverCourse?.excerpt}
-        </div> */}
       </MyGlobalContext.Provider>
     </>
   );

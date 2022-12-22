@@ -11,16 +11,17 @@ const StarIcon = SC.div`
 
 type RatingProps = {
   stars: number;
+  short?: boolean | false;
 };
 
 export const Rating = (props: RatingProps) => {
-  const {stars} = props;
+  const {stars, short} = props;
 
   console.log('rating is re-rendering when scrolling fix it later');
 
   return (
     <Container>
-      {[...Array(5)].map((key: number, index: number) => {
+      {[...Array(short ? 1 : 5)].map((key: number, index: number) => {
         return (
           <StarIcon key={index}>
             <Icon name="star" width={13} height={12} color={index + 1 <= stars ? '#FFA51E' : '#808080'} />
