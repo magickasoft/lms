@@ -20,7 +20,7 @@ import {useGlobalContext} from 'src/pages/[slug]';
 import {ibmplexsans400, maxDevice} from 'src/styles';
 
 import {GreenButton} from './Button/greenButton';
-import { Course } from './course';
+import {Course} from './course';
 import {AcademicPlan} from './courseSections/academicPlan';
 import {GreenBox} from './courseSections/greenBox';
 import {StudentFeedback} from './courseSections/studentFeedback';
