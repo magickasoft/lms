@@ -385,7 +385,7 @@ const IncludeText = SC.div`
 export const CourseInfo = () => {
   const {course, open, setOpen} = useGlobalContext();
   const {sections} = course;
-  const lessonsLength = sections ? sections.reduce((acc, section) => acc + section.lessons.length, 0) : 0;
+  const lessonsLength = sections ? (sections || [] as any).reduce((acc, section) => acc + section.lessons.length, 0) : 0;
   const topCourses = useGetTopCoursesQuery({variables: {}});
   const normalise = value => ((value - 0) * 100) / (100 - 0);
 

@@ -19,6 +19,7 @@ type Course = {
   sections: Section;
 };
 type Section = {
+  reduce(arg0: (acc: any, section: any) => any, arg1: number): any;
   id: number;
   title: string;
   course_id: number;
